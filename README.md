@@ -1,14 +1,12 @@
 # admin
 
-### 在线预览 👀
-
 ### 安装使用步骤 📔
 
 - **Clone：**
 
 ```text
 # GitHub
-git clone https://github.com/HalseySpicy/Geeker-Admin.git
+git clone https://github.com/yiranHang/admin.hl.git
 ```
 
 - **Install：**
@@ -115,10 +113,3 @@ admin
 | ![IE](https://i.imgtg.com/2023/04/11/8z7ot.png) | ![Edge](https://i.imgtg.com/2023/04/11/8zr3p.png) | ![Firefox](https://i.imgtg.com/2023/04/11/8zKiU.png) | ![Chrome](https://i.imgtg.com/2023/04/11/8zNrx.png) | ![Safari](https://i.imgtg.com/2023/04/11/8zeGj.png) |
 | :---------------------------------------------: | :-----------------------------------------------: | :--------------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------: |
 |                   not support                   |                  last 2 versions                  |                   last 2 versions                    |                   last 2 versions                   |                   last 2 versions                   |
-
-### 项目后台接口 🧩
-
-项目后台接口完全采用 Mock 数据，感谢以下 Mock 平台支持：
-
-- FastMock： https://www.fastmock.site
-- EasyMock：https://mock.mengxuegu.com
