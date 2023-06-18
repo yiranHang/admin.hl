@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:HalseySpicy/Geeker-Admin.git"
+    "url": "git@https://github.com/yiranHang/admin.hl.git"
   },
   "scripts": {
     "dev": "vite",
