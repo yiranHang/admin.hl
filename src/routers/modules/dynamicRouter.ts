@@ -27,14 +27,13 @@ export const initDynamicRouter = async () => {
         type: "warning",
         duration: 3000
       });
-      userStore.setToken("");
+      userStore.loginOut();
       router.replace(LOGIN_URL);
       return Promise.reject("No permission");
     }
 
     // 3.添加动态路由
     authStore.flatMenuListGet.forEach(item => {
-      console.log("🚀 ~ item:", item);
       item.children && delete item.children;
       if (item.component && typeof item.component == "string") {
         item.component = modules["/src/views" + item.component + ".vue"];
@@ -47,7 +46,7 @@ export const initDynamicRouter = async () => {
     });
   } catch (error) {
     // 当按钮 || 菜单请求出错时，重定向到登陆页
-    userStore.setToken("");
+    userStore.loginOut();
     router.replace(LOGIN_URL);
     return Promise.reject(error);
   }

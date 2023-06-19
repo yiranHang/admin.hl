@@ -33,7 +33,7 @@ export interface UserInfo {
 }
 export interface UserState {
   token: string;
-  userInfo: UserInfo;
+  userInfo: string;
 }
 
 /* tabsMenuProps */

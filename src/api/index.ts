@@ -5,6 +5,7 @@ import { LOGIN_URL } from "@/config";
 import { ElMessage } from "element-plus";
 import { ResultEnum } from "@/enums/httpEnum";
 import { checkStatus } from "./helper/checkStatus";
+import { useUserStore } from "@/stores/modules/user";
 import router from "@/routers";
 
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
@@ -36,7 +37,8 @@ class RequestHttp {
         // 当前请求不需要显示 loading，在 api 服务中通过指定的第三个参数: { noLoading: true } 来控制
         config.noLoading || showFullScreenLoading();
         if (config.headers && typeof config.headers.set === "function") {
-          const token = CacheTool.getLocal("access_token");
+          const userStore = useUserStore();
+          const token = userStore.token;
           if (token) {
             config.headers.set("Authorization", `Bearer ${token}`);
           }

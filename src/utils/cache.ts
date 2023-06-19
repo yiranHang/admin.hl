@@ -21,10 +21,7 @@ export class CacheTool {
    * @param expired 过期时间
    * @returns {number}
    */
-  static getExpiredTime(expired: number | undefined): number {
-    if (typeof expired === "undefined") {
-      return 0;
-    }
+  static getExpiredTime(expired = 60 * 60 * 24): number {
     return expired * 1000 + new Date().getTime();
   }
 
@@ -33,8 +30,8 @@ export class CacheTool {
    * @param token token值
    * @param expired 过期时间（默认一天）
    */
-  static setToken(token: string, expired = 60 * 60 * 23) {
-    CacheTool.setLocal(CacheTool.accessToken, token, expired);
+  static setToken(token: string, expired = 60 * 60 * 24) {
+    CacheTool.setLocal(CacheTool.accessToken, token, CacheTool.getExpiredTime(expired));
   }
 
   /**

@@ -29,8 +29,9 @@ export const useAuthStore = defineStore({
     // Get AuthMenuList
     async getAuthMenuList() {
       const userStore = useUserStore();
-      if (userStore.userInfo?.id) {
-        const { menus, abilities } = await getAuthMenuListApi(userStore.userInfo.id);
+      const userInfo = userStore.getUserInfo;
+      if (userInfo?.id) {
+        const { menus, abilities } = await getAuthMenuListApi(userInfo?.id);
         this.getAuthButtonList(abilities);
         this.authMenuList = menus;
       }
