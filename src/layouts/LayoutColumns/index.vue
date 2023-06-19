@@ -9,9 +9,9 @@
         <div class="split-list">
           <div
             v-for="item in menuList"
-            :key="item.path"
+            :key="item.link"
             class="split-item"
-            :class="{ 'split-active': splitActive === item.path || `/${splitActive.split('/')[1]}` === item.path }"
+            :class="{ 'split-active': splitActive === item.link || `/${splitActive.split('/')[1]}` === item.link }"
             @click="changeSubMenu(item)"
           >
             <el-icon>
@@ -75,7 +75,7 @@ watch(
     if (!menuList.value.length) return;
     splitActive.value = route.path;
     const menuItem = menuList.value.filter((item: Menu.MenuOptions) => {
-      return route.path === item.path || `/${route.path.split("/")[1]}` === item.path;
+      return route.path === item.link || `/${route.path.split("/")[1]}` === item.link;
     });
     if (menuItem[0].children?.length) return (subMenuList.value = menuItem[0].children);
     subMenuList.value = [];
@@ -88,10 +88,10 @@ watch(
 
 // change SubMenu
 const changeSubMenu = (item: Menu.MenuOptions) => {
-  splitActive.value = item.path;
+  splitActive.value = item.link;
   if (item.children?.length) return (subMenuList.value = item.children);
   subMenuList.value = [];
-  router.push(item.path);
+  router.push(item.link);
 };
 </script>
 

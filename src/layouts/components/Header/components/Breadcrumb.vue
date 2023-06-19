@@ -2,7 +2,7 @@
   <div :class="['breadcrumb-box', !globalStore.breadcrumbIcon && 'no-icon']">
     <el-breadcrumb :separator-icon="ArrowRight">
       <transition-group name="breadcrumb">
-        <el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="item.path">
+        <el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="item.link">
           <div class="el-breadcrumb__inner is-link" @click="onBreadcrumbClick(item, index)">
             <el-icon v-show="item.meta.icon && globalStore.breadcrumbIcon" class="breadcrumb-icon">
               <component :is="item.meta.icon"></component>
@@ -39,7 +39,7 @@ const breadcrumbList = computed(() => {
 
 // Click Breadcrumb
 const onBreadcrumbClick = (item: Menu.MenuOptions, index: number) => {
-  if (index !== breadcrumbList.value.length - 1) router.push(item.path);
+  if (index !== breadcrumbList.value.length - 1) router.push(item.link);
 };
 </script>
 

@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
 import { AuthState } from "@/stores/interface";
-import { getAuthButtonListApi, getAuthMenuListApi } from "@/api/modules/login";
+import { getAuthMenuListApi } from "@/api/modules/login";
+import { useUserStore } from "@/stores/modules/user";
 import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from "@/utils";
-
 export const useAuthStore = defineStore({
   id: "admin-auth",
   state: (): AuthState => ({
@@ -26,15 +26,29 @@ export const useAuthStore = defineStore({
     breadcrumbListGet: state => getAllBreadcrumbList(state.authMenuList)
   },
   actions: {
-    // Get AuthButtonList
-    async getAuthButtonList() {
-      const { data } = await getAuthButtonListApi();
-      this.authButtonList = data;
-    },
     // Get AuthMenuList
     async getAuthMenuList() {
-      const { data } = await getAuthMenuListApi();
-      this.authMenuList = data;
+      const userStore = useUserStore();
+      if (userStore.userInfo?.id) {
+        const { menus, abilities } = await getAuthMenuListApi(userStore.userInfo.id);
+        this.getAuthButtonList(abilities);
+        this.authMenuList = menus;
+      }
+    },
+    getAuthButtonList(abilities: string[]) {
+      const authButtonList: { [key: string]: string[] } = {};
+      abilities.forEach((item: string) => {
+        const parts = item.split(":");
+        const category = parts[0];
+        const value = parts[1];
+
+        if (authButtonList[category]) {
+          authButtonList[category].push(value);
+        } else {
+          authButtonList[category] = [value];
+        }
+      });
+      this.authButtonList = authButtonList;
     },
     // Set RouteName
     async setRouteName(name: string) {

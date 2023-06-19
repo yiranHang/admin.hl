@@ -18,7 +18,6 @@ export const initDynamicRouter = async () => {
   try {
     // 1.获取菜单列表 && 按钮权限列表
     await authStore.getAuthMenuList();
-    await authStore.getAuthButtonList();
 
     // 2.判断当前用户有没有菜单权限
     if (!authStore.authMenuListGet.length) {
@@ -35,6 +34,7 @@ export const initDynamicRouter = async () => {
 
     // 3.添加动态路由
     authStore.flatMenuListGet.forEach(item => {
+      console.log("🚀 ~ item:", item);
       item.children && delete item.children;
       if (item.component && typeof item.component == "string") {
         item.component = modules["/src/views" + item.component + ".vue"];
