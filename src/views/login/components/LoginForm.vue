@@ -1,7 +1,7 @@
 <template>
   <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" size="large">
-    <el-form-item prop="username">
-      <el-input v-model="loginForm.username" placeholder="用户名：admin / user">
+    <el-form-item prop="userName">
+      <el-input v-model="loginForm.userName" placeholder="用户名：admin">
         <template #prefix>
           <el-icon class="el-input__icon">
             <user />
@@ -10,7 +10,13 @@
       </el-input>
     </el-form-item>
     <el-form-item prop="password">
-      <el-input v-model="loginForm.password" type="password" placeholder="密码：123456" show-password autocomplete="new-password">
+      <el-input
+        v-model="loginForm.password"
+        type="password"
+        placeholder="密码：admin@123"
+        show-password
+        autocomplete="new-password"
+      >
         <template #prefix>
           <el-icon class="el-input__icon">
             <lock />
@@ -41,7 +47,6 @@ import { useKeepAliveStore } from "@/stores/modules/keepAlive";
 import { initDynamicRouter } from "@/routers/modules/dynamicRouter";
 import { CircleClose, UserFilled } from "@element-plus/icons-vue";
 import type { ElForm } from "element-plus";
-import md5 from "js-md5";
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -51,14 +56,14 @@ const keepAliveStore = useKeepAliveStore();
 type FormInstance = InstanceType<typeof ElForm>;
 const loginFormRef = ref<FormInstance>();
 const loginRules = reactive({
-  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+  userName: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   password: [{ required: true, message: "请输入密码", trigger: "blur" }]
 });
 
 const loading = ref(false);
 const loginForm = reactive<Login.ReqLoginForm>({
-  username: "",
-  password: ""
+  userName: "admin",
+  password: "admin@123"
 });
 
 // login
@@ -69,9 +74,9 @@ const login = (formEl: FormInstance | undefined) => {
     loading.value = true;
     try {
       // 1.执行登录接口
-      const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
-      userStore.setToken(data.access_token);
-
+      const { access_token, user } = await loginApi(loginForm);
+      userStore.setToken(access_token);
+      userStore.setUserInfo(user);
       // 2.添加动态路由
       await initDynamicRouter();
 

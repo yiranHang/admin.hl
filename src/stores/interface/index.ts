@@ -24,9 +24,16 @@ export interface GlobalState {
 }
 
 /* UserState */
+export interface UserInfo {
+  id?: string;
+  name?: string;
+  account?: string;
+  password?: string;
+  [key: string]: any;
+}
 export interface UserState {
   token: string;
-  userInfo: { name: string };
+  userInfo: string;
 }
 
 /* tabsMenuProps */

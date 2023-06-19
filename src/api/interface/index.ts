@@ -1,4 +1,5 @@
 // 请求响应参数（不包含data）
+import { UserInfo } from "@/stores/interface";
 export interface Result {
   code: string;
   msg: string;
@@ -33,21 +34,26 @@ export namespace Upload {
 // 登录模块
 export namespace Login {
   export interface ReqLoginForm {
-    username: string;
+    userName: string;
     password: string;
   }
   export interface ResLogin {
     access_token: string;
+    user: UserInfo;
   }
   export interface ResAuthButtons {
     [key: string]: string[];
+  }
+
+  export interface ResAuthMenus {
+    [key: string]: string[] | any;
   }
 }
 
 // 用户管理模块
 export namespace User {
   export interface ReqUserParams extends ReqPage {
-    username: string;
+    userName: string;
     gender: number;
     idCard: string;
     email: string;
@@ -57,7 +63,7 @@ export namespace User {
   }
   export interface ResUserList {
     id: string;
-    username: string;
+    userName: string;
     gender: number;
     user: { detail: { age: number } };
     idCard: string;

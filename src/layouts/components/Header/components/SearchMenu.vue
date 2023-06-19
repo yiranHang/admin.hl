@@ -63,7 +63,7 @@ const closeSearch = () => {
 const filterNodeMethod = (queryString: string) => {
   return (restaurant: Menu.MenuOptions) => {
     return (
-      restaurant.path.toLowerCase().indexOf(queryString.toLowerCase()) > -1 ||
+      restaurant.link.toLowerCase().indexOf(queryString.toLowerCase()) > -1 ||
       restaurant.meta.title.toLowerCase().indexOf(queryString.toLowerCase()) > -1
     );
   };
@@ -73,7 +73,7 @@ const filterNodeMethod = (queryString: string) => {
 const handleClickMenu = (menuItem: Menu.MenuOptions | Record<string, any>) => {
   searchMenu.value = "";
   if (menuItem.meta.isLink) window.open(menuItem.meta.isLink, "_blank");
-  else router.push(menuItem.path);
+  else router.push(menuItem.link);
   closeSearch();
 };
 </script>

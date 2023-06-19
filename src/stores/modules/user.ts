@@ -1,22 +1,29 @@
 import { defineStore } from "pinia";
-import { UserState } from "@/stores/interface";
+import { UserState, UserInfo } from "@/stores/interface";
+import { CryptoTool } from "@/utils/crypto";
+import { CacheTool } from "@/utils/cache";
 import piniaPersistConfig from "@/config/piniaPersist";
-
 export const useUserStore = defineStore({
   id: "admin-user",
   state: (): UserState => ({
     token: "",
-    userInfo: { name: "Geeker" }
+    userInfo: ""
   }),
-  getters: {},
+  getters: {
+    getUserInfo: state => CryptoTool.sm4Decrypt(state.userInfo)
+  },
   actions: {
     // Set Token
     setToken(token: string) {
+      console.log("🚀 ~ token:", token);
       this.token = token;
     },
     // Set setUserInfo
-    setUserInfo(userInfo: UserState["userInfo"]) {
-      this.userInfo = userInfo;
+    setUserInfo(userInfo: UserInfo) {
+      this.userInfo = CryptoTool.sm4Encrypt(userInfo);
+    },
+    loginOut() {
+      CacheTool.clearLocal();
     }
   },
   persist: piniaPersistConfig("admin-user")
