@@ -29,8 +29,9 @@ export const deleteUser = (params: { id: string[] }) => {
 }
 
 // 切换用户状态
-export const changeUserStatus = (params: { id: string; status: number }) => {
-  return http.post(`/user/change`, params)
+export const changeUserStatus = (params: { id: string; user: User.ResUserList }) => {
+  console.log('🚀 ~ params:', params)
+  return http.patch(`/user/${params.id}`, params.user)
 }
 
 // 重置用户密码

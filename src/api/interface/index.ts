@@ -61,18 +61,40 @@ export namespace User {
     createTime: string[]
     status: number
   }
+
+  export interface Role {
+    id: string
+    code: string
+    forbidden: boolean
+    name: string
+    remark: string
+    createTime: string
+    updateTime: string
+  }
   export interface ResUserList {
     id: string
-    userName: string
-    gender: number
-    user: { detail: { age: number } }
-    idCard: string
-    email: string
-    address: string
-    createTime: string
+    name: string
+    account: number
+    /**密码错误次数 */
+    count: string
+    /**账号是否禁止使用 */
+    forbidden: boolean
+    /**账号状态 */
     status: number
-    avatar: string
-    photo: any[]
+    password: string
+    /**冻结时间 */
+    freezeTime: string
+    /**密码修改时间 */
+    passwordChangTime: string
+    /**职位 */
+    position: string
+    /**是否是新建或者重置的账号 */
+    isCreatedOrReset: boolean
+    /**单位 */
+    unit: string
+    createTime: string
+    updateTime: string
+    roles: Array<Role>
     children?: ResUserList[]
   }
   export interface ResStatus {
