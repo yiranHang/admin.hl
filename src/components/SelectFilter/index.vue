@@ -11,7 +11,9 @@
             v-for="option in item.options"
             :key="option.value"
             :class="{
-              active: option.value === selected[item.key] || (Array.isArray(selected[item.key]) && selected[item.key].includes(option.value)),
+              active:
+                option.value === selected[item.key] ||
+                (Array.isArray(selected[item.key]) && selected[item.key].includes(option.value)),
             }"
             @click="select(item, option)"
           >

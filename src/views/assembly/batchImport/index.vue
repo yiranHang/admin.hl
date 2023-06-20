@@ -7,7 +7,8 @@
       <el-descriptions-item label="title"> 组件显示标题 && 上传成功之后提示信息 </el-descriptions-item>
       <el-descriptions-item label="fileSize"> 上传文件大小，默认为 5M </el-descriptions-item>
       <el-descriptions-item label="fileType">
-        上传文件类型限制，默认类型为 ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"]
+        上传文件类型限制，默认类型为 ["application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"]
       </el-descriptions-item>
       <el-descriptions-item label="tempApi"> 下载模板的 Api </el-descriptions-item>
       <el-descriptions-item label="importApi"> 上传数据的 Api </el-descriptions-item>

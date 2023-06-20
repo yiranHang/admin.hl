@@ -8,7 +8,13 @@
           <span v-show="!isCollapse" class="logo-text">后台管理系统</span>
         </div>
         <el-scrollbar>
-          <el-menu :default-active="activeMenu" :collapse="isCollapse" :router="false" :unique-opened="true" :collapse-transition="false">
+          <el-menu
+            :default-active="activeMenu"
+            :collapse="isCollapse"
+            :router="false"
+            :unique-opened="true"
+            :collapse-transition="false"
+          >
             <SubMenu :menu-list="menuList" />
           </el-menu>
         </el-scrollbar>

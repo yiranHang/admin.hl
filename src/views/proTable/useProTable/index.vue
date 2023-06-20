@@ -1,13 +1,28 @@
 <template>
   <div class="table-box">
-    <ProTable ref="proTable" title="用户列表" :columns="columns" :request-api="getTableList" :init-param="initParam" :data-callback="dataCallback">
+    <ProTable
+      ref="proTable"
+      title="用户列表"
+      :columns="columns"
+      :request-api="getTableList"
+      :init-param="initParam"
+      :data-callback="dataCallback"
+    >
       <!-- 表格 header 按钮 -->
       <template #tableHeader="scope">
         <el-button v-auth="'add'" type="primary" :icon="CirclePlus" @click="openDrawer('新增')"> 新增用户 </el-button>
         <el-button v-auth="'batchAdd'" type="primary" :icon="Upload" plain @click="batchAdd"> 批量添加用户 </el-button>
-        <el-button v-auth="'export'" type="primary" :icon="Download" plain @click="downloadFile"> 导出用户数据 </el-button>
+        <el-button v-auth="'export'" type="primary" :icon="Download" plain @click="downloadFile">
+          导出用户数据
+        </el-button>
         <el-button type="primary" plain @click="toDetail"> To 子集详情页面 </el-button>
-        <el-button type="danger" :icon="Delete" plain :disabled="!scope.isSelected" @click="batchDelete(scope.selectedListIds)">
+        <el-button
+          type="danger"
+          :icon="Delete"
+          plain
+          :disabled="!scope.isSelected"
+          @click="batchDelete(scope.selectedListIds)"
+        >
           批量删除用户
         </el-button>
       </template>
@@ -221,7 +236,11 @@ const resetPass = async (params: User.ResUserList) => {
 
 // 切换用户状态
 const changeStatus = async (row: User.ResUserList) => {
-  await useHandleData(changeUserStatus, { id: row.id, status: row.status == 1 ? 0 : 1 }, `切换【${row.username}】用户状态`)
+  await useHandleData(
+    changeUserStatus,
+    { id: row.id, status: row.status == 1 ? 0 : 1 },
+    `切换【${row.username}】用户状态`
+  )
   proTable.value?.getTableList()
 }
 

@@ -1,6 +1,14 @@
 <template>
   <div class="table-box">
-    <ProTable ref="proTable" title="菜单列表" row-key="path" :indent="30" :columns="columns" :data="menuData" :pagination="false">
+    <ProTable
+      ref="proTable"
+      title="菜单列表"
+      row-key="path"
+      :indent="30"
+      :columns="columns"
+      :data="menuData"
+      :pagination="false"
+    >
       <!-- 表格 header 按钮 -->
       <template #tableHeader>
         <el-button type="primary" :icon="CirclePlus">新增菜单 </el-button>

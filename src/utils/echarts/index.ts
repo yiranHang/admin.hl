@@ -27,7 +27,12 @@ import { CanvasRenderer } from 'echarts/renderers'
 
 // 通过 ComposeOption 来组合出一个只有必须组件和图表的 Option 类型
 export type ECOption = echarts.ComposeOption<
-  BarSeriesOption | LineSeriesOption | TitleComponentOption | TooltipComponentOption | GridComponentOption | DatasetComponentOption
+  | BarSeriesOption
+  | LineSeriesOption
+  | TitleComponentOption
+  | TooltipComponentOption
+  | GridComponentOption
+  | DatasetComponentOption
 >
 
 // 注册必须的组件

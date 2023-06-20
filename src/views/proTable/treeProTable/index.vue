@@ -1,6 +1,12 @@
 <template>
   <div class="main-box">
-    <TreeFilter label="name" title="部门列表(单选)" :data="treeFilterData" :default-value="initParam.departmentId" @change="changeTreeFilter" />
+    <TreeFilter
+      label="name"
+      title="部门列表(单选)"
+      :data="treeFilterData"
+      :default-value="initParam.departmentId"
+      @change="changeTreeFilter"
+    />
     <div class="table-box">
       <ProTable
         ref="proTable"
@@ -109,7 +115,14 @@ const columns: ColumnProps<User.ResUserList>[] = [
     enum: filterGenderEnum.value,
     search: {
       el: 'select',
-      props: { placeholder: '请输入性别查询', filterable: true, remote: true, reserveKeyword: true, loading, remoteMethod },
+      props: {
+        placeholder: '请输入性别查询',
+        filterable: true,
+        remote: true,
+        reserveKeyword: true,
+        loading,
+        remoteMethod,
+      },
     },
     render: (scope) => <>{scope.row.gender === 1 ? '男' : '女'}</>,
   },

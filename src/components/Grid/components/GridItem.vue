@@ -58,7 +58,9 @@ const style = computed(() => {
     }
   } else {
     return {
-      gridColumn: `span ${span + offset > cols.value ? cols.value : span + offset}/span ${span + offset > cols.value ? cols.value : span + offset}`,
+      gridColumn: `span ${span + offset > cols.value ? cols.value : span + offset}/span ${
+        span + offset > cols.value ? cols.value : span + offset
+      }`,
       marginLeft: offset !== 0 ? `calc(((100% + ${gap}px) / ${span + offset}) * ${offset})` : 'unset',
     }
   }

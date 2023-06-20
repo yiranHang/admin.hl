@@ -2,14 +2,26 @@
 
 <template>
   <!-- 查询表单 card -->
-  <SearchForm v-show="isShowSearch" :search="search" :reset="reset" :columns="searchColumns" :search-param="searchParam" :search-col="searchCol" />
+  <SearchForm
+    v-show="isShowSearch"
+    :search="search"
+    :reset="reset"
+    :columns="searchColumns"
+    :search-param="searchParam"
+    :search-col="searchCol"
+  />
 
   <!-- 表格内容 card -->
   <div class="card table-main">
     <!-- 表格头部 操作按钮 -->
     <div class="table-header">
       <div class="header-button-lf">
-        <slot name="tableHeader" :selected-list-ids="selectedListIds" :selected-list="selectedList" :is-selected="isSelected" />
+        <slot
+          name="tableHeader"
+          :selected-list-ids="selectedListIds"
+          :selected-list="selectedList"
+          :is-selected="isSelected"
+        />
       </div>
       <div v-if="toolButton" class="header-button-ri">
         <slot name="toolButton">
@@ -21,7 +33,14 @@
       </div>
     </div>
     <!-- 表格主体 -->
-    <el-table ref="tableRef" v-bind="$attrs" :data="data ?? tableData" :border="border" :row-key="rowKey" @selection-change="selectionChange">
+    <el-table
+      ref="tableRef"
+      v-bind="$attrs"
+      :data="data ?? tableData"
+      :border="border"
+      :row-key="rowKey"
+      @selection-change="selectionChange"
+    >
       <!-- 默认插槽 -->
       <slot></slot>
       <template v-for="item in tableColumns" :key="item">
@@ -60,7 +79,12 @@
     </el-table>
     <!-- 分页组件 -->
     <slot name="pagination">
-      <Pagination v-if="pagination" :pageable="pageable" :handle-size-change="handleSizeChange" :handle-current-change="handleCurrentChange" />
+      <Pagination
+        v-if="pagination"
+        :pageable="pageable"
+        :handle-size-change="handleSizeChange"
+        :handle-current-change="handleCurrentChange"
+      />
     </slot>
   </div>
   <!-- 列设置 -->
@@ -120,13 +144,17 @@ const tableRef = ref<InstanceType<typeof ElTable>>()
 const { selectionChange, selectedList, selectedListIds, isSelected } = useSelection(props.rowKey)
 
 // 表格操作 Hooks
-const { tableData, pageable, searchParam, searchInitParam, getTableList, search, reset, handleSizeChange, handleCurrentChange } = useTable(
-  props.requestApi,
-  props.initParam,
-  props.pagination,
-  props.dataCallback,
-  props.requestError
-)
+const {
+  tableData,
+  pageable,
+  searchParam,
+  searchInitParam,
+  getTableList,
+  search,
+  reset,
+  handleSizeChange,
+  handleCurrentChange,
+} = useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, props.requestError)
 
 // 清空选中数据列表
 const clearSelection = () => tableRef.value!.clearSelection()
@@ -199,13 +227,19 @@ const printData = computed(() => {
   const handleData = props.data ?? tableData.value
   const printDataList = JSON.parse(JSON.stringify(selectedList.value.length ? selectedList.value : handleData))
   // 找出需要转换数据的列（有 enum || 多级 prop && 需要根据 enum 格式化）
-  const needTransformCol = flatColumns.value!.filter((item) => (item.enum || (item.prop && item.prop.split('.').length > 1)) && item.isFilterEnum)
+  const needTransformCol = flatColumns.value!.filter(
+    (item) => (item.enum || (item.prop && item.prop.split('.').length > 1)) && item.isFilterEnum
+  )
   needTransformCol.forEach((colItem) => {
     printDataList.forEach((tableItem: { [key: string]: any }) => {
       tableItem[handleProp(colItem.prop!)] =
         colItem.prop!.split('.').length > 1 && !colItem.enum
           ? formatValue(handleRowAccordingToProp(tableItem, colItem.prop!))
-          : filterEnum(handleRowAccordingToProp(tableItem, colItem.prop!), enumMap.value.get(colItem.prop!), colItem.fieldNames)
+          : filterEnum(
+              handleRowAccordingToProp(tableItem, colItem.prop!),
+              enumMap.value.get(colItem.prop!),
+              colItem.fieldNames
+            )
       for (const key in tableItem) {
         if (tableItem[key] === null) tableItem[key] = formatValue(tableItem[key])
       }
@@ -217,13 +251,16 @@ const printData = computed(() => {
 // 打印表格数据（💥 多级表头数据打印时，只能扁平化成一维数组，printJs 不支持多级表头打印）
 const print = () => {
   const header = `<div style="text-align: center"><h2>${props.title}</h2></div>`
-  const gridHeaderStyle = 'border: 1px solid #ebeef5;height: 45px;color: #232425;text-align: center;background-color: #fafafa;'
+  const gridHeaderStyle =
+    'border: 1px solid #ebeef5;height: 45px;color: #232425;text-align: center;background-color: #fafafa;'
   const gridStyle = 'border: 1px solid #ebeef5;height: 40px;color: #494b4e;text-align: center'
   printJS({
     printable: printData.value,
     header: props.title && header,
     properties: flatColumns
-      .value!.filter((item) => !['selection', 'index', 'expand'].includes(item.type!) && item.isShow && item.prop !== 'operation')
+      .value!.filter(
+        (item) => !['selection', 'index', 'expand'].includes(item.type!) && item.isShow && item.prop !== 'operation'
+      )
       .map((item: ColumnProps) => ({ field: handleProp(item.prop!), displayName: item.label })),
     type: 'json',
     gridHeaderStyle,

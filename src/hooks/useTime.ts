@@ -20,11 +20,15 @@ export const useTime = () => {
     month.value = date.getMonth() + 1
     week.value = '日一二三四五六'.charAt(date.getDay())
     day.value = date.getDate()
-    hour.value = (date.getHours() + '')?.padStart(2, '0') || new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 }).format(date.getHours())
+    hour.value =
+      (date.getHours() + '')?.padStart(2, '0') ||
+      new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 }).format(date.getHours())
     minute.value =
-      (date.getMinutes() + '')?.padStart(2, '0') || new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 }).format(date.getMinutes())
+      (date.getMinutes() + '')?.padStart(2, '0') ||
+      new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 }).format(date.getMinutes())
     second.value =
-      (date.getSeconds() + '')?.padStart(2, '0') || new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 }).format(date.getSeconds())
+      (date.getSeconds() + '')?.padStart(2, '0') ||
+      new Intl.NumberFormat(undefined, { minimumIntegerDigits: 2 }).format(date.getSeconds())
     nowTime.value = `${year.value}年${month.value}月${day.value} ${hour.value}:${minute.value}:${second.value}`
   }
 

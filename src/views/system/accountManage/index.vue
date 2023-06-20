@@ -1,10 +1,23 @@
 <template>
   <div class="table-box">
-    <ProTable ref="proTable" title="用户列表" :columns="columns" :request-api="getUserList" :data-callback="dataCallback">
+    <ProTable
+      ref="proTable"
+      title="用户列表"
+      :columns="columns"
+      :request-api="getUserList"
+      :data-callback="dataCallback"
+    >
       <!-- 表格 header 按钮 -->
       <template #tableHeader="scope">
         <el-button v-auth="'post'" type="primary" :icon="CirclePlus" @click="openDrawer('新增')"> 新增用户 </el-button>
-        <el-button v-auth="'delete'" type="danger" :icon="Delete" plain :disabled="!scope.isSelected" @click="batchDelete(scope.selectedListIds)">
+        <el-button
+          v-auth="'delete'"
+          type="danger"
+          :icon="Delete"
+          plain
+          :disabled="!scope.isSelected"
+          @click="batchDelete(scope.selectedListIds)"
+        >
           批量删除用户
         </el-button>
       </template>
@@ -26,10 +39,18 @@
       </template>
       <!-- 表格操作 -->
       <template #operation="scope">
-        <el-button v-auth="'get'" type="primary" link :icon="View" @click="openDrawer('查看', scope.row)"> 查看 </el-button>
-        <el-button v-auth="'patch'" type="primary" link :icon="EditPen" @click="openDrawer('编辑', scope.row)"> 编辑 </el-button>
-        <el-button v-auth="'update_password'" type="primary" link :icon="Refresh" @click="resetPass(scope.row)"> 重置密码 </el-button>
-        <el-button v-auth="'delete'" type="primary" link :icon="Delete" @click="deleteAccount(scope.row)"> 删除 </el-button>
+        <el-button v-auth="'get'" type="primary" link :icon="View" @click="openDrawer('查看', scope.row)">
+          查看
+        </el-button>
+        <el-button v-auth="'patch'" type="primary" link :icon="EditPen" @click="openDrawer('编辑', scope.row)">
+          编辑
+        </el-button>
+        <el-button v-auth="'update_password'" type="primary" link :icon="Refresh" @click="resetPass(scope.row)">
+          重置密码
+        </el-button>
+        <el-button v-auth="'delete'" type="primary" link :icon="Delete" @click="deleteAccount(scope.row)">
+          删除
+        </el-button>
       </template>
     </ProTable>
     <UserDrawer ref="drawerRef" />

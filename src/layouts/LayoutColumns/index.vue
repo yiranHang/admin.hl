@@ -27,7 +27,13 @@
         <span v-show="subMenuList.length" class="logo-text">{{ isCollapse ? '' : '后台管理系统' }}</span>
       </div>
       <el-scrollbar>
-        <el-menu :default-active="activeMenu" :router="false" :collapse="isCollapse" :collapse-transition="false" :unique-opened="true">
+        <el-menu
+          :default-active="activeMenu"
+          :router="false"
+          :collapse="isCollapse"
+          :collapse-transition="false"
+          :unique-opened="true"
+        >
           <SubMenu :menu-list="subMenuList" />
         </el-menu>
       </el-scrollbar>

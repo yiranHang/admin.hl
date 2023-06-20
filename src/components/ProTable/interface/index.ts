@@ -66,7 +66,8 @@ export type HeaderRenderScope<T> = {
   [key: string]: any
 }
 
-export interface ColumnProps<T = any> extends Partial<Omit<TableColumnCtx<T>, 'children' | 'renderCell' | 'renderHeader'>> {
+export interface ColumnProps<T = any>
+  extends Partial<Omit<TableColumnCtx<T>, 'children' | 'renderCell' | 'renderHeader'>> {
   tag?: boolean // 是否是标签展示
   isShow?: boolean // 是否显示在表格当中
   search?: SearchProps | undefined // 搜索项配置
