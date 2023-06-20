@@ -11,20 +11,20 @@
 </template>
 
 <script setup lang="ts" name="authMenu">
-import { useRouter } from "vue-router";
-import { LOGIN_URL } from "@/config";
-import { useUserStore } from "@/stores/modules/user";
-import { Promotion } from "@element-plus/icons-vue";
+import { useRouter } from 'vue-router'
+import { LOGIN_URL } from '@/config'
+import { useUserStore } from '@/stores/modules/user'
+import { Promotion } from '@element-plus/icons-vue'
 
-const router = useRouter();
-const userStore = useUserStore();
+const router = useRouter()
+const userStore = useUserStore()
 
 const handleToLogin = () => {
-  userStore.loginOut();
-  router.push(LOGIN_URL);
-};
+  userStore.loginOut()
+  router.push(LOGIN_URL)
+}
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

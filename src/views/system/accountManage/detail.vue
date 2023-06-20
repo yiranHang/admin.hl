@@ -7,6 +7,6 @@
 </template>
 
 <script setup lang="ts" name="useProTableDetail">
-import { useRoute } from "vue-router";
-const route = useRoute();
+import { useRoute } from 'vue-router'
+const route = useRoute()
 </script>

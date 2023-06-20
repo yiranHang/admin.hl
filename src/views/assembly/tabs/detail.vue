@@ -6,11 +6,11 @@
 </template>
 
 <script setup lang="ts" name="tabsDetail">
-import { useRoute } from "vue-router";
-import { useTabsStore } from "@/stores/modules/tabs";
+import { useRoute } from 'vue-router'
+import { useTabsStore } from '@/stores/modules/tabs'
 
-const route = useRoute();
-const tabStore = useTabsStore();
+const route = useRoute()
+const tabStore = useTabsStore()
 
-tabStore.setTabsTitle(`No.${route.params.id} - ${route.meta.title}`);
+tabStore.setTabsTitle(`No.${route.params.id} - ${route.meta.title}`)
 </script>

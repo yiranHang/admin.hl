@@ -7,5 +7,5 @@
 <script setup lang="ts" name="geekerDocs"></script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

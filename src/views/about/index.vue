@@ -56,8 +56,8 @@
 </template>
 
 <script setup lang="ts" name="about">
-const { pkg, lastBuildTime } = __APP_INFO__;
-const { dependencies, devDependencies, version } = pkg;
+const { pkg, lastBuildTime } = __APP_INFO__
+const { dependencies, devDependencies, version } = pkg
 </script>
 
 <style lang="scss" scoped>

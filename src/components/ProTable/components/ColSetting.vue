@@ -22,20 +22,20 @@
 </template>
 
 <script setup lang="ts" name="ColSetting">
-import { ref } from "vue";
-import { ColumnProps } from "@/components/ProTable/interface";
+import { ref } from 'vue'
+import { ColumnProps } from '@/components/ProTable/interface'
 
-defineProps<{ colSetting: ColumnProps[] }>();
+defineProps<{ colSetting: ColumnProps[] }>()
 
-const drawerVisible = ref<boolean>(false);
+const drawerVisible = ref<boolean>(false)
 
 const openColSetting = () => {
-  drawerVisible.value = true;
-};
+  drawerVisible.value = true
+}
 
 defineExpose({
-  openColSetting
-});
+  openColSetting,
+})
 </script>
 
 <style scoped lang="scss">
