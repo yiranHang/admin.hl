@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from "axios";
 import { showFullScreenLoading, tryHideFullScreenLoading } from "@/config/serviceLoading";
-import { CacheTool } from "@/utils/cache";
+import { localClear } from "@/utils";
 import { LOGIN_URL } from "@/config";
 import { ElMessage } from "element-plus";
 import { ResultEnum } from "@/enums/httpEnum";
@@ -60,7 +60,7 @@ class RequestHttp {
         tryHideFullScreenLoading();
         // 登陆失效
         if (data.code == ResultEnum.OVERDUE) {
-          CacheTool.clearLocal();
+          localClear();
           router.replace(LOGIN_URL);
           ElMessage.error(data.msg);
           return Promise.reject(data);

@@ -37,6 +37,7 @@ export const useAuthStore = defineStore({
       }
     },
     getAuthButtonList(abilities: string[]) {
+      console.time("代码执行时间");
       const authButtonList: { [key: string]: string[] } = {};
       abilities.forEach((item: string) => {
         const parts = item.split(":");
@@ -50,6 +51,7 @@ export const useAuthStore = defineStore({
         }
       });
       this.authButtonList = authButtonList;
+      console.timeEnd("代码执行时间");
     },
     // Set RouteName
     async setRouteName(name: string) {

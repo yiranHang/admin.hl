@@ -45,7 +45,7 @@ import ProTable from "@/components/ProTable/index.vue";
 import type { TableColumnCtx } from "element-plus/es/components/table/src/table-column/defaults";
 import { ProTableInstance, ColumnProps, HeaderRenderScope } from "@/components/ProTable/interface";
 import { CirclePlus, Pointer, Delete, Refresh } from "@element-plus/icons-vue";
-import { getUserList, deleteUser, resetUserPassWord, getUserStatus, getUserGender } from "@/api/modules/user";
+import { getUserList, deleteUser, resetUserPassWord } from "@/api/modules/user";
 
 // 获取 ProTable DOM
 const proTable = ref<ProTableInstance>();

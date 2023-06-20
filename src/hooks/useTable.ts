@@ -41,8 +41,8 @@ export const useTable = (
   const pageParam = computed({
     get: () => {
       return {
-        pageNum: state.pageable.pageNum,
-        pageSize: state.pageable.pageSize
+        pi: state.pageable.pageNum,
+        ps: state.pageable.pageSize
       };
     },
     set: (newVal: any) => {
@@ -105,6 +105,7 @@ export const useTable = (
    * */
   const search = () => {
     state.pageable.pageNum = 1;
+    state.pageable.pageSize = 10;
     updatedTotalParam();
     getTableList();
   };
@@ -115,6 +116,7 @@ export const useTable = (
    * */
   const reset = () => {
     state.pageable.pageNum = 1;
+    state.pageable.pageSize = 10;
     state.searchParam = {};
     // 重置搜索表单的时，如果有默认搜索参数，则重置默认的搜索参数
     Object.keys(state.searchInitParam).forEach(key => {
