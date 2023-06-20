@@ -128,20 +128,19 @@ const columns: ColumnProps<User.ResUserList>[] = [
 
 // 切换账号禁用状态
 const changeStatus = async (row: User.ResUserList) => {
-  console.log('🚀 ~ row:', row)
   await useHandleData(changeUserStatus, { id: row.id, user: row }, `切换【${row.name}】用户状态`)
   proTable.value?.getTableList()
 }
 
 // 删除用户信息
 const deleteAccount = async (params: User.ResUserList) => {
-  await useHandleData(deleteUser, { id: [params.id] }, `删除【${params.name}】用户`)
+  await useHandleData(deleteUser, { ids: [params.id] }, `删除【${params.name}】用户`)
   proTable.value?.getTableList()
 }
 
 // 批量删除用户信息
 const batchDelete = async (id: string[]) => {
-  await useHandleData(deleteUser, { id }, '删除所选用户信息')
+  await useHandleData(deleteUser, { ids: id }, '删除所选用户信息')
   proTable.value?.clearSelection()
   proTable.value?.getTableList()
 }

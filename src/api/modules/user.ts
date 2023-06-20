@@ -8,33 +8,38 @@ import http from '@/api'
 export const getUserList = (params: User.ReqUserParams) => {
   return http.get<ResPage<User.ResUserList>>(`/user`, params)
 }
-// 新增用户
-export const addUser = (params: { id: string }) => {
-  return http.post(`/user/add`, params)
+
+// 获取角色列表
+export const getRoleList = (params?: User.ResRoleList) => {
+  return http.get<ResPage<User.ResRoleList>>(`/role`, params)
 }
 
-// 批量添加用户
-export const BatchAddUser = (params: FormData) => {
-  return http.post(`/user/import`, params)
+// 获取角色的select列表
+export const getRoleSelect = () => {
+  return http.get<Array<User.ResRoleSelect>>(`/role/list/valid`)
+}
+
+// 新增用户
+export const addUser = (params: User.ResUserList) => {
+  return http.post(`/user`, params)
 }
 
 // 编辑用户
-export const editUser = (params: { id: string }) => {
-  return http.post(`/user/edit`, params)
+export const editUser = (params: User.ResUserList) => {
+  return http.patch(`/user/${params.id}`, params)
 }
 
 // 删除用户
-export const deleteUser = (params: { id: string[] }) => {
+export const deleteUser = (params: { ids: string[] }) => {
   return http.post(`/user/delete`, params)
 }
 
 // 切换用户状态
 export const changeUserStatus = (params: { id: string; user: User.ResUserList }) => {
-  console.log('🚀 ~ params:', params)
   return http.patch(`/user/${params.id}`, params.user)
 }
 
 // 重置用户密码
 export const resetUserPassWord = (params: { id: string }) => {
-  return http.post(`/user/rest_password`, params)
+  return http.patch(`/user/password/${params.id}`)
 }

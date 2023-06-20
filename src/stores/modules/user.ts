@@ -4,6 +4,7 @@ import { CryptoTool } from '@/utils/crypto'
 import { localClear } from '@/utils'
 import { useAuthStore } from '@/stores/modules/auth'
 import piniaPersistConfig from '@/config/piniaPersist'
+import { getRoleSelect } from '@/api/modules/user'
 export const useUserStore = defineStore({
   id: 'admin-user',
   state: (): UserState => ({
@@ -21,6 +22,10 @@ export const useUserStore = defineStore({
     // Set setUserInfo
     setUserInfo(userInfo: UserInfo) {
       this.userInfo = CryptoTool.sm4Encrypt(userInfo)
+    },
+    async getRoleSelect() {
+      const roles = await getRoleSelect()
+      return roles
     },
     // Login Out
     loginOut() {

@@ -53,16 +53,11 @@ export namespace Login {
 // 用户管理模块
 export namespace User {
   export interface ReqUserParams extends ReqPage {
-    userName: string
-    gender: number
-    idCard: string
-    email: string
-    address: string
-    createTime: string[]
-    status: number
+    name: string
+    account: string
   }
 
-  export interface Role {
+  export interface ResRoleList {
     id: string
     code: string
     forbidden: boolean
@@ -70,6 +65,11 @@ export namespace User {
     remark: string
     createTime: string
     updateTime: string
+  }
+
+  export interface ResRoleSelect {
+    label: string
+    value: string
   }
   export interface ResUserList {
     id: string
@@ -92,9 +92,10 @@ export namespace User {
     isCreatedOrReset: boolean
     /**单位 */
     unit: string
+    remark: string
     createTime: string
     updateTime: string
-    roles: Array<Role>
+    roles: Array<ResRoleList>
     children?: ResUserList[]
   }
   export interface ResStatus {

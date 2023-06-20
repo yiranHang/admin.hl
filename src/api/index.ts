@@ -73,15 +73,14 @@ class RequestHttp {
         // 成功请求（在页面上除非特殊情况，否则不用处理失败逻辑）
         return data
       },
-      async (error: AxiosError) => {
+      async (error: AxiosError<{ message: string; statusCode: number }>) => {
         const { response } = error
         tryHideFullScreenLoading()
         // 请求超时 && 网络错误单独判断，没有 response
         if (error.message.indexOf('timeout') !== -1) ElMessage.error('请求超时！请您稍后重试')
         if (error.message.indexOf('Network Error') !== -1) ElMessage.error('网络错误！请您稍后重试')
         // 根据服务器响应的错误状态码，做不同的处理
-        console.log('🚀 ~ RequestHttp ~ response:', response)
-        if (response) checkStatus(response.status, response.data.message)
+        if (response) checkStatus(response.status, response.data?.message)
         // 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面
         if (!window.navigator.onLine) router.replace('/500')
         return Promise.reject(error)
