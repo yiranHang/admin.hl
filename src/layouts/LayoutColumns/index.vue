@@ -9,9 +9,9 @@
         <div class="split-list">
           <div
             v-for="item in menuList"
-            :key="item.link"
+            :key="item.path"
             class="split-item"
-            :class="{ 'split-active': splitActive === item.link || `/${splitActive.split('/')[1]}` === item.link }"
+            :class="{ 'split-active': splitActive === item.path || `/${splitActive.split('/')[1]}` === item.path }"
             @click="changeSubMenu(item)"
           >
             <el-icon>
@@ -24,7 +24,7 @@
     </div>
     <el-aside :class="{ 'not-aside': !subMenuList.length }" :style="{ width: isCollapse ? '65px' : '210px' }">
       <div class="logo flx-center">
-        <span v-show="subMenuList.length" class="logo-text">{{ isCollapse ? "G" : "Geeker Admin" }}</span>
+        <span v-show="subMenuList.length" class="logo-text">{{ isCollapse ? "" : "后台管理系统" }}</span>
       </div>
       <el-scrollbar>
         <el-menu
@@ -75,7 +75,7 @@ watch(
     if (!menuList.value.length) return;
     splitActive.value = route.path;
     const menuItem = menuList.value.filter((item: Menu.MenuOptions) => {
-      return route.path === item.link || `/${route.path.split("/")[1]}` === item.link;
+      return route.path === item.path || `/${route.path.split("/")[1]}` === item.path;
     });
     if (menuItem[0].children?.length) return (subMenuList.value = menuItem[0].children);
     subMenuList.value = [];
@@ -88,10 +88,10 @@ watch(
 
 // change SubMenu
 const changeSubMenu = (item: Menu.MenuOptions) => {
-  splitActive.value = item.link;
+  splitActive.value = item.path;
   if (item.children?.length) return (subMenuList.value = item.children);
   subMenuList.value = [];
-  router.push(item.link);
+  router.push(item.path);
 };
 </script>
 

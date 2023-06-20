@@ -5,7 +5,7 @@
       <div class="header-lf">
         <div class="logo flx-center">
           <img class="logo-img" src="@/assets/images/logo.svg" alt="logo" />
-          <span class="logo-text">Geeker Admin</span>
+          <span class="logo-text">后台管理系统</span>
         </div>
         <ToolBarLeft />
       </div>
