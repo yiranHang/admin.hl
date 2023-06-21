@@ -57,6 +57,19 @@ export namespace User {
     account: string
   }
 
+  export interface Permission {
+    id: string
+    code: string
+    forbidden: boolean
+    /**请求方法类型 */
+    method: string
+    name: string
+    /**请求方法路径 */
+    path: string
+    remark: string
+    createTime: string
+    updateTime: string
+  }
   export interface ResRoleList {
     id: string
     code: string
@@ -65,6 +78,7 @@ export namespace User {
     remark: string
     createTime: string
     updateTime: string
+    permissions?: Permission[]
   }
 
   export interface ResRoleSelect {
@@ -97,6 +111,14 @@ export namespace User {
     updateTime: string
     roles: Array<ResRoleList>
     children?: ResUserList[]
+  }
+
+  export interface ResAclList {
+    key: string
+    title: string
+    isLeaf: boolean
+    isDisabled: boolean
+    children?: ResAclList[]
   }
   export interface ResStatus {
     userLabel: string

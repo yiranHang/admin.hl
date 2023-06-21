@@ -26,12 +26,22 @@
         <el-button v-auth="'patch'" type="primary" link :icon="EditPen" @click="openDrawer('编辑', scope.row)">
           编辑
         </el-button>
+        <el-button
+          v-auth="'acl_config'"
+          type="primary"
+          link
+          :icon="EditPen"
+          @click="openAclDrawer('配置访问权限', scope.row)"
+        >
+          配置访问权限
+        </el-button>
         <el-button v-auth="'delete'" type="primary" link :icon="Delete" @click="deleteAccount(scope.row)">
           删除
         </el-button>
       </template>
     </ProTable>
     <RoleDrawer ref="drawerRef" />
+    <AclDrawer ref="aclDrawerRef" />
   </div>
 </template>
 
@@ -41,9 +51,10 @@ import { User } from '@/api/interface'
 import { useHandleData } from '@/hooks/useHandleData'
 import ProTable from '@/components/ProTable/index.vue'
 import RoleDrawer from '@/views/system/roleManage/RoleDrawer.vue'
+import AclDrawer from '@/views/system/roleManage/AclDrawer.vue'
 import { ProTableInstance, ColumnProps } from '@/components/ProTable/interface'
 import { CirclePlus, Delete, EditPen } from '@element-plus/icons-vue'
-import { getRoleList, deleteRole, addRole, editRole } from '@/api/modules/user'
+import { getRoleList, deleteRole, addRole, editRole, setRolePermission } from '@/api/modules/user'
 import { dayjs } from 'element-plus'
 // 获取 ProTable 元素，调用其获取刷新数据方法（还能获取到当前查询参数，方便导出携带参数）
 const proTable = ref<ProTableInstance>()
@@ -107,5 +118,16 @@ const openDrawer = (title: string, row: Partial<User.ResRoleList> = {}) => {
     getTableList: proTable.value?.getTableList,
   }
   drawerRef.value?.acceptParams(params)
+}
+// 打开 drawer(新增、查看、编辑)
+const aclDrawerRef = ref<InstanceType<typeof AclDrawer> | null>(null)
+const openAclDrawer = (title: string, row: Partial<User.ResRoleList> = {}) => {
+  const params = {
+    title,
+    row: { ...row },
+    api: setRolePermission,
+    getTableList: proTable.value?.getTableList,
+  }
+  aclDrawerRef.value?.acceptParams(params)
 }
 </script>

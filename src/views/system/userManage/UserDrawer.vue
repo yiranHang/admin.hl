@@ -13,7 +13,12 @@
         <el-input v-model="drawerProps.row!.name" :placeholder="!isAdd ? '' : '请填写用户姓名'" clearable></el-input>
       </el-form-item>
       <el-form-item label="账号名称" prop="account">
-        <el-input v-model="drawerProps.row!.account" :placeholder="!isAdd ? '' : '请填写账号名称'" clearable></el-input>
+        <el-input
+          v-model="drawerProps.row!.account"
+          :disabled="drawerProps.title !== '新增'"
+          :placeholder="!isAdd ? '' : '请填写账号名称'"
+          clearable
+        ></el-input>
       </el-form-item>
       <el-form-item label="角色" prop="roles">
         <el-select v-model="drawerProps.row!.roles" multiple :placeholder="!isAdd ? '' : '请选择用户角色'" clearable>
@@ -41,7 +46,6 @@
           autosize
           type="textarea"
           :placeholder="!isAdd ? '' : '请填写备注'"
-          clearable
         ></el-input>
       </el-form-item>
     </el-form>

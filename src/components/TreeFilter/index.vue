@@ -1,5 +1,5 @@
 <template>
-  <div class="card filter">
+  <div class="filter">
     <h4 v-if="title" class="title sle">
       {{ title }}
     </h4>
@@ -72,7 +72,7 @@ const setSelected = () => {
 onBeforeMount(async () => {
   setSelected()
   if (props.requestApi) {
-    const { data } = await props.requestApi!()
+    const data = await props.requestApi!()
     treeData.value = data
     treeAllData.value = [{ id: '', [props.label]: '全部' }, ...data]
   }
@@ -128,7 +128,7 @@ const handleNodeClick = (data: { [key: string]: any }) => {
 
 // 多选
 const handleCheckChange = () => {
-  emit('change', treeRef.value?.getCheckedKeys())
+  emit('change', treeRef.value?.getCheckedKeys(true))
 }
 
 // 暴露给父组件使用

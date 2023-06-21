@@ -51,15 +51,25 @@ export const getRoleSelect = () => {
 
 // 新增角色
 export const addRole = (params: User.ResRoleList) => {
-  return http.post(`/role`, params)
+  return http.post<User.ResRoleList>(`/role`, params)
 }
 
 // 编辑角色
 export const editRole = (params: User.ResRoleList) => {
-  return http.patch(`/role/${params.id}`, params)
+  return http.patch<User.ResRoleList>(`/role/${params.id}`, params)
 }
 
 // 删除角色
 export const deleteRole = (params: { ids: string[] }) => {
   return http.post(`/role/delete`, params)
+}
+
+// 获取角色权限列表
+export const getAclList = () => {
+  return http.get<User.ResAclList[]>(`menu/permission/tree`)
+}
+
+// 获取角色权限列表
+export const setRolePermission = (params: { id: string; permissions: { id: string }[] }) => {
+  return http.patch<User.ResRoleList>(`role/${params.id}`, { permissions: params.permissions })
 }

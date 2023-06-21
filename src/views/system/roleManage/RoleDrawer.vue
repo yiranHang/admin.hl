@@ -13,7 +13,12 @@
         <el-input v-model="drawerProps.row!.name" :placeholder="!isAdd ? '' : '请填写角色名称'" clearable></el-input>
       </el-form-item>
       <el-form-item label="角色编码" prop="code">
-        <el-input v-model="drawerProps.row!.code" :placeholder="!isAdd ? '' : '请填写角色编码'" clearable></el-input>
+        <el-input
+          v-model="drawerProps.row!.code"
+          :disabled="drawerProps.title !== '新增'"
+          :placeholder="!isAdd ? '' : '请填写角色编码'"
+          clearable
+        ></el-input>
       </el-form-item>
 
       <el-form-item label="备注" prop="remark">
@@ -22,7 +27,6 @@
           autosize
           type="textarea"
           :placeholder="!isAdd ? '' : '请填写备注'"
-          clearable
         ></el-input>
       </el-form-item>
     </el-form>
@@ -33,7 +37,7 @@
   </el-drawer>
 </template>
 
-<script setup lang="ts" name="UserDrawer">
+<script setup lang="ts" name="RoleDrawer">
 import { ref, reactive, computed } from 'vue'
 import { ElMessage, FormInstance } from 'element-plus'
 import { User } from '@/api/interface'
@@ -72,7 +76,7 @@ const handleSubmit = () => {
     if (!valid) return
     try {
       await drawerProps.value.api!(drawerProps.value.row)
-      ElMessage.success({ message: `${drawerProps.value.title}用户成功！` })
+      ElMessage.success({ message: `${drawerProps.value.title}角色成功！` })
       drawerProps.value.getTableList!()
       drawerVisible.value = false
     } catch (error) {
