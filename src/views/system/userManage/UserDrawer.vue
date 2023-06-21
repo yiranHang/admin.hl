@@ -36,7 +36,13 @@
         ></el-input>
       </el-form-item>
       <el-form-item label="备注" prop="remark">
-        <el-input v-model="drawerProps.row!.remark" :placeholder="!isAdd ? '' : '请填写备注'" clearable></el-input>
+        <el-input
+          v-model="drawerProps.row!.remark"
+          autosize
+          type="textarea"
+          :placeholder="!isAdd ? '' : '请填写备注'"
+          clearable
+        ></el-input>
       </el-form-item>
     </el-form>
     <template #footer>

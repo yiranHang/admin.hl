@@ -9,16 +9,6 @@ export const getUserList = (params: User.ReqUserParams) => {
   return http.get<ResPage<User.ResUserList>>(`/user`, params)
 }
 
-// 获取角色列表
-export const getRoleList = (params?: User.ResRoleList) => {
-  return http.get<ResPage<User.ResRoleList>>(`/role`, params)
-}
-
-// 获取角色的select列表
-export const getRoleSelect = () => {
-  return http.get<Array<User.ResRoleSelect>>(`/role/list/valid`)
-}
-
 // 新增用户
 export const addUser = (params: User.ResUserList) => {
   return http.post(`/user`, params)
@@ -47,4 +37,29 @@ export const resetUserPassWord = (params: { id: string }) => {
 // 修改用户密码
 export const changeUserPassWord = (params: { id: string; password: string }) => {
   return http.patch(`/user/password/${params.id}`, { password: params.password })
+}
+
+// 获取角色列表
+export const getRoleList = (params?: User.ResRoleList) => {
+  return http.get<ResPage<User.ResRoleList>>(`/role`, params)
+}
+
+// 获取角色的select列表
+export const getRoleSelect = () => {
+  return http.get<Array<User.ResRoleSelect>>(`/role/list/valid`)
+}
+
+// 新增角色
+export const addRole = (params: User.ResRoleList) => {
+  return http.post(`/role`, params)
+}
+
+// 编辑角色
+export const editRole = (params: User.ResRoleList) => {
+  return http.patch(`/role/${params.id}`, params)
+}
+
+// 删除角色
+export const deleteRole = (params: { ids: string[] }) => {
+  return http.post(`/role/delete`, params)
 }

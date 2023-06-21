@@ -38,17 +38,15 @@
       </template>
     </ProTable>
     <UserDrawer ref="drawerRef" />
-    <ImportExcel ref="dialogRef" />
   </div>
 </template>
 
-<script setup lang="tsx" name="useProTable">
+<script setup lang="tsx" name="accountMange">
 import { ref } from 'vue'
 import { User } from '@/api/interface'
 import { useHandleData } from '@/hooks/useHandleData'
 import ProTable from '@/components/ProTable/index.vue'
-import ImportExcel from '@/components/ImportExcel/index.vue'
-import UserDrawer from '@/views/system/accountManage/UserDrawer.vue'
+import UserDrawer from '@/views/system/userManage/UserDrawer.vue'
 import { ProTableInstance, ColumnProps } from '@/components/ProTable/interface'
 import { CirclePlus, Delete, EditPen, View, Refresh } from '@element-plus/icons-vue'
 import { getUserList, deleteUser, editUser, addUser, resetUserPassWord, changeUserStatus } from '@/api/modules/user'
