@@ -12,16 +12,16 @@ export interface ResultData<T = any> extends Result {
 
 // 分页响应参数
 export interface ResPage<T> {
-  list: T[]
-  pageNum: number
-  pageSize: number
-  total: number
+  data: T[]
+  page: number
+  limit: number
+  count: number
 }
 
 // 分页请求参数
 export interface ReqPage {
-  pageNum: number
-  pageSize: number
+  pi: number
+  ps: number
 }
 
 // 文件上传模块
@@ -56,11 +56,13 @@ export namespace Login {
 
 // 用户管理模块
 export namespace User {
+  /**用户查询 */
   export interface ReqUserParams extends ReqPage {
     name: string
     account: string
   }
 
+  /**权限点 */
   export interface Permission {
     id: string
     code: string
@@ -74,6 +76,14 @@ export namespace User {
     createTime: string
     updateTime: string
   }
+
+  /**角色查询 */
+  export interface ResRoleParams extends ReqPage {
+    code: string
+    name: string
+  }
+
+  /**角色列表 */
   export interface ResRoleList {
     id: string
     code: string
@@ -85,10 +95,13 @@ export namespace User {
     permissions?: Permission[]
   }
 
+  /**角色选择列表 */
   export interface ResRoleSelect {
     label: string
     value: string
   }
+
+  /**用户列表 */
   export interface ResUserList {
     id: string
     name: string
@@ -119,6 +132,7 @@ export namespace User {
     children?: ResUserList[]
   }
 
+  /**权限配置列表 */
   export interface ResAclList {
     key: string
     title: string
@@ -126,22 +140,38 @@ export namespace User {
     isDisabled: boolean
     children?: ResAclList[]
   }
-  export interface ResStatus {
-    userLabel: string
-    userValue: number
-  }
-  export interface ResGender {
-    genderLabel: string
-    genderValue: number
-  }
-  export interface ResDepartment {
+}
+
+/**字典管理模块 */
+export namespace Dict {
+  /**字典查询 */
+  export interface ResDictParams extends ReqPage {
     id: string
+    key: string
     name: string
-    children?: ResDepartment[]
   }
-  export interface ResRole {
+
+  /**字典列表 */
+  export interface ResDictList {
     id: string
+    key: string
     name: string
-    children?: ResDepartment[]
+    remark: string
+    forbidden: boolean
+    createTime: string
+    updateTime: string
+  }
+
+  /**字典详情列表 */
+  export interface ResDictDetailList {
+    id: string
+    label: string
+    value: string
+    sort: number
+    disabled: boolean
+    hide: boolean
+    remark: string
+    createTime: string
+    updateTime: string
   }
 }

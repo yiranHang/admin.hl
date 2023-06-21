@@ -40,7 +40,7 @@ export const changeUserPassWord = (params: { id: string; password: string }) => 
 }
 
 // 获取角色列表
-export const getRoleList = (params?: User.ResRoleList) => {
+export const getRoleList = (params?: User.ResRoleParams) => {
   return http.get<ResPage<User.ResRoleList>>(`/role`, params)
 }
 

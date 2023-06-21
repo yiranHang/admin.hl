@@ -69,7 +69,7 @@ const dataCallback = (data: any) => {
   }
 }
 // 表格配置项
-const columns: ColumnProps<User.ResUserList>[] = [
+const columns: ColumnProps<User.ResRoleList>[] = [
   { type: 'selection', fixed: 'left', width: 80 },
   { type: 'index', label: '序号', width: 80 },
   {
