@@ -43,3 +43,8 @@ export const changeUserStatus = (params: { id: string; user: User.ResUserList })
 export const resetUserPassWord = (params: { id: string }) => {
   return http.patch(`/user/password/${params.id}`)
 }
+
+// 修改用户密码
+export const changeUserPassWord = (params: { id: string; password: string }) => {
+  return http.patch(`/user/password/${params.id}`, { password: params.password })
+}

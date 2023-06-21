@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
-import { UserState, UserInfo } from '@/stores/interface'
+import { UserState } from '@/stores/interface'
 import { CryptoTool } from '@/utils/crypto'
 import { localClear } from '@/utils'
 import { useAuthStore } from '@/stores/modules/auth'
 import piniaPersistConfig from '@/config/piniaPersist'
 import { getRoleSelect } from '@/api/modules/user'
+import { User } from '@/api/interface'
 export const useUserStore = defineStore({
   id: 'admin-user',
   state: (): UserState => ({
@@ -12,7 +13,7 @@ export const useUserStore = defineStore({
     userInfo: '',
   }),
   getters: {
-    getUserInfo: (state) => CryptoTool.sm4Decrypt(state.userInfo),
+    getUserInfo: (state): User.ResUserList => CryptoTool.sm4Decrypt(state.userInfo),
   },
   actions: {
     // Set Token
@@ -20,7 +21,7 @@ export const useUserStore = defineStore({
       this.token = token
     },
     // Set setUserInfo
-    setUserInfo(userInfo: UserInfo) {
+    setUserInfo(userInfo: User.ResUserList) {
       this.userInfo = CryptoTool.sm4Encrypt(userInfo)
     },
     async getRoleSelect() {
