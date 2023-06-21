@@ -9,6 +9,15 @@
       :model="drawerProps.row"
       :hide-required-asterisk="drawerProps.isView"
     >
+      <el-form-item label="用户头像" prop="avatar">
+        <UploadImg v-model:image-url="drawerProps.row!.avatar" width="135px" height="135px" :file-size="3">
+          <template #empty>
+            <el-icon><Avatar /></el-icon>
+            <span>请上传头像</span>
+          </template>
+          <template #tip> 头像大小不能超过 3M </template>
+        </UploadImg>
+      </el-form-item>
       <el-form-item label="用户姓名" prop="name">
         <el-input v-model="drawerProps.row!.name" :placeholder="!isAdd ? '' : '请填写用户姓名'" clearable></el-input>
       </el-form-item>
@@ -58,6 +67,7 @@
 
 <script setup lang="ts" name="UserDrawer">
 import { ref, reactive, computed, onMounted } from 'vue'
+import UploadImg from '@/components/Upload/Img.vue'
 import { useUserStore } from '@/stores/modules/user'
 import { ElMessage, FormInstance } from 'element-plus'
 import { User } from '@/api/interface'

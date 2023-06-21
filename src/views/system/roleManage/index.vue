@@ -27,7 +27,7 @@
           编辑
         </el-button>
         <el-button
-          v-auth="'acl_config'"
+          v-auth="'patch'"
           type="primary"
           link
           :icon="EditPen"

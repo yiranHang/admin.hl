@@ -50,7 +50,7 @@
 <script setup lang="ts" name="UploadImg">
 import { ref, computed, inject } from 'vue'
 import { generateUUID } from '@/utils'
-import { uploadImg } from '@/api/modules/upload'
+import { uploadFile } from '@/api/modules/upload'
 import { ElNotification, formContextKey, formItemContextKey } from 'element-plus'
 import type { UploadProps, UploadRequestOptions } from 'element-plus'
 
@@ -104,9 +104,10 @@ const handleHttpUpload = async (options: UploadRequestOptions) => {
   let formData = new FormData()
   formData.append('file', options.file)
   try {
-    const api = props.api ?? uploadImg
-    const { data } = await api(formData)
-    emit('update:imageUrl', data.fileUrl)
+    const api = props.api ?? uploadFile
+    const data = await api(formData)
+    const path = `${import.meta.env.VITE_API_URL}/documents/preview/${data.id}`
+    emit('update:imageUrl', path)
     // 调用 el-form 内部的校验方法（可自动校验）
     formItemContext?.prop && formContext?.validateField([formItemContext.prop as string])
   } catch (error) {

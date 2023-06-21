@@ -27,7 +27,11 @@ export interface ReqPage {
 // 文件上传模块
 export namespace Upload {
   export interface ResFileUrl {
-    fileUrl: string
+    name: string
+    type: string
+    size: number
+    path: string
+    etag: string
   }
 }
 
@@ -100,6 +104,8 @@ export namespace User {
     freezeTime: string
     /**密码修改时间 */
     passwordChangTime: string
+    /**头像 */
+    avatar: string
     /**职位 */
     position: string
     /**是否是新建或者重置的账号 */
