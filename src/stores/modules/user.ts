@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
 import { UserState } from '@/stores/interface'
-import { CryptoTool } from '@/utils/crypto'
+import CryptoTool from '@/utils/crypto'
 import { localClear } from '@/utils'
-import { useAuthStore } from '@/stores/modules/auth'
 import piniaPersistConfig from '@/config/piniaPersist'
 import { getRoleSelect } from '@/api/modules/user'
 import { User } from '@/api/interface'
@@ -33,9 +32,6 @@ export const useUserStore = defineStore({
       localClear()
       this.token = ''
       this.userInfo = ''
-      const authStore = useAuthStore()
-      authStore.authButtonList = {}
-      authStore.authMenuList = []
     },
   },
   persist: piniaPersistConfig('admin-user'),
