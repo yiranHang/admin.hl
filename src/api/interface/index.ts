@@ -27,6 +27,7 @@ export interface ReqPage {
 // 文件上传模块
 export namespace Upload {
   export interface ResFileUrl {
+    id: string
     name: string
     type: string
     size: number

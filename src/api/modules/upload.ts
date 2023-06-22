@@ -15,6 +15,6 @@ export const previewFile = (id: string) => {
 }
 
 // 视频上传
-// export const uploadVideo = (params: FormData) => {
-//   return http.post<Upload.ResFileUrl>(`/file/upload/video`, params)
-// }
+export const uploadVideo = (params: FormData) => {
+  return http.post<Upload.ResFileUrl>(`/file/upload/video`, params)
+}
