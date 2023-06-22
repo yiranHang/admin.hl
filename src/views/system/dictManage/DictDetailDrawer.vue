@@ -11,7 +11,7 @@
       >
         <!-- 表格 header 按钮 -->
         <template #tableHeader="scope">
-          <el-button v-auth="'post'" type="primary" :icon="CirclePlus" @click="openDrawer('新增')">
+          <el-button v-auth="'post'" type="primary" :icon="CirclePlus" @click="openDialog('新增', addRow)">
             新增标签
           </el-button>
           <el-button
@@ -27,7 +27,7 @@
         </template>
         <!-- 表格操作 -->
         <template #operation="scope">
-          <el-button v-auth="'patch'" type="primary" link :icon="EditPen" @click="openDrawer('编辑', scope.row)">
+          <el-button v-auth="'patch'" type="primary" link :icon="EditPen" @click="openDialog('编辑', scope.row)">
             编辑
           </el-button>
           <el-button v-auth="'delete'" type="primary" link :icon="Delete" @click="deleteAccount(scope.row)">
@@ -35,7 +35,7 @@
           </el-button>
         </template>
       </ProTable>
-      <DictDrawer ref="drawerRef" />
+      <DictDetailDialog ref="dialogRef" />
     </div>
   </el-drawer>
 </template>
@@ -45,7 +45,7 @@ import { reactive, ref } from 'vue'
 import { Dict } from '@/api/interface'
 import { useHandleData } from '@/hooks/useHandleData'
 import ProTable from '@/components/ProTable/index.vue'
-import DictDrawer from '@/views/system/dictManage/DictDrawer.vue'
+import DictDetailDialog from '@/views/system/dictManage/DictDetailDialog.vue'
 import { ProTableInstance, ColumnProps } from '@/components/ProTable/interface'
 import { CirclePlus, Delete, EditPen } from '@element-plus/icons-vue'
 import { addDictDetail, deleteDictDetail, editDictDetail, getDictDetailList } from '@/api/modules/dict'
@@ -64,11 +64,11 @@ const dataCallback = (data: any) => {
 
 // 如果表格需要初始化请求参数，直接定义传给 ProTable(之后每次请求都会自动带上该参数，此参数更改之后也会一直带上，改变此参数会自动刷新表格数据)
 const initParam = reactive({ dict: '' })
-
+const addRow = reactive({ dict: { id: '' } })
 // 表格配置项
 const columns: ColumnProps<Dict.ResDictDetailList>[] = [
-  { type: 'selection', fixed: 'left', width: 80 },
-  { type: 'index', label: '序号', width: 80 },
+  { type: 'selection', fixed: 'left', width: 60 },
+  { type: 'index', label: '序号', width: 60 },
   {
     prop: 'label',
     label: '标签名',
@@ -86,7 +86,7 @@ const columns: ColumnProps<Dict.ResDictDetailList>[] = [
     },
   },
   { prop: 'remark', label: '详情描述' },
-  { prop: 'operation', label: '操作', fixed: 'right', width: 130 },
+  { prop: 'operation', label: '操作', fixed: 'right', width: 150 },
 ]
 
 // 删除字典信息
@@ -102,19 +102,6 @@ const batchDelete = async (id: string[]) => {
   proTable.value?.getTableList()
 }
 
-// 打开 drawer(新增、查看、编辑)
-const drawerRef = ref<InstanceType<typeof DictDrawer> | null>(null)
-const openDrawer = (title: string, row: Partial<Dict.ResDictDetailList> = {}) => {
-  const params = {
-    title,
-    isView: title === '查看',
-    row: { ...row },
-    api: title === '新增' ? addDictDetail : title === '编辑' ? editDictDetail : undefined,
-    getTableList: proTable.value?.getTableList,
-  }
-  drawerRef.value?.acceptParams(params)
-}
-
 interface DrawerProps {
   row: Partial<Dict.ResDictList>
   api?: (params: any) => Promise<any>
@@ -126,12 +113,25 @@ const drawerProps = ref<DrawerProps>({
   row: {},
 })
 
+// 打开 dialog(新增、查看、编辑)
+const dialogRef = ref<InstanceType<typeof DictDetailDialog> | null>(null)
+const openDialog = (title: string, row: Partial<Dict.ResDictDetailList> = {}) => {
+  const params = {
+    title,
+    isView: title === '查看',
+    row: { ...row },
+    api: title === '新增' ? addDictDetail : title === '编辑' ? editDictDetail : undefined,
+    getTableList: proTable.value?.getTableList,
+  }
+  dialogRef.value?.acceptParams(params)
+}
+
 // 接收父组件传过来的参数
 const acceptParams = (params: DrawerProps) => {
   drawerProps.value = params
   drawerVisible.value = true
-  console.log('🚀 ~ params.row:', params.row)
   initParam.dict = params.row.id as string
+  addRow.dict.id = params.row.id as string
 }
 
 defineExpose({

@@ -1,6 +1,6 @@
 import { Login } from '@/api/interface/index'
 import http from '@/api'
-import { CryptoTool } from '@/utils/crypto'
+import CryptoTool from '@/utils/crypto'
 /**
  * @name 登录模块
  */

@@ -172,6 +172,7 @@ export namespace Dict {
     disabled: boolean
     hide: boolean
     remark: string
+    dict: { id: string }
     createTime: string
     updateTime: string
   }

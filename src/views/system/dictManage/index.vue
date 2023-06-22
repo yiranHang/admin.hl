@@ -122,7 +122,7 @@ const openDrawer = (title: string, row: Partial<Dict.ResDictList> = {}) => {
 }
 // 打开 drawer(新增、查看、编辑)
 const detailDrawerRef = ref<InstanceType<typeof DictDetailDrawer> | null>(null)
-const openDetailDrawer = (row: Partial<Dict.ResDictList> = {}) => {
+const openDetailDrawer = (row: Partial<Dict.ResDictDetailList> = {}) => {
   const params = {
     row: { ...row },
     getTableList: proTable.value?.getTableList,

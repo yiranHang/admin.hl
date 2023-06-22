@@ -20,7 +20,7 @@
           clearable
         ></el-input>
       </el-form-item>
-      <el-form-item label="字典类型" prop="forbidden">
+      <el-form-item label="是否禁用" prop="forbidden">
         <el-radio-group v-model="drawerProps.row!.forbidden">
           <el-radio :label="true">是</el-radio>
           <el-radio :label="false">否</el-radio>
@@ -46,10 +46,13 @@
 import { ref, reactive, computed } from 'vue'
 import { ElMessage, FormInstance } from 'element-plus'
 import { Dict } from '@/api/interface'
-
+import Validate from '@/utils/eleValidate'
 const rules = reactive({
   name: [{ required: true, message: '请填写字典名称' }],
-  code: [{ required: true, message: '请填写字典类型' }],
+  key: [
+    { required: true, message: '请填写字典类型' },
+    { validator: Validate.checkCode, trigger: 'blur' },
+  ],
 })
 
 interface DrawerProps {
@@ -71,7 +74,10 @@ const isAdd = computed(() => drawerProps.value.title === '新增')
 // 接收父组件传过来的参数
 const acceptParams = (params: DrawerProps) => {
   drawerProps.value = params
-  drawerProps.value.row.forbidden = false
+
+  if (isAdd.value) {
+    drawerProps.value.row.forbidden = false
+  }
   drawerVisible.value = true
 }
 
