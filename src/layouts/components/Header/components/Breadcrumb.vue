@@ -2,7 +2,7 @@
   <div :class="['breadcrumb-box', !globalStore.breadcrumbIcon && 'no-icon']">
     <el-breadcrumb :separator-icon="ArrowRight">
       <transition-group name="breadcrumb">
-        <el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="item.link">
+        <el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="item?.path">
           <div class="el-breadcrumb__inner is-link" @click="onBreadcrumbClick(item, index)">
             <el-icon v-show="item.meta.icon && globalStore.breadcrumbIcon" class="breadcrumb-icon">
               <component :is="item.meta.icon"></component>
@@ -16,31 +16,29 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { HOME_URL } from "@/config";
-import { useRoute, useRouter } from "vue-router";
-import { ArrowRight } from "@element-plus/icons-vue";
-import { useAuthStore } from "@/stores/modules/auth";
-import { useGlobalStore } from "@/stores/modules/global";
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { ArrowRight } from '@element-plus/icons-vue'
+import { useAuthStore, useGlobalStore } from '@/stores/modules'
 
-const route = useRoute();
-const router = useRouter();
-const authStore = useAuthStore();
-const globalStore = useGlobalStore();
+const route = useRoute()
+const router = useRouter()
+const authStore = useAuthStore()
+const globalStore = useGlobalStore()
 
 const breadcrumbList = computed(() => {
-  let breadcrumbData = authStore.breadcrumbListGet[route.matched[route.matched.length - 1].path] ?? [];
+  let breadcrumbData = authStore.breadcrumbListGet[route.matched[route.matched.length - 1].path] ?? []
   // 🙅‍♀️不需要首页面包屑可删除以下判断
-  if (breadcrumbData[0].path !== HOME_URL) {
-    breadcrumbData = [{ path: HOME_URL, meta: { icon: "HomeFilled", title: "首页" } }, ...breadcrumbData];
-  }
-  return breadcrumbData;
-});
+  // if (breadcrumbData[0].path !== HOME_URL) {
+  //   breadcrumbData = [{ path: HOME_URL, meta: { icon: 'HomeFilled', title: '首页' } }, ...breadcrumbData]
+  // }
+  return breadcrumbData
+})
 
 // Click Breadcrumb
 const onBreadcrumbClick = (item: Menu.MenuOptions, index: number) => {
-  if (index !== breadcrumbList.value.length - 1) router.push(item.link);
-};
+  if (index !== breadcrumbList.value.length - 1) router.push(item.path)
+}
 </script>
 
 <style scoped lang="scss">

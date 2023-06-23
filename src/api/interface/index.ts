@@ -1,96 +1,226 @@
 // 请求响应参数（不包含data）
-import { UserInfo } from "@/stores/interface";
 export interface Result {
-  code: string;
-  msg: string;
+  code: string
+  msg: string
 }
 
 // 请求响应参数（包含data）
 export interface ResultData<T = any> extends Result {
-  data: T;
+  data: T
 }
 
 // 分页响应参数
 export interface ResPage<T> {
-  list: T[];
-  pageNum: number;
-  pageSize: number;
-  total: number;
+  data: T[]
+  page: number
+  limit: number
+  count: number
 }
 
 // 分页请求参数
 export interface ReqPage {
-  pageNum: number;
-  pageSize: number;
+  pi: number
+  ps: number
 }
 
 // 文件上传模块
 export namespace Upload {
   export interface ResFileUrl {
-    fileUrl: string;
+    id: string
+    name: string
+    type: string
+    size: number
+    path: string
+    etag: string
   }
 }
 
 // 登录模块
 export namespace Login {
   export interface ReqLoginForm {
-    userName: string;
-    password: string;
+    userName: string
+    password: string
   }
   export interface ResLogin {
-    access_token: string;
-    user: UserInfo;
+    access_token: string
+    user: User.ResUserList
   }
   export interface ResAuthButtons {
-    [key: string]: string[];
+    [key: string]: string[]
   }
 
   export interface ResAuthMenus {
-    [key: string]: string[] | any;
+    [key: string]: string[] | any
   }
 }
 
 // 用户管理模块
 export namespace User {
+  /**用户查询 */
   export interface ReqUserParams extends ReqPage {
-    userName: string;
-    gender: number;
-    idCard: string;
-    email: string;
-    address: string;
-    createTime: string[];
-    status: number;
+    name: string
+    account: string
   }
+
+  /**权限点 */
+  export interface Permission {
+    id: string
+    code: string
+    forbidden: boolean
+    /**请求方法类型 */
+    method: string
+    name: string
+    /**请求方法路径 */
+    path: string
+    remark: string
+    menu: MenuApi.ResMenuList[] | string
+    createTime: string
+    updateTime: string
+  }
+
+  /**角色查询 */
+  export interface ResRoleParams extends ReqPage {
+    code: string
+    name: string
+  }
+
+  /**角色列表 */
+  export interface ResRoleList {
+    id: string
+    code: string
+    forbidden: boolean
+    name: string
+    remark: string
+    createTime: string
+    updateTime: string
+    permissions?: Permission[]
+  }
+
+  /**角色选择列表 */
+  export interface ResRoleSelect {
+    label: string
+    value: string
+  }
+
+  /**用户列表 */
   export interface ResUserList {
-    id: string;
-    userName: string;
-    gender: number;
-    user: { detail: { age: number } };
-    idCard: string;
-    email: string;
-    address: string;
-    createTime: string;
-    status: number;
-    avatar: string;
-    photo: any[];
-    children?: ResUserList[];
+    id: string
+    name: string
+    account: number
+    /**密码错误次数 */
+    count: string
+    /**账号是否禁止使用 */
+    forbidden: boolean
+    /**账号状态 */
+    status: number
+    password: string
+    /**冻结时间 */
+    freezeTime: string
+    /**密码修改时间 */
+    passwordChangTime: string
+    /**头像 */
+    avatar: string
+    /**职位 */
+    position: string
+    /**是否是新建或者重置的账号 */
+    isCreatedOrReset: boolean
+    /**单位 */
+    unit: string
+    remark: string
+    createTime: string
+    updateTime: string
+    roles: Array<ResRoleList>
+    children?: ResUserList[]
   }
-  export interface ResStatus {
-    userLabel: string;
-    userValue: number;
+
+  /**权限配置列表 */
+  export interface ResAclList {
+    key: string
+    title: string
+    isLeaf: boolean
+    isDisabled: boolean
+    children?: ResAclList[]
   }
-  export interface ResGender {
-    genderLabel: string;
-    genderValue: number;
+}
+
+/**字典管理模块 */
+export namespace Dict {
+  /**字典查询 */
+  export interface ResDictParams extends ReqPage {
+    id: string
+    key: string
+    name: string
   }
-  export interface ResDepartment {
-    id: string;
-    name: string;
-    children?: ResDepartment[];
+
+  /**字典列表 */
+  export interface ResDictList {
+    id: string
+    key: string
+    name: string
+    remark: string
+    forbidden: boolean
+    createTime: string
+    updateTime: string
   }
-  export interface ResRole {
-    id: string;
-    name: string;
-    children?: ResDepartment[];
+
+  /**字典详情列表 */
+  export interface ResDictDetailList {
+    id: string
+    label: string
+    value: string
+    sort: number
+    disabled: boolean
+    hide: boolean
+    remark: string
+    dict: { id: string }
+    createTime: string
+    updateTime: string
+  }
+}
+
+export namespace MenuApi {
+  export interface ResMenuParams extends ReqPage {
+    parent: string
+  }
+
+  export interface ResMethodPathListParams {
+    path: string | undefined
+  }
+
+  export interface ResMethodPathList {
+    id: string
+    title: string
+    expanded: boolean
+    selected: boolean
+    children: ResMethodPathList[]
+  }
+
+  export interface ResMenuList {
+    id?: string
+    name?: string
+    path?: string
+    sort?: number
+    title?: string
+    isLeaf?: boolean
+    isLink?: string
+    isHide?: boolean
+    isFull?: boolean
+    isAffix?: boolean
+    isKeepAlive?: boolean
+    createTime?: string
+    updateTime?: string
+    meta?: Menu.MetaProps
+    icon?: string
+    component?: string
+    redirect?: string
+    activeMenu?: string
+    remark?: string
+    children?: ResMenuList[]
+    parent?: ResMenuList
+    permission?: User.Permission[]
+  }
+
+  export interface ResPermissionParams extends ReqPage {
+    menu: string
   }
 }

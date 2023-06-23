@@ -26,66 +26,64 @@
 </template>
 
 <script setup lang="ts" name="tabs">
-import { inject, nextTick, ref } from "vue";
-import { HOME_URL } from "@/config";
-import { useRoute, useRouter } from "vue-router";
-import { useTabsStore } from "@/stores/modules/tabs";
-import { useGlobalStore } from "@/stores/modules/global";
-import { useKeepAliveStore } from "@/stores/modules/keepAlive";
-import { Refresh, FullScreen, Remove, CircleClose, FolderDelete, Promotion } from "@element-plus/icons-vue";
+import { inject, nextTick, ref } from 'vue'
+import { HOME_URL } from '@/config'
+import { useRoute, useRouter } from 'vue-router'
+import { useTabsStore, useGlobalStore, useKeepAliveStore } from '@/stores/modules'
+import { Refresh, FullScreen, Remove, CircleClose, FolderDelete, Promotion } from '@element-plus/icons-vue'
 
-const route = useRoute();
-const router = useRouter();
-const tabStore = useTabsStore();
-const globalStore = useGlobalStore();
-const keepAliveStore = useKeepAliveStore();
+const route = useRoute()
+const router = useRouter()
+const tabStore = useTabsStore()
+const globalStore = useGlobalStore()
+const keepAliveStore = useKeepAliveStore()
 
 // 刷新当前页
-const refreshCurrentPage: Function = inject("refresh") as Function;
+const refreshCurrentPage: Function = inject('refresh') as Function
 const refresh = () => {
   setTimeout(() => {
-    keepAliveStore.removeKeepAliveName(route.name as string);
-    refreshCurrentPage(false);
+    keepAliveStore.removeKeepAliveName(route.name as string)
+    refreshCurrentPage(false)
     nextTick(() => {
-      keepAliveStore.addKeepAliveName(route.name as string);
-      refreshCurrentPage(true);
-    });
-  }, 0);
-};
+      keepAliveStore.addKeepAliveName(route.name as string)
+      refreshCurrentPage(true)
+    })
+  }, 0)
+}
 
 // 设置 Tab 标题
-const tabsTitle = ref("");
+const tabsTitle = ref('')
 const editTabsTitle = () => {
-  tabStore.setTabsTitle(tabsTitle.value);
-};
+  tabStore.setTabsTitle(tabsTitle.value)
+}
 
 // 当前页全屏
 const maximize = () => {
-  globalStore.setGlobalState("maximize", true);
-};
+  globalStore.setGlobalState('maximize', true)
+}
 
 // 关闭当前页
 const closeCurrentTab = () => {
-  if (route.meta.isAffix) return;
-  tabStore.removeTabs(route.fullPath);
-  keepAliveStore.removeKeepAliveName(route.name as string);
-};
+  if (route.meta.isAffix) return
+  tabStore.removeTabs(route.fullPath)
+  keepAliveStore.removeKeepAliveName(route.name as string)
+}
 
 // 关闭其他
 const closeOtherTab = () => {
-  tabStore.closeMultipleTab(route.fullPath);
-  keepAliveStore.setKeepAliveName([route.name] as string[]);
-};
+  tabStore.closeMultipleTab(route.fullPath)
+  keepAliveStore.setKeepAliveName([route.name] as string[])
+}
 
 // 全部关闭
 const closeAllTab = () => {
-  tabStore.closeMultipleTab();
-  keepAliveStore.setKeepAliveName();
-  router.push(HOME_URL);
-};
+  tabStore.closeMultipleTab()
+  keepAliveStore.setKeepAliveName()
+  router.push(HOME_URL)
+}
 
 // 打开详情页
 const handleToDetail = (id: string) => {
-  router.push(`/assembly/tabs/detail/${id}`);
-};
+  router.push(`/assembly/tabs/detail/${id}`)
+}
 </script>

@@ -18,22 +18,22 @@
 </template>
 
 <script setup lang="ts" name="batchImport">
-import { ref } from "vue";
-import { exportUserInfo, BatchAddUser } from "@/api/modules/user";
-import { Upload } from "@element-plus/icons-vue";
-import ImportExcel from "@/components/ImportExcel/index.vue";
+import { ref } from 'vue'
+import { exportUserInfo, BatchAddUser } from '@/api/modules/user'
+import { Upload } from '@element-plus/icons-vue'
+import ImportExcel from '@/components/ImportExcel/index.vue'
 
-const importRef = ref();
+const importRef = ref()
 const batchAdd = () => {
   let params = {
-    title: "数据",
+    title: '数据',
     tempApi: exportUserInfo,
-    importApi: BatchAddUser
-  };
-  importRef.value.acceptParams(params);
-};
+    importApi: BatchAddUser,
+  }
+  importRef.value.acceptParams(params)
+}
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

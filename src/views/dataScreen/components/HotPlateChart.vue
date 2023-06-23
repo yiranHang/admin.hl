@@ -9,47 +9,47 @@
 </template>
 
 <script setup lang="ts">
-import { ECharts, EChartsOption, init } from "echarts";
-import { ranking1, ranking2, ranking3, ranking4 } from "../assets/ranking-icon";
+import { ECharts, EChartsOption, init } from 'echarts'
+import { ranking1, ranking2, ranking3, ranking4 } from '../assets/ranking-icon'
 interface ChartProp {
-  name: string;
-  value: number;
-  percentage: string;
-  maxValue: number;
+  name: string
+  value: number
+  percentage: string
+  maxValue: number
 }
 const initChart = (data: any = {}): ECharts => {
-  const charEle = document.getElementById("HotPlateChart") as HTMLElement;
-  const charEch: ECharts = init(charEle);
+  const charEle = document.getElementById('HotPlateChart') as HTMLElement
+  const charEch: ECharts = init(charEle)
   const option: EChartsOption = {
     grid: {
-      top: "5%",
-      left: "7%",
-      right: "4%",
-      bottom: "1%",
-      containLabel: true
+      top: '5%',
+      left: '7%',
+      right: '4%',
+      bottom: '1%',
+      containLabel: true,
     },
     xAxis: {
-      type: "value",
+      type: 'value',
       axisLine: {
         show: false,
         lineStyle: {
-          color: "white"
-        }
+          color: 'white',
+        },
       },
       nameGap: 1,
       splitLine: {
-        show: false
+        show: false,
       },
       axisTick: {
-        show: false
+        show: false,
       },
       axisLabel: {
         show: false,
-        fontSize: 16
+        fontSize: 16,
       },
       // boundaryGap: ["3%", "2%"],
       // splitNumber: 4,
-      triggerEvent: false
+      triggerEvent: false,
     },
     yAxis: [
       {
@@ -57,73 +57,73 @@ const initChart = (data: any = {}): ECharts => {
         data: data.data.map((val: ChartProp) => val.name),
         inverse: true,
         axisLine: {
-          show: false
+          show: false,
         },
         splitLine: {
-          show: false
+          show: false,
         },
         axisTick: {
-          show: false
+          show: false,
         },
         axisLabel: {
-          color: "#fff",
+          color: '#fff',
           formatter: function (value: any) {
-            let str = value.length > 6 ? value.slice(0, 6) + "..." : value;
-            let index = data.data.map((item: ChartProp) => item.name).indexOf(value) + 1;
-            return ["{" + (index > 3 ? "lg" : "lg" + index) + "|NO." + index + "}", "{title|" + str + "}"].join(" ");
+            let str = value.length > 6 ? value.slice(0, 6) + '...' : value
+            let index = data.data.map((item: ChartProp) => item.name).indexOf(value) + 1
+            return ['{' + (index > 3 ? 'lg' : 'lg' + index) + '|NO.' + index + '}', '{title|' + str + '}'].join(' ')
           },
           rich: {
             lg1: {
               width: 60,
               backgroundColor: {
-                image: ranking1
+                image: ranking1,
               },
-              color: "#fff",
-              align: "center",
+              color: '#fff',
+              align: 'center',
               height: 20,
-              fontSize: 13
+              fontSize: 13,
             },
             lg2: {
               width: 60,
               backgroundColor: {
-                image: ranking2
+                image: ranking2,
               },
-              color: "#fff",
-              align: "center",
+              color: '#fff',
+              align: 'center',
 
               height: 20,
-              fontSize: 13
+              fontSize: 13,
             },
             lg3: {
               width: 60,
               backgroundColor: {
-                image: ranking3
+                image: ranking3,
               },
-              color: "#fff",
-              align: "center",
+              color: '#fff',
+              align: 'center',
               height: 20,
-              fontSize: 13
+              fontSize: 13,
             },
             lg: {
               width: 60,
               backgroundColor: {
-                image: ranking4
+                image: ranking4,
               },
-              color: "#fff",
-              align: "center",
+              color: '#fff',
+              align: 'center',
 
               height: 20,
-              fontSize: 13
+              fontSize: 13,
             },
             title: {
               width: 60,
               fontSize: 13,
-              align: "center",
-              padding: [0, 10, 0, 15]
-            }
-          }
+              align: 'center',
+              padding: [0, 10, 0, 15],
+            },
+          },
         },
-        triggerEvent: false
+        triggerEvent: false,
       },
       {
         show: true,
@@ -131,76 +131,76 @@ const initChart = (data: any = {}): ECharts => {
         data: data.data,
         axisLabel: {
           fontSize: 14,
-          color: "#fff",
+          color: '#fff',
           // align: "right",
           margin: 20,
           formatter: (value: any) => {
-            return value >= 10000 ? (value / 10000).toFixed(2) + "w" : value;
-          }
+            return value >= 10000 ? (value / 10000).toFixed(2) + 'w' : value
+          },
         },
         axisLine: {
-          show: false
+          show: false,
         },
         splitLine: {
-          show: false
+          show: false,
         },
         axisTick: {
-          show: false
+          show: false,
         },
-        triggerEvent: false
-      }
+        triggerEvent: false,
+      },
     ],
     series: [
       {
-        name: "条",
-        type: "bar",
+        name: '条',
+        type: 'bar',
         yAxisIndex: 0,
         data: data.data,
         barWidth: 12,
         itemStyle: {
           borderRadius: 30,
           color: function (params) {
-            let num = data.colors.length;
-            return data.colors[params.dataIndex % num];
-          }
+            let num = data.colors.length
+            return data.colors[params.dataIndex % num]
+          },
         },
         label: {
           show: true,
           position: [12, 0],
           lineHeight: 14,
-          color: "#fff",
+          color: '#fff',
           formatter: (params: any) => {
-            return params.data.percentage;
-          }
-        }
+            return params.data.percentage
+          },
+        },
       },
       {
-        name: "框",
-        type: "bar",
+        name: '框',
+        type: 'bar',
         yAxisIndex: 1,
         data: data.data.map((val: ChartProp) => {
           if (!val.maxValue) {
-            return 5;
+            return 5
           }
-          return val.maxValue;
+          return val.maxValue
         }),
         barWidth: 18,
         itemStyle: {
-          color: "none",
-          borderColor: "#00c1de",
+          color: 'none',
+          borderColor: '#00c1de',
           borderWidth: 1,
-          borderRadius: 15
+          borderRadius: 15,
         },
-        silent: true
-      }
-    ]
-  };
-  charEch.setOption(option);
-  return charEch;
-};
+        silent: true,
+      },
+    ],
+  }
+  charEch.setOption(option)
+  return charEch
+}
 defineExpose({
-  initChart
-});
+  initChart,
+})
 </script>
 <style lang="scss" scoped>
 .echarts {
@@ -213,7 +213,7 @@ defineExpose({
   height: 36px;
   margin: 10px 10px 0;
   line-height: 36px;
-  background: url("../images/rankingChart-bg.png") no-repeat;
+  background: url('../images/rankingChart-bg.png') no-repeat;
   background-size: 100% 100%;
   span {
     width: 18%;

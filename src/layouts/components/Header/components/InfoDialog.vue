@@ -11,12 +11,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const dialogVisible = ref(false);
+const dialogVisible = ref(false)
 const openDialog = () => {
-  dialogVisible.value = true;
-};
+  dialogVisible.value = true
+}
 
-defineExpose({ openDialog });
+defineExpose({ openDialog })
 </script>

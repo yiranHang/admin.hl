@@ -1,71 +1,75 @@
-import { ResPage, User } from "@/api/interface/index";
-import { PORT1 } from "@/api/config/servicePort";
-import http from "@/api";
+import { ResPage, User } from '@/api/interface/index'
+import http from '@/api'
 
 /**
  * @name 用户管理模块
  */
 // 获取用户列表
 export const getUserList = (params: User.ReqUserParams) => {
-  return http.post<ResPage<User.ResUserList>>(PORT1 + `/user/list`, params);
-};
-
-// 获取树形用户列表
-export const getUserTreeList = (params: User.ReqUserParams) => {
-  return http.post<ResPage<User.ResUserList>>(PORT1 + `/user/tree/list`, params);
-};
+  return http.get<ResPage<User.ResUserList>>(`/user`, params)
+}
 
 // 新增用户
-export const addUser = (params: { id: string }) => {
-  return http.post(PORT1 + `/user/add`, params);
-};
-
-// 批量添加用户
-export const BatchAddUser = (params: FormData) => {
-  return http.post(PORT1 + `/user/import`, params);
-};
+export const addUser = (params: User.ResUserList) => {
+  return http.post(`/user`, params)
+}
 
 // 编辑用户
-export const editUser = (params: { id: string }) => {
-  return http.post(PORT1 + `/user/edit`, params);
-};
+export const editUser = (params: User.ResUserList) => {
+  return http.patch(`/user/${params.id}`, params)
+}
 
 // 删除用户
-export const deleteUser = (params: { id: string[] }) => {
-  return http.post(PORT1 + `/user/delete`, params);
-};
+export const deleteUser = (params: { ids: string[] }) => {
+  return http.post(`/user/delete`, params)
+}
 
 // 切换用户状态
-export const changeUserStatus = (params: { id: string; status: number }) => {
-  return http.post(PORT1 + `/user/change`, params);
-};
+export const changeUserStatus = (params: { id: string; user: User.ResUserList }) => {
+  return http.patch(`/user/${params.id}`, params.user)
+}
 
 // 重置用户密码
 export const resetUserPassWord = (params: { id: string }) => {
-  return http.post(PORT1 + `/user/rest_password`, params);
-};
+  return http.patch(`/user/password/${params.id}`)
+}
 
-// 导出用户数据
-export const exportUserInfo = (params: User.ReqUserParams) => {
-  return http.download(PORT1 + `/user/export`, params);
-};
+// 修改用户密码
+export const changeUserPassWord = (params: { id: string; password: string }) => {
+  return http.patch(`/user/password/${params.id}`, { password: params.password })
+}
 
-// 获取用户状态字典
-export const getUserStatus = () => {
-  return http.get<User.ResStatus[]>(PORT1 + `/user/status`);
-};
+// 获取角色列表
+export const getRoleList = (params?: User.ResRoleParams) => {
+  return http.get<ResPage<User.ResRoleList>>(`/role`, params)
+}
 
-// 获取用户性别字典
-export const getUserGender = () => {
-  return http.get<User.ResGender[]>(PORT1 + `/user/gender`);
-};
+// 获取角色的select列表
+export const getRoleSelect = () => {
+  return http.get<Array<User.ResRoleSelect>>(`/role/list/valid`)
+}
 
-// 获取用户部门列表
-export const getUserDepartment = () => {
-  return http.get<User.ResDepartment[]>(PORT1 + `/user/department`);
-};
+// 新增角色
+export const addRole = (params: User.ResRoleList) => {
+  return http.post<User.ResRoleList>(`/role`, params)
+}
 
-// 获取用户角色字典
-export const getUserRole = () => {
-  return http.get<User.ResRole[]>(PORT1 + `/user/role`);
-};
+// 编辑角色
+export const editRole = (params: User.ResRoleList) => {
+  return http.patch<User.ResRoleList>(`/role/${params.id}`, params)
+}
+
+// 删除角色
+export const deleteRole = (params: { ids: string[] }) => {
+  return http.post(`/role/delete`, params)
+}
+
+// 获取角色权限列表
+export const getAclList = () => {
+  return http.get<User.ResAclList[]>(`menu/permission/tree`)
+}
+
+// 获取角色权限列表
+export const setRolePermission = (params: { id: string; permissions: { id: string }[] }) => {
+  return http.patch<User.ResRoleList>(`role/${params.id}`, { permissions: params.permissions })
+}

@@ -2,7 +2,13 @@
   <!-- 列设置 -->
   <el-drawer v-model="drawerVisible" title="列设置" size="450px">
     <div class="table-main">
-      <el-table :data="colSetting" :border="true" row-key="prop" default-expand-all :tree-props="{ children: '_children' }">
+      <el-table
+        :data="colSetting"
+        :border="true"
+        row-key="prop"
+        default-expand-all
+        :tree-props="{ children: '_children' }"
+      >
         <el-table-column prop="label" align="center" label="列名" />
         <el-table-column v-slot="scope" prop="isShow" align="center" label="显示">
           <el-switch v-model="scope.row.isShow"></el-switch>
@@ -22,20 +28,20 @@
 </template>
 
 <script setup lang="ts" name="ColSetting">
-import { ref } from "vue";
-import { ColumnProps } from "@/components/ProTable/interface";
+import { ref } from 'vue'
+import { ColumnProps } from '@/components/ProTable/interface'
 
-defineProps<{ colSetting: ColumnProps[] }>();
+defineProps<{ colSetting: ColumnProps[] }>()
 
-const drawerVisible = ref<boolean>(false);
+const drawerVisible = ref<boolean>(false)
 
 const openColSetting = () => {
-  drawerVisible.value = true;
-};
+  drawerVisible.value = true
+}
 
 defineExpose({
-  openColSetting
-});
+  openColSetting,
+})
 </script>
 
 <style scoped lang="scss">

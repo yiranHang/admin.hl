@@ -164,50 +164,50 @@
 </template>
 
 <script setup lang="ts" name="uploadFile">
-import { ref, reactive } from "vue";
-import { FormInstance } from "element-plus";
-import UploadImg from "@/components/Upload/Img.vue";
-import UploadImgs from "@/components/Upload/Imgs.vue";
+import { ref, reactive } from 'vue'
+import { FormInstance } from 'element-plus'
+import UploadImg from '@/components/Upload/Img.vue'
+import UploadImgs from '@/components/Upload/Imgs.vue'
 
-const fileList = ref([{ name: "img", url: "https://i.imgtg.com/2023/01/16/QRBHS.jpg" }]);
-const fileList1 = ref([]);
+const fileList = ref([{ name: 'img', url: 'https://i.imgtg.com/2023/01/16/QRBHS.jpg' }])
+const fileList1 = ref([])
 
-const avatar1 = ref("");
-const avatar2 = ref("");
-const avatar3 = ref("");
-const avatar4 = ref("");
-const avatar5 = ref("https://i.imgtg.com/2023/01/16/QRqMK.jpg");
+const avatar1 = ref('')
+const avatar2 = ref('')
+const avatar3 = ref('')
+const avatar4 = ref('')
+const avatar5 = ref('https://i.imgtg.com/2023/01/16/QRqMK.jpg')
 
 const rules = reactive({
-  avatar: [{ required: true, message: "请上传用户头像" }],
-  photo: [{ required: true, message: "请上传用户照片" }],
-  username: [{ required: true, message: "请填写用户姓名" }],
-  idCard: [{ required: true, message: "请填写身份证号" }],
-  email: [{ required: true, message: "请填写邮箱" }]
-});
+  avatar: [{ required: true, message: '请上传用户头像' }],
+  photo: [{ required: true, message: '请上传用户照片' }],
+  username: [{ required: true, message: '请填写用户姓名' }],
+  idCard: [{ required: true, message: '请填写身份证号' }],
+  email: [{ required: true, message: '请填写邮箱' }],
+})
 
 const fromModel = ref({
-  avatar: "",
-  photo: [{ name: "img", url: "https://i.imgtg.com/2023/01/16/QR57a.jpg" }],
-  username: "",
-  idCard: "",
-  email: ""
-});
+  avatar: '',
+  photo: [{ name: 'img', url: 'https://i.imgtg.com/2023/01/16/QR57a.jpg' }],
+  username: '',
+  idCard: '',
+  email: '',
+})
 const fromModel1 = ref({
-  avatar: "",
-  photo: [{ name: "img", url: "https://i.imgtg.com/2023/01/16/QR57a.jpg" }],
-  username: "",
-  idCard: "",
-  email: ""
-});
-const ruleFormRef = ref<FormInstance>();
+  avatar: '',
+  photo: [{ name: 'img', url: 'https://i.imgtg.com/2023/01/16/QR57a.jpg' }],
+  username: '',
+  idCard: '',
+  email: '',
+})
+const ruleFormRef = ref<FormInstance>()
 const submit = () => {
-  ruleFormRef.value!.validate(valid => {
-    console.log(valid);
-  });
-};
+  ruleFormRef.value!.validate((valid) => {
+    console.log(valid)
+  })
+}
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

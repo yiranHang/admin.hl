@@ -13,89 +13,89 @@
 </template>
 
 <script setup lang="ts" name="guide">
-import Driver from "driver.js";
-import "driver.js/dist/driver.min.css";
+import Driver from 'driver.js'
+import 'driver.js/dist/driver.min.css'
 
 const guide = () => {
   const driver: Driver = new Driver({
     allowClose: false,
-    doneBtnText: "结束",
-    closeBtnText: "关闭",
-    nextBtnText: "下一步",
-    prevBtnText: "上一步"
-  });
-  driver.defineSteps(steps);
-  driver.start();
-};
+    doneBtnText: '结束',
+    closeBtnText: '关闭',
+    nextBtnText: '下一步',
+    prevBtnText: '上一步',
+  })
+  driver.defineSteps(steps)
+  driver.start()
+}
 
 const steps = [
   {
-    element: "#collapseIcon",
+    element: '#collapseIcon',
     popover: {
-      title: "Collapse Icon",
-      description: "Open && Close sidebar",
-      position: "right"
-    }
+      title: 'Collapse Icon',
+      description: 'Open && Close sidebar',
+      position: 'right',
+    },
   },
   {
-    element: "#breadcrumb",
+    element: '#breadcrumb',
     popover: {
-      title: "Breadcrumb",
-      description: "Indicate the current page location",
-      position: "right"
-    }
+      title: 'Breadcrumb',
+      description: 'Indicate the current page location',
+      position: 'right',
+    },
   },
   {
-    element: "#assemblySize",
+    element: '#assemblySize',
     popover: {
-      title: "Switch Assembly Size",
-      description: "Switch the system size",
-      position: "left"
-    }
+      title: 'Switch Assembly Size',
+      description: 'Switch the system size',
+      position: 'left',
+    },
   },
   {
-    element: "#language",
+    element: '#language',
     popover: {
-      title: "Switch Language",
-      description: "Switch the system language",
-      position: "left"
-    }
+      title: 'Switch Language',
+      description: 'Switch the system language',
+      position: 'left',
+    },
   },
   {
-    element: "#searchMenu",
+    element: '#searchMenu',
     popover: {
-      title: "Page Search",
-      description: "Page search, quick navigation",
-      position: "left"
-    }
+      title: 'Page Search',
+      description: 'Page search, quick navigation',
+      position: 'left',
+    },
   },
   {
-    element: "#themeSetting",
+    element: '#themeSetting',
     popover: {
-      title: "Setting theme",
-      description: "Customize settings theme",
-      position: "left"
-    }
+      title: 'Setting theme',
+      description: 'Customize settings theme',
+      position: 'left',
+    },
   },
   {
-    element: "#message",
+    element: '#message',
     popover: {
-      title: "Message Notification",
-      description: "Can receive company information",
-      position: "left"
-    }
+      title: 'Message Notification',
+      description: 'Can receive company information',
+      position: 'left',
+    },
   },
   {
-    element: "#fullscreen",
+    element: '#fullscreen',
     popover: {
-      title: "Full Screen",
-      description: "Full Screen, Exit The Full Screen Page",
-      position: "left"
-    }
-  }
-];
+      title: 'Full Screen',
+      description: 'Full Screen, Exit The Full Screen Page',
+      position: 'left',
+    },
+  },
+]
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>
