@@ -73,10 +73,9 @@ class Validate {
    * @returns
    */
   checkPath(rule: any, value: any, callback: any) {
-    const regexp = /^[/][a-z/]{1,}$/
-    const msg = '必须以/开头，且只能包含小写字母'
-    if (value === '') callback('请输入数据名称')
-    if (!regexp.test(value)) {
+    const regexp = /^[/][a-zA-Z/]{1,}$/
+    const msg = '必须以/开头，且只能包含大小写字母'
+    if (value && !regexp.test(value)) {
       callback(new Error(msg))
     } else {
       return callback()

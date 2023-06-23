@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { changeUserPassWord } from '@/api/modules/user'
-import { useUserStore } from '@/stores/modules/user'
+import { useUserStore } from '@/stores/modules'
 import { ElMessage } from 'element-plus'
 import { reactive, ref } from 'vue'
 const formData = ref({

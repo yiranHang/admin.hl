@@ -31,9 +31,7 @@
 <script setup lang="ts">
 import { inject, nextTick } from 'vue'
 import { HOME_URL } from '@/config'
-import { useTabsStore } from '@/stores/modules/tabs'
-import { useGlobalStore } from '@/stores/modules/global'
-import { useKeepAliveStore } from '@/stores/modules/keepAlive'
+import { useTabsStore, useGlobalStore, useKeepAliveStore } from '@/stores/modules'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()

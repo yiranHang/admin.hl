@@ -2,8 +2,7 @@ import router from '@/routers/index'
 import { LOGIN_URL } from '@/config'
 import { RouteRecordRaw } from 'vue-router'
 import { ElNotification } from 'element-plus'
-import { useUserStore } from '@/stores/modules/user'
-import { useAuthStore } from '@/stores/modules/auth'
+import { useUserStore, useAuthStore } from '@/stores/modules'
 
 // 引入 views 文件夹下所有 vue 文件
 const modules = import.meta.glob('@/views/**/*.vue')

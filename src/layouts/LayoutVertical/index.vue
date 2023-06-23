@@ -33,8 +33,7 @@
 <script setup lang="ts" name="layoutVertical">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useAuthStore } from '@/stores/modules/auth'
-import { useGlobalStore } from '@/stores/modules/global'
+import { useAuthStore, useGlobalStore } from '@/stores/modules'
 import Main from '@/layouts/components/Main/index.vue'
 import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue'
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue'

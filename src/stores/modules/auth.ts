@@ -3,6 +3,7 @@ import { AuthState } from '@/stores/interface'
 import { getAuthMenuListApi } from '@/api/modules/login'
 import { useUserStore } from '@/stores/modules/user'
 import { getFlatMenuList, getShowMenuList, getAllBreadcrumbList } from '@/utils'
+import { getMethodPathList } from '@/api/modules/menu'
 export const useAuthStore = defineStore({
   id: 'admin-auth',
   state: (): AuthState => ({
@@ -12,6 +13,7 @@ export const useAuthStore = defineStore({
     authMenuList: [],
     // 当前页面的 router name，用来做按钮权限筛选
     routeName: '',
+    menuPathList: [],
   }),
   getters: {
     // 按钮权限列表
@@ -56,6 +58,10 @@ export const useAuthStore = defineStore({
     // Set RouteName
     async setRouteName(name: string) {
       this.routeName = name
+    },
+    async setMenuPathList() {
+      const data = await getMethodPathList()
+      this.menuPathList = data
     },
   },
 })

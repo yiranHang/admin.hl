@@ -1,3 +1,5 @@
+import { MenuApi } from '@/api/interface'
+
 export type LayoutType = 'vertical' | 'classic' | 'transverse' | 'columns'
 
 export type AssemblySizeType = 'large' | 'default' | 'small'
@@ -24,13 +26,7 @@ export interface GlobalState {
 }
 
 /* UserState */
-export interface UserInfo {
-  id?: string
-  name?: string
-  account?: string
-  password?: string
-  [key: string]: any
-}
+
 export interface UserState {
   token: string
   userInfo: string
@@ -57,6 +53,7 @@ export interface AuthState {
     [key: string]: string[]
   }
   authMenuList: Menu.MenuOptions[]
+  menuPathList: MenuApi.ResMethodPathList[]
 }
 
 /* KeepAliveState */

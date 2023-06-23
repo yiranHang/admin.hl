@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
-import { useGlobalStore } from '@/stores/modules/global'
+import { useGlobalStore } from '@/stores/modules'
 import { LanguageType } from '@/stores/interface'
 
 const i18n = useI18n()

@@ -29,9 +29,7 @@
 import { inject, nextTick, ref } from 'vue'
 import { HOME_URL } from '@/config'
 import { useRoute, useRouter } from 'vue-router'
-import { useTabsStore } from '@/stores/modules/tabs'
-import { useGlobalStore } from '@/stores/modules/global'
-import { useKeepAliveStore } from '@/stores/modules/keepAlive'
+import { useTabsStore, useGlobalStore, useKeepAliveStore } from '@/stores/modules'
 import { Refresh, FullScreen, Remove, CircleClose, FolderDelete, Promotion } from '@element-plus/icons-vue'
 
 const route = useRoute()

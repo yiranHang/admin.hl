@@ -41,9 +41,7 @@ import { getTimeState } from '@/utils'
 import { Login } from '@/api/interface'
 import { ElNotification } from 'element-plus'
 import { loginApi } from '@/api/modules/login'
-import { useUserStore } from '@/stores/modules/user'
-import { useTabsStore } from '@/stores/modules/tabs'
-import { useKeepAliveStore } from '@/stores/modules/keepAlive'
+import { useUserStore, useKeepAliveStore, useTabsStore, useAuthStore } from '@/stores/modules'
 import { initDynamicRouter } from '@/routers/modules/dynamicRouter'
 import { CircleClose, UserFilled } from '@element-plus/icons-vue'
 import type { ElForm } from 'element-plus'
@@ -52,7 +50,7 @@ const router = useRouter()
 const userStore = useUserStore()
 const tabsStore = useTabsStore()
 const keepAliveStore = useKeepAliveStore()
-
+const authStore = useAuthStore()
 type FormInstance = InstanceType<typeof ElForm>
 const loginFormRef = ref<FormInstance>()
 const loginRules = reactive({
@@ -77,6 +75,7 @@ const login = (formEl: FormInstance | undefined) => {
       const { access_token, user } = await loginApi(loginForm)
       userStore.setToken(access_token)
       userStore.setUserInfo(user)
+      await authStore.setMenuPathList()
       // 2.添加动态路由
       await initDynamicRouter()
 

@@ -1,5 +1,4 @@
 // 请求响应参数（不包含data）
-import { UserInfo } from '@/stores/interface'
 export interface Result {
   code: string
   msg: string
@@ -44,7 +43,7 @@ export namespace Login {
   }
   export interface ResLogin {
     access_token: string
-    user: UserInfo
+    user: User.ResUserList
   }
   export interface ResAuthButtons {
     [key: string]: string[]
@@ -74,6 +73,7 @@ export namespace User {
     /**请求方法路径 */
     path: string
     remark: string
+    menu: MenuApi.ResMenuList[] | string
     createTime: string
     updateTime: string
   }
@@ -175,5 +175,52 @@ export namespace Dict {
     dict: { id: string }
     createTime: string
     updateTime: string
+  }
+}
+
+export namespace MenuApi {
+  export interface ResMenuParams extends ReqPage {
+    parent: string
+  }
+
+  export interface ResMethodPathListParams {
+    path: string | undefined
+  }
+
+  export interface ResMethodPathList {
+    id: string
+    title: string
+    expanded: boolean
+    selected: boolean
+    children: ResMethodPathList[]
+  }
+
+  export interface ResMenuList {
+    id?: string
+    name?: string
+    path?: string
+    sort?: number
+    title?: string
+    isLeaf?: boolean
+    isLink?: string
+    isHide?: boolean
+    isFull?: boolean
+    isAffix?: boolean
+    isKeepAlive?: boolean
+    createTime?: string
+    updateTime?: string
+    meta?: Menu.MetaProps
+    icon?: string
+    component?: string
+    redirect?: string
+    activeMenu?: string
+    remark?: string
+    children?: ResMenuList[]
+    parent?: ResMenuList
+    permission?: User.Permission[]
+  }
+
+  export interface ResPermissionParams extends ReqPage {
+    menu: string
   }
 }

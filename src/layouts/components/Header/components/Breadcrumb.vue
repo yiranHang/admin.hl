@@ -19,8 +19,7 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ArrowRight } from '@element-plus/icons-vue'
-import { useAuthStore } from '@/stores/modules/auth'
-import { useGlobalStore } from '@/stores/modules/global'
+import { useAuthStore, useGlobalStore } from '@/stores/modules'
 
 const route = useRoute()
 const router = useRouter()

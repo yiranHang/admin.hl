@@ -5,7 +5,7 @@ import { LOGIN_URL } from '@/config'
 import { ElMessage } from 'element-plus'
 import { ResultEnum } from '@/enums/httpEnum'
 import { checkStatus } from './helper/checkStatus'
-import { useUserStore } from '@/stores/modules/user'
+import { useUserStore } from '@/stores/modules'
 import router from '@/routers'
 
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {

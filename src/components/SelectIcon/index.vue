@@ -56,6 +56,7 @@ const openDialog = () => (dialogVisible.value = true)
 // 选择图标(触发更新父组件数据)
 const emit = defineEmits(['update:iconValue'])
 const selectIcon = (item: any) => {
+  console.log('🚀 ~ item:', item)
   dialogVisible.value = false
   valueIcon.value = item.name
   emit('update:iconValue', item.name)

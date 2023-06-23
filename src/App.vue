@@ -11,13 +11,13 @@ import { getBrowserLang } from '@/utils'
 import { useTheme } from '@/hooks/useTheme'
 import { ElConfigProvider } from 'element-plus'
 import { LanguageType } from './stores/interface'
-import { useGlobalStore } from '@/stores/modules/global'
-
+import { useGlobalStore, useAuthStore, useUserStore } from '@/stores/modules'
 import en from 'element-plus/es/locale/lang/en'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
 const globalStore = useGlobalStore()
-
+const authStore = useAuthStore()
+const userStore = useUserStore()
 // init theme
 const { initTheme } = useTheme()
 initTheme()
@@ -25,6 +25,9 @@ initTheme()
 // init language
 const i18n = useI18n()
 onMounted(() => {
+  if (userStore.token) {
+    authStore.setMenuPathList()
+  }
   const language = globalStore.language ?? getBrowserLang()
   i18n.locale.value = language
   globalStore.setGlobalState('language', language as LanguageType)

@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { useGlobalStore } from '@/stores/modules/global'
+import { useGlobalStore } from '@/stores/modules'
 import CollapseIcon from './components/CollapseIcon.vue'
 import Breadcrumb from './components/Breadcrumb.vue'
 const globalStore = useGlobalStore()

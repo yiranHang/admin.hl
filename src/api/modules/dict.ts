@@ -28,16 +28,16 @@ export const deleteDict = (params: { ids: string[] }) => {
   return http.post(`/dict/delete`, params)
 }
 
-// 新增字典
+// 新增字典标签
 export const addDictDetail = (params: Dict.ResDictDetailList) => {
   return http.post<Dict.ResDictList>(`dict/detail/one`, params)
 }
 
-// 编辑字典
+// 编辑字典标签
 export const editDictDetail = (params: Dict.ResDictDetailList) => {
   return http.patch<Dict.ResDictList>(`/dict/detail/one/${params.id}`, params)
 }
-// 删除字典
+// 删除字典标签
 export const deleteDictDetail = (params: { ids: string[] }) => {
   return http.post(`/dict/detail/one/delete`, params)
 }

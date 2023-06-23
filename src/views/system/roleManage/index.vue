@@ -26,13 +26,7 @@
         <el-button v-auth="'patch'" type="primary" link :icon="EditPen" @click="openDrawer('编辑', scope.row)">
           编辑
         </el-button>
-        <el-button
-          v-auth="'patch'"
-          type="primary"
-          link
-          :icon="EditPen"
-          @click="openAclDrawer('配置访问权限', scope.row)"
-        >
+        <el-button v-auth="'patch'" type="primary" link :icon="Lock" @click="openAclDrawer('配置访问权限', scope.row)">
           配置访问权限
         </el-button>
         <el-button v-auth="'delete'" type="primary" link :icon="Delete" @click="deleteAccount(scope.row)">
@@ -53,7 +47,7 @@ import ProTable from '@/components/ProTable/index.vue'
 import RoleDrawer from '@/views/system/roleManage/RoleDrawer.vue'
 import AclDrawer from '@/views/system/roleManage/AclDrawer.vue'
 import { ProTableInstance, ColumnProps } from '@/components/ProTable/interface'
-import { CirclePlus, Delete, EditPen } from '@element-plus/icons-vue'
+import { CirclePlus, Lock, Delete, EditPen } from '@element-plus/icons-vue'
 import { getRoleList, deleteRole, addRole, editRole, setRolePermission } from '@/api/modules/user'
 import { dayjs } from 'element-plus'
 // 获取 ProTable 元素，调用其获取刷新数据方法（还能获取到当前查询参数，方便导出携带参数）

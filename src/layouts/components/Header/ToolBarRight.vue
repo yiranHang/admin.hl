@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useUserStore } from '@/stores/modules/user'
+import { useUserStore } from '@/stores/modules'
 import AssemblySize from './components/AssemblySize.vue'
 import SearchMenu from './components/SearchMenu.vue'
 import ThemeSetting from './components/ThemeSetting.vue'
