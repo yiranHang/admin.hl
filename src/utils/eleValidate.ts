@@ -17,15 +17,14 @@ class Validate {
 
   /**
    * 修改密码时检查密码
-   *
+   * @rule 长度大于4且小于16;包含大小写字母、数字、“-”、“_”
    * @param val
    * @returns
    */
   checkPassword(rule: any, value: any, callback: any) {
     const regexp = /^[a-zA-Z0-9_-]{4,16}$/
-    const msg = '长度大于4且小于16;包含大小写字母、数字、-、_'
-    if (value === '') callback('请输入密码')
-    if (!regexp.test(value)) {
+    const msg = '长度大于4且小于16;包含大小写字母、数字、“-”、“_”'
+    if (value && !regexp.test(value)) {
       callback(new Error(msg))
     } else {
       return callback()
@@ -34,15 +33,14 @@ class Validate {
 
   /**
    * 检查数据编码录入规则
-   *
+   * @rule 长度2到20，大小写字母、数字、“_”、“-”
    * @param val
    * @returns
    */
   checkCode(rule: any, value: any, callback: any) {
     const regexp = /^[a-zA-Z0-9_-]{2,20}$/
     const msg = '长度2到20，大小写字母、数字、“_”、“-”'
-    if (value === '') callback('请输入数据编码')
-    if (!regexp.test(value)) {
+    if (value && !regexp.test(value)) {
       callback(new Error(msg))
     } else {
       return callback()
@@ -51,15 +49,14 @@ class Validate {
 
   /**
    * 检查数据名称录入规则
-   *
+   * @rule 长度1到10，只能中文、数字和字母
    * @param val
    * @returns
    */
   checkName(rule: any, value: any, callback: any) {
     const regexp = /^[A-z0-9\u4e00-\u9fa5]{1,10}$/
     const msg = '长度1到10，只能中文、数字和字母'
-    if (value === '') callback('请输入数据名称')
-    if (!regexp.test(value)) {
+    if (value && !regexp.test(value)) {
       callback(new Error(msg))
     } else {
       return callback()
@@ -68,7 +65,7 @@ class Validate {
 
   /**
    * 检查数据地址（路由和接口）录入规则
-   *
+   * @rule 必须以/开头，且只能包含大小写字母
    * @param val
    * @returns
    */

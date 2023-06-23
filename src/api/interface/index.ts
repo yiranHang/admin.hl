@@ -56,7 +56,7 @@ export namespace Login {
 
 // 用户管理模块
 export namespace User {
-  /**用户查询 */
+  /**用户查询参数 */
   export interface ReqUserParams extends ReqPage {
     name: string
     account: string
@@ -78,7 +78,7 @@ export namespace User {
     updateTime: string
   }
 
-  /**角色查询 */
+  /**角色查询参数 */
   export interface ResRoleParams extends ReqPage {
     code: string
     name: string
@@ -145,7 +145,7 @@ export namespace User {
 
 /**字典管理模块 */
 export namespace Dict {
-  /**字典查询 */
+  /**字典查询参数 */
   export interface ResDictParams extends ReqPage {
     id: string
     key: string
@@ -178,15 +178,19 @@ export namespace Dict {
   }
 }
 
+/**菜单管理模块 */
 export namespace MenuApi {
+  /**菜单查询 */
   export interface ResMenuParams extends ReqPage {
     parent: string
   }
 
+  /**api路由地址列表查询参数*/
   export interface ResMethodPathListParams {
     path: string | undefined
   }
 
+  /**api路由地址列表 */
   export interface ResMethodPathList {
     id: string
     title: string
@@ -195,6 +199,7 @@ export namespace MenuApi {
     children: ResMethodPathList[]
   }
 
+  /**菜单列表 */
   export interface ResMenuList {
     id?: string
     name?: string
@@ -220,6 +225,7 @@ export namespace MenuApi {
     permission?: User.Permission[]
   }
 
+  /**菜单权限列表查询参数 */
   export interface ResPermissionParams extends ReqPage {
     menu: string
   }
