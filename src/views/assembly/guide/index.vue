@@ -22,7 +22,7 @@ const guide = () => {
     doneBtnText: '结束',
     closeBtnText: '关闭',
     nextBtnText: '下一步',
-    prevBtnText: '上一步',
+    prevBtnText: '上一步'
   })
   driver.defineSteps(steps)
   driver.start()
@@ -34,65 +34,65 @@ const steps = [
     popover: {
       title: 'Collapse Icon',
       description: 'Open && Close sidebar',
-      position: 'right',
-    },
+      position: 'right'
+    }
   },
   {
     element: '#breadcrumb',
     popover: {
       title: 'Breadcrumb',
       description: 'Indicate the current page location',
-      position: 'right',
-    },
+      position: 'right'
+    }
   },
   {
     element: '#assemblySize',
     popover: {
       title: 'Switch Assembly Size',
       description: 'Switch the system size',
-      position: 'left',
-    },
+      position: 'left'
+    }
   },
   {
     element: '#language',
     popover: {
       title: 'Switch Language',
       description: 'Switch the system language',
-      position: 'left',
-    },
+      position: 'left'
+    }
   },
   {
     element: '#searchMenu',
     popover: {
       title: 'Page Search',
       description: 'Page search, quick navigation',
-      position: 'left',
-    },
+      position: 'left'
+    }
   },
   {
     element: '#themeSetting',
     popover: {
       title: 'Setting theme',
       description: 'Customize settings theme',
-      position: 'left',
-    },
+      position: 'left'
+    }
   },
   {
     element: '#message',
     popover: {
       title: 'Message Notification',
       description: 'Can receive company information',
-      position: 'left',
-    },
+      position: 'left'
+    }
   },
   {
     element: '#fullscreen',
     popover: {
       title: 'Full Screen',
       description: 'Full Screen, Exit The Full Screen Page',
-      position: 'left',
-    },
-  },
+      position: 'left'
+    }
+  }
 ]
 </script>
 

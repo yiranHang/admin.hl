@@ -4,7 +4,7 @@ import { KeepAliveState } from '@/stores/interface'
 export const useKeepAliveStore = defineStore({
   id: 'admin-keepAlive',
   state: (): KeepAliveState => ({
-    keepAliveName: [],
+    keepAliveName: []
   }),
   actions: {
     // Add KeepAliveName
@@ -18,6 +18,6 @@ export const useKeepAliveStore = defineStore({
     // Set KeepAliveName
     async setKeepAliveName(keepAliveName: string[] = []) {
       this.keepAliveName = keepAliveName
-    },
-  },
+    }
+  }
 })

@@ -13,14 +13,14 @@ const errorHandler = (error: any) => {
     RangeError: '使用内置对象时，参数超范围',
     SyntaxError: '语法错误',
     EvalError: '错误的使用了Eval',
-    URIError: 'URI错误',
+    URIError: 'URI错误'
   }
   const errorName = errorMap[error.name] || '未知错误'
   ElNotification({
     title: errorName,
     message: error,
     type: 'error',
-    duration: 3000,
+    duration: 3000
   })
 }
 

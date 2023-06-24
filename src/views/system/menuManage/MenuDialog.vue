@@ -145,9 +145,9 @@ const rules = reactive({
   isLeaf: [{ required: true, message: '请选择是否叶子菜单' }],
   path: [
     { required: true, message: '请填写路由访问地址' },
-    { validator: Validate.checkPath, trigger: 'blur' },
+    { validator: Validate.checkPath, trigger: 'blur' }
   ],
-  component: [{ validator: Validate.checkPath, trigger: 'blur' }],
+  component: [{ validator: Validate.checkPath, trigger: 'blur' }]
 })
 
 interface DialogProps {
@@ -162,7 +162,7 @@ const dialogVisible = ref(false)
 const dialogProps = ref<DialogProps>({
   isView: false,
   title: '',
-  row: {},
+  row: {}
 })
 
 const isAdd = computed(() => dialogProps.value.title === '新增')
@@ -199,6 +199,6 @@ const handleSubmit = () => {
 }
 
 defineExpose({
-  acceptParams,
+  acceptParams
 })
 </script>

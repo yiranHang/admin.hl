@@ -20,7 +20,7 @@ const initChart = (data: any): ECharts => {
     tooltip: {
       show: true,
       trigger: 'item',
-      formatter: '{b} <br/>占比：{d}%',
+      formatter: '{b} <br/>占比：{d}%'
     },
     legend: {
       orient: 'vertical',
@@ -38,13 +38,13 @@ const initChart = (data: any): ECharts => {
         return text
       },
       textStyle: {
-        color: '#fff',
-      },
+        color: '#fff'
+      }
     },
     grid: {
       top: 'bottom',
       left: 10,
-      bottom: 10,
+      bottom: 10
     },
     series: [
       {
@@ -67,13 +67,13 @@ const initChart = (data: any): ECharts => {
             b: {
               fontSize: 16,
               lineHeight: 30,
-              color: '#fff',
-            },
-          },
+              color: '#fff'
+            }
+          }
         },
         itemStyle: {
           shadowColor: 'rgba(0, 0, 0, 0.2)',
-          shadowBlur: 10,
+          shadowBlur: 10
         },
         data: data.map((val: ChartProp, index: number) => {
           return {
@@ -84,10 +84,10 @@ const initChart = (data: any): ECharts => {
               borderWidth: 10,
               shadowBlur: 20,
               borderColor: colors[index],
-              borderRadius: 10,
-            },
+              borderRadius: 10
+            }
           }
-        }),
+        })
       },
       {
         name: '',
@@ -107,21 +107,21 @@ const initChart = (data: any): ECharts => {
                 a: {
                   align: 'center',
                   color: 'rgb(98,137,169)',
-                  fontSize: 14,
-                },
+                  fontSize: 14
+                }
               },
-              position: 'center',
-            },
-          },
-        ],
-      },
-    ],
+              position: 'center'
+            }
+          }
+        ]
+      }
+    ]
   }
   charEch.setOption(option)
   return charEch
 }
 defineExpose({
-  initChart,
+  initChart
 })
 </script>
 <style lang="scss" scoped>

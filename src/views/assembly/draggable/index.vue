@@ -28,7 +28,7 @@ let gridList = ref([
   { id: 6, num: 6 },
   { id: 7, num: 7 },
   { id: 8, num: 8 },
-  { id: 9, num: 9 },
+  { id: 9, num: 9 }
 ])
 </script>
 

@@ -70,7 +70,7 @@ const dialogVisible = ref(false)
 const parameter = ref<ExcelParameterProps>({
   title: '',
   fileSize: 5,
-  fileType: ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+  fileType: ['application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']
 })
 
 // 接收父组件参数
@@ -106,14 +106,14 @@ const beforeExcelUpload = (file: UploadRawFile) => {
     ElNotification({
       title: '温馨提示',
       message: '上传文件只能是 xls / xlsx 格式！',
-      type: 'warning',
+      type: 'warning'
     })
   if (!fileSize)
     setTimeout(() => {
       ElNotification({
         title: '温馨提示',
         message: `上传文件大小不能超过 ${parameter.value.fileSize}MB！`,
-        type: 'warning',
+        type: 'warning'
       })
     }, 0)
   return isExcel && fileSize
@@ -124,7 +124,7 @@ const handleExceed = () => {
   ElNotification({
     title: '温馨提示',
     message: '最多只能上传一个文件！',
-    type: 'warning',
+    type: 'warning'
   })
 }
 
@@ -133,7 +133,7 @@ const excelUploadError = () => {
   ElNotification({
     title: '温馨提示',
     message: `批量添加${parameter.value.title}失败，请您重新上传！`,
-    type: 'error',
+    type: 'error'
   })
 }
 
@@ -142,12 +142,12 @@ const excelUploadSuccess = () => {
   ElNotification({
     title: '温馨提示',
     message: `批量添加${parameter.value.title}成功！`,
-    type: 'success',
+    type: 'success'
   })
 }
 
 defineExpose({
-  acceptParams,
+  acceptParams
 })
 </script>
 <style lang="scss" scoped>

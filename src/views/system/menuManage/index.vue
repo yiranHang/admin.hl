@@ -81,7 +81,7 @@ const columns: ColumnProps[] = [
   { prop: 'name', label: '菜单 name', width: 160 },
   { prop: 'path', label: '菜单路径', width: 240 },
   { prop: 'component', label: '组件路径' },
-  { prop: 'operation', label: '操作', fixed: 'right' },
+  { prop: 'operation', label: '操作', fixed: 'right' }
 ]
 
 // 删除角色信息
@@ -102,7 +102,7 @@ const openDialog = (title: string, row: Partial<MenuApi.ResMenuList> = {}) => {
     isView: title === '查看',
     row: { ...row },
     api: title === '新增' ? addMenu : title === '编辑' ? editMenu : title === '权限' ? editMenu : undefined,
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   dialogRef.value?.acceptParams(params)
 }
@@ -113,7 +113,7 @@ const openDrawer = (title: string, row: Partial<MenuApi.ResMenuList> = {}) => {
   const params = {
     title,
     row: { ...row },
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   drawerRef.value?.acceptParams(params)
 }

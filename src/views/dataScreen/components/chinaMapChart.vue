@@ -21,30 +21,30 @@ const initChart = (data: any = []): ECharts => {
       trigger: 'item',
       formatter: function (params: any) {
         return `${params.name}: ${params.value || '-'}`
-      },
+      }
     },
     // echarts大小位置
     grid: {
       left: '0px',
       right: '80px',
       top: '10px',
-      bottom: '10px',
+      bottom: '10px'
     },
     geo: {
       map: 'china',
       zoom: 1.5,
       center: [102.848234, 32.82333],
       scaleLimit: {
-        min: 0.8,
+        min: 0.8
       },
       label: {
         color: '#fff',
-        show: true,
+        show: true
       },
       emphasis: {
         label: {
           color: '#fff',
-          show: true,
+          show: true
         },
         itemStyle: {
           areaColor: {
@@ -55,15 +55,15 @@ const initChart = (data: any = []): ECharts => {
             colorStops: [
               {
                 offset: 0,
-                color: '#073684', // 0% 处的颜色
+                color: '#073684' // 0% 处的颜色
               },
               {
                 offset: 1,
-                color: '#2B91B7', // 100% 处的颜色
-              },
-            ],
-          },
-        },
+                color: '#2B91B7' // 100% 处的颜色
+              }
+            ]
+          }
+        }
       },
       roam: false,
       itemStyle: {
@@ -75,13 +75,13 @@ const initChart = (data: any = []): ECharts => {
           colorStops: [
             {
               offset: 0,
-              color: '#073684', // 0% 处的颜色
+              color: '#073684' // 0% 处的颜色
             },
             {
               offset: 1,
-              color: '#061E3D', // 100% 处的颜色
-            },
-          ],
+              color: '#061E3D' // 100% 处的颜色
+            }
+          ]
         },
         borderColor: new echarts.graphic.LinearGradient(
           0,
@@ -91,23 +91,23 @@ const initChart = (data: any = []): ECharts => {
           [
             {
               offset: 0,
-              color: '#00F6FF',
+              color: '#00F6FF'
             },
             {
               offset: 1,
-              color: '#87ADCB',
-            },
+              color: '#87ADCB'
+            }
           ],
           false
         ),
         shadowColor: 'rgba(10,76,139,1)',
         shadowOffsetY: 0,
         shadowBlur: 60,
-        borderWidth: 1,
+        borderWidth: 1
       },
       tooltip: {
-        show: false,
-      },
+        show: false
+      }
     },
     // 要显示的散点数据
     series: [
@@ -121,14 +121,14 @@ const initChart = (data: any = []): ECharts => {
           period: 6,
           trailLength: 0.7,
           color: 'red', // arrow箭头的颜色
-          symbolSize: 3,
+          symbolSize: 3
         },
         lineStyle: {
           color: '#fff',
           width: 0,
-          curveness: 0.2,
+          curveness: 0.2
         },
-        data,
+        data
       },
       {
         name: '',
@@ -142,23 +142,23 @@ const initChart = (data: any = []): ECharts => {
           period: 6,
           trailLength: 0,
           symbol: planePath,
-          symbolSize: 15,
+          symbolSize: 15
         },
         lineStyle: {
           color: '#fff',
           width: 1,
           opacity: 0.6,
-          curveness: 0.2,
+          curveness: 0.2
         },
-        data,
-      },
-    ],
+        data
+      }
+    ]
   }
   charEch.setOption(option)
   return charEch
 }
 defineExpose({
-  initChart,
+  initChart
 })
 </script>
 <style lang="scss" scoped>

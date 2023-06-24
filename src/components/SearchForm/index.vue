@@ -43,7 +43,7 @@ interface ProTableProps {
 // 默认值
 const props = withDefaults(defineProps<ProTableProps>(), {
   columns: () => [],
-  searchParam: () => ({}),
+  searchParam: () => ({})
 })
 
 // 获取响应式设置
@@ -55,7 +55,7 @@ const getResponsive = (item: ColumnProps) => {
     sm: item.search?.sm,
     md: item.search?.md,
     lg: item.search?.lg,
-    xl: item.search?.xl,
+    xl: item.search?.xl
   }
 }
 

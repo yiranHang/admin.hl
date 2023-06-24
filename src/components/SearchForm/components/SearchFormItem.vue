@@ -41,7 +41,7 @@ const fieldNames = computed(() => {
   return {
     label: props.column.fieldNames?.label ?? 'label',
     value: props.column.fieldNames?.value ?? 'value',
-    children: props.column.fieldNames?.children ?? 'children',
+    children: props.column.fieldNames?.children ?? 'children'
   }
 })
 

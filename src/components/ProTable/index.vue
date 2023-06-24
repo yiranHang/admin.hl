@@ -131,7 +131,7 @@ const props = withDefaults(defineProps<ProTableProps>(), {
   border: true,
   toolButton: true,
   rowKey: 'id',
-  searchCol: () => ({ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 }),
+  searchCol: () => ({ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 })
 })
 
 // 是否显示搜索模块
@@ -153,7 +153,7 @@ const {
   search,
   reset,
   handleSizeChange,
-  handleCurrentChange,
+  handleCurrentChange
 } = useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, props.requestError)
 
 // 清空选中数据列表
@@ -264,7 +264,7 @@ const print = () => {
       .map((item: ColumnProps) => ({ field: handleProp(item.prop!), displayName: item.label })),
     type: 'json',
     gridHeaderStyle,
-    gridStyle,
+    gridStyle
   })
 }
 
@@ -284,6 +284,6 @@ defineExpose({
   enumMap,
   isSelected,
   selectedList,
-  selectedListIds,
+  selectedListIds
 })
 </script>

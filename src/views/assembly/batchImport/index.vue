@@ -28,7 +28,7 @@ const batchAdd = () => {
   let params = {
     title: '数据',
     tempApi: exportUserInfo,
-    importApi: BatchAddUser,
+    importApi: BatchAddUser
   }
   importRef.value.acceptParams(params)
 }

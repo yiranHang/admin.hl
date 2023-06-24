@@ -183,7 +183,7 @@ const rules = reactive({
   photo: [{ required: true, message: '请上传用户照片' }],
   username: [{ required: true, message: '请填写用户姓名' }],
   idCard: [{ required: true, message: '请填写身份证号' }],
-  email: [{ required: true, message: '请填写邮箱' }],
+  email: [{ required: true, message: '请填写邮箱' }]
 })
 
 const fromModel = ref({
@@ -191,14 +191,14 @@ const fromModel = ref({
   photo: [{ name: 'img', url: 'https://i.imgtg.com/2023/01/16/QR57a.jpg' }],
   username: '',
   idCard: '',
-  email: '',
+  email: ''
 })
 const fromModel1 = ref({
   avatar: '',
   photo: [{ name: 'img', url: 'https://i.imgtg.com/2023/01/16/QR57a.jpg' }],
   username: '',
   idCard: '',
-  email: '',
+  email: ''
 })
 const ruleFormRef = ref<FormInstance>()
 const submit = () => {

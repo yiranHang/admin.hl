@@ -17,6 +17,6 @@ export const useAuthButtons = () => {
   })
 
   return {
-    BUTTONS,
+    BUTTONS
   }
 }

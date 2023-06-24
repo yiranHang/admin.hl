@@ -96,7 +96,7 @@ import { useAuthStore } from '@/stores/modules/auth'
 const rules = reactive({
   label: [{ required: true, message: '请填写名称' }],
   value: [{ required: true, message: '请填写数值' }],
-  sort: [{ required: true, message: '请填写序号' }],
+  sort: [{ required: true, message: '请填写序号' }]
 })
 
 interface DialogProps {
@@ -138,7 +138,7 @@ const switchTags = (val: string) => {
 const dialogProps = ref<DialogProps>({
   isView: false,
   title: '',
-  row: {},
+  row: {}
 })
 const isAdd = computed(() => dialogProps.value.title === '新增')
 
@@ -168,6 +168,6 @@ const handleSubmit = () => {
 }
 
 defineExpose({
-  acceptParams,
+  acceptParams
 })
 </script>

@@ -6,7 +6,7 @@ import piniaPersistConfig from '@/config/piniaPersist'
 export const useTabsStore = defineStore({
   id: 'admin-tabs',
   state: (): TabsState => ({
-    tabsMenuList: [],
+    tabsMenuList: []
   }),
   actions: {
     // Add Tabs
@@ -44,7 +44,7 @@ export const useTabsStore = defineStore({
       this.tabsMenuList.forEach((item) => {
         if (item.path == nowFullPath) item.title = title
       })
-    },
+    }
   },
-  persist: piniaPersistConfig('admin-tabs'),
+  persist: piniaPersistConfig('admin-tabs')
 })

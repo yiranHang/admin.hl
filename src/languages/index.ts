@@ -11,8 +11,8 @@ const i18n = createI18n({
   locale: getBrowserLang(),
   messages: {
     zh,
-    en,
-  },
+    en
+  }
 })
 
 export default i18n

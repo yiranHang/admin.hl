@@ -51,7 +51,7 @@ const RenderTableColumn = (item: ColumnProps) => {
               if (item.headerRender) return item.headerRender(scope)
               if (slots[`${handleProp(item.prop!)}Header`]) return slots[`${handleProp(item.prop!)}Header`]!(scope)
               return item.label
-            },
+            }
           }}
         </el-table-column>
       )}

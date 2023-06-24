@@ -14,7 +14,7 @@ const directivesList: { [key: string]: Directive } = {
   draggable,
   debounce,
   throttle,
-  longpress,
+  longpress
 }
 
 const directives = {
@@ -22,7 +22,7 @@ const directives = {
     Object.keys(directivesList).forEach((key) => {
       app.directive(key, directivesList[key])
     })
-  },
+  }
 }
 
 export default directives

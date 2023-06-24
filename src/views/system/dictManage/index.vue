@@ -59,7 +59,7 @@ const dataCallback = (data: any) => {
     list: data.data,
     total: data.count,
     pageNum: data.page,
-    pageSize: data.limit,
+    pageSize: data.limit
   }
 }
 // 表格配置项
@@ -72,7 +72,7 @@ const columns: ColumnProps<Dict.ResDictList>[] = [
     search: { el: 'input' },
     render: (scope) => {
       return <el-tag>{scope.row.name}</el-tag>
-    },
+    }
   },
 
   { prop: 'key', label: '字典类型', search: { el: 'input' } },
@@ -81,7 +81,7 @@ const columns: ColumnProps<Dict.ResDictList>[] = [
     label: '是否禁用',
     render: (scope) => {
       return <el-tag>{scope.row.forbidden ? '是' : '否'}</el-tag>
-    },
+    }
   },
   { prop: 'remark', label: '详情描述' },
   {
@@ -90,9 +90,9 @@ const columns: ColumnProps<Dict.ResDictList>[] = [
     width: 180,
     render: (scope) => {
       return dayjs(scope.row.createTime).format('YYYY-MM-DD HH:mm:ss')
-    },
+    }
   },
-  { prop: 'operation', label: '操作', fixed: 'right', width: 330 },
+  { prop: 'operation', label: '操作', fixed: 'right', width: 330 }
 ]
 
 // 删除字典信息
@@ -116,7 +116,7 @@ const openDrawer = (title: string, row: Partial<Dict.ResDictList> = {}) => {
     isView: title === '查看',
     row: { ...row },
     api: title === '新增' ? addDict : title === '编辑' ? editDict : undefined,
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   drawerRef.value?.acceptParams(params)
 }
@@ -125,7 +125,7 @@ const detailDrawerRef = ref<InstanceType<typeof DictDetailDrawer> | null>(null)
 const openDetailDrawer = (row: Partial<Dict.ResDictDetailList> = {}) => {
   const params = {
     row: { ...row },
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   detailDrawerRef.value?.acceptParams(params)
 }

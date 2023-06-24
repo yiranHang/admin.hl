@@ -51,8 +51,8 @@ const rules = reactive({
   name: [{ required: true, message: '请填写字典名称' }],
   key: [
     { required: true, message: '请填写字典类型' },
-    { validator: Validate.checkCode, trigger: 'blur' },
-  ],
+    { validator: Validate.checkCode, trigger: 'blur' }
+  ]
 })
 
 interface DrawerProps {
@@ -67,7 +67,7 @@ const drawerVisible = ref(false)
 const drawerProps = ref<DrawerProps>({
   isView: false,
   title: '',
-  row: {},
+  row: {}
 })
 const isAdd = computed(() => drawerProps.value.title === '新增')
 
@@ -98,6 +98,6 @@ const handleSubmit = () => {
 }
 
 defineExpose({
-  acceptParams,
+  acceptParams
 })
 </script>

@@ -43,7 +43,7 @@ const props = withDefaults(defineProps<SelectIconProps>(), {
   iconValue: '',
   title: '请选择图标',
   clearable: true,
-  placeholder: '请选择图标',
+  placeholder: '请选择图标'
 })
 
 // 重新接收一下，防止打包后 clearable 报错

@@ -40,7 +40,7 @@ const openColSetting = () => {
 }
 
 defineExpose({
-  openColSetting,
+  openColSetting
 })
 </script>
 

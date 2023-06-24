@@ -9,10 +9,10 @@ export const useUserStore = defineStore({
   id: 'admin-user',
   state: (): UserState => ({
     token: '',
-    userInfo: '',
+    userInfo: ''
   }),
   getters: {
-    getUserInfo: (state): User.ResUserList => CryptoTool.sm4Decrypt(state.userInfo),
+    getUserInfo: (state): User.ResUserList => CryptoTool.sm4Decrypt(state.userInfo)
   },
   actions: {
     // Set Token
@@ -32,7 +32,7 @@ export const useUserStore = defineStore({
       localClear()
       this.token = ''
       this.userInfo = ''
-    },
+    }
   },
-  persist: piniaPersistConfig('admin-user'),
+  persist: piniaPersistConfig('admin-user')
 })

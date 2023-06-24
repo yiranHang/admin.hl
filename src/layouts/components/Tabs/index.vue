@@ -58,7 +58,7 @@ watch(
       title: route.meta.title as string,
       path: route.fullPath,
       name: route.name as string,
-      close: !route.meta.isAffix,
+      close: !route.meta.isAffix
     }
     tabStore.addTabs(tabsParams)
     route.meta.isKeepAlive && keepAliveStore.addKeepAliveName(route.name as string)
@@ -76,7 +76,7 @@ const tabsDrop = () => {
       const currRow = tabsList.splice(oldIndex as number, 1)[0]
       tabsList.splice(newIndex as number, 0, currRow)
       tabStore.setTabs(tabsList)
-    },
+    }
   })
 }
 
@@ -89,7 +89,7 @@ const initTabs = () => {
         title: item.meta.title,
         path: item.path,
         name: item.name,
-        close: !item.meta.isAffix,
+        close: !item.meta.isAffix
       }
       tabStore.addTabs(tabsParams)
     }

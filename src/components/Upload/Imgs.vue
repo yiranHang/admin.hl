@@ -72,7 +72,7 @@ const props = withDefaults(defineProps<UploadFileProps>(), {
   fileType: () => ['image/jpeg', 'image/png', 'image/gif'],
   height: '150px',
   width: '150px',
-  borderRadius: '8px',
+  borderRadius: '8px'
 })
 
 // 获取 el-form 组件上下文
@@ -105,14 +105,14 @@ const beforeUpload: UploadProps['beforeUpload'] = (rawFile) => {
     ElNotification({
       title: '温馨提示',
       message: '上传图片不符合所需的格式！',
-      type: 'warning',
+      type: 'warning'
     })
   if (!imgSize)
     setTimeout(() => {
       ElNotification({
         title: '温馨提示',
         message: `上传图片大小不能超过 ${props.fileSize}M！`,
-        type: 'warning',
+        type: 'warning'
       })
     }, 0)
   return imgType && imgSize
@@ -152,7 +152,7 @@ const uploadSuccess = (response: { path: string } | undefined, uploadFile: Uploa
   ElNotification({
     title: '温馨提示',
     message: '图片上传成功！',
-    type: 'success',
+    type: 'success'
   })
 }
 
@@ -172,7 +172,7 @@ const uploadError = () => {
   ElNotification({
     title: '温馨提示',
     message: '图片上传失败，请您重新上传！',
-    type: 'error',
+    type: 'error'
   })
 }
 
@@ -183,7 +183,7 @@ const handleExceed = () => {
   ElNotification({
     title: '温馨提示',
     message: `当前最多只能上传 ${props.limit} 张图片，请移除后上传！`,
-    type: 'warning',
+    type: 'warning'
   })
 }
 

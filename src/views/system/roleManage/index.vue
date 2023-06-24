@@ -59,7 +59,7 @@ const dataCallback = (data: any) => {
     list: data.data,
     total: data.count,
     pageNum: data.page,
-    pageSize: data.limit,
+    pageSize: data.limit
   }
 }
 // 表格配置项
@@ -72,7 +72,7 @@ const columns: ColumnProps<User.ResRoleList>[] = [
     search: { el: 'input' },
     render: (scope) => {
       return <el-tag>{scope.row.name}</el-tag>
-    },
+    }
   },
   { prop: 'code', label: '角色代码', search: { el: 'input' } },
 
@@ -83,9 +83,9 @@ const columns: ColumnProps<User.ResRoleList>[] = [
     width: 180,
     render: (scope) => {
       return dayjs(scope.row.createTime).format('YYYY-MM-DD HH:mm:ss')
-    },
+    }
   },
-  { prop: 'operation', label: '操作', fixed: 'right', width: 330 },
+  { prop: 'operation', label: '操作', fixed: 'right', width: 330 }
 ]
 
 // 删除角色信息
@@ -109,7 +109,7 @@ const openDrawer = (title: string, row: Partial<User.ResRoleList> = {}) => {
     isView: title === '查看',
     row: { ...row },
     api: title === '新增' ? addRole : title === '编辑' ? editRole : undefined,
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   drawerRef.value?.acceptParams(params)
 }
@@ -120,7 +120,7 @@ const openAclDrawer = (title: string, row: Partial<User.ResRoleList> = {}) => {
     title,
     row: { ...row },
     api: setRolePermission,
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   aclDrawerRef.value?.acceptParams(params)
 }

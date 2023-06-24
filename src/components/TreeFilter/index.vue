@@ -52,12 +52,12 @@ interface TreeFilterProps {
 const props = withDefaults(defineProps<TreeFilterProps>(), {
   id: 'id',
   label: 'label',
-  multiple: false,
+  multiple: false
 })
 
 const defaultProps = {
   children: 'children',
-  label: props.label,
+  label: props.label
 }
 
 const treeRef = ref<InstanceType<typeof ElTree>>()

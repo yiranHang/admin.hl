@@ -13,7 +13,7 @@
             :class="{
               active:
                 option.value === selected[item.key] ||
-                (Array.isArray(selected[item.key]) && selected[item.key].includes(option.value)),
+                (Array.isArray(selected[item.key]) && selected[item.key].includes(option.value))
             }"
             @click="select(item, option)"
           >
@@ -53,7 +53,7 @@ interface SelectFilterProps {
 
 const props = withDefaults(defineProps<SelectFilterProps>(), {
   data: () => [],
-  defaultValues: () => ({}),
+  defaultValues: () => ({})
 })
 
 // 重新接收默认值

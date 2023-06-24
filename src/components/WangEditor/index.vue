@@ -48,19 +48,19 @@ interface RichEditorProps {
 const props = withDefaults(defineProps<RichEditorProps>(), {
   toolbarConfig: () => {
     return {
-      excludeKeys: [],
+      excludeKeys: []
     }
   },
   editorConfig: () => {
     return {
       placeholder: '请输入内容...',
-      MENU_CONF: {},
+      MENU_CONF: {}
     }
   },
   height: '500px',
   mode: 'default',
   hideToolBar: false,
-  disabled: false,
+  disabled: false
 })
 
 // 获取 el-form 组件上下文
@@ -89,7 +89,7 @@ const valueHtml = computed({
     // 防止富文本内容为空时，校验失败
     if (editorRef.value.isEmpty()) val = ''
     emit('update:value', val)
-  },
+  }
 })
 
 /**
@@ -110,7 +110,7 @@ props.editorConfig.MENU_CONF!['uploadImage'] = {
     } catch (error) {
       console.log(error)
     }
-  },
+  }
 }
 
 // 图片上传前判断
@@ -137,7 +137,7 @@ props.editorConfig.MENU_CONF!['uploadVideo'] = {
     } catch (error) {
       console.log(error)
     }
-  },
+  }
 }
 
 // 视频上传前判断
@@ -158,7 +158,7 @@ onBeforeUnmount(() => {
 })
 
 defineExpose({
-  editor: editorRef,
+  editor: editorRef
 })
 </script>
 

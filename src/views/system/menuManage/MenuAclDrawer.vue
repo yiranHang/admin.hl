@@ -60,7 +60,7 @@ const dataCallback = (data: any) => {
     list: data.data,
     total: data.count,
     pageNum: data.page,
-    pageSize: data.limit,
+    pageSize: data.limit
   }
 }
 
@@ -75,7 +75,7 @@ const columns: ColumnProps<User.Permission>[] = [
   { prop: 'menu.path', label: '路由' },
   { prop: 'method', label: '请求方式' },
   { prop: 'path', label: '请求地址' },
-  { prop: 'operation', label: '操作', fixed: 'right', width: 150 },
+  { prop: 'operation', label: '操作', fixed: 'right', width: 150 }
 ]
 
 // 批量删除角色信息
@@ -93,7 +93,7 @@ interface DrawerProps {
 
 const drawerVisible = ref(false)
 const drawerProps = ref<DrawerProps>({
-  row: {},
+  row: {}
 })
 
 // 打开 dialog(新增、查看、编辑)
@@ -104,7 +104,7 @@ const openDialog = (title: string, row: Partial<User.Permission> = {}) => {
     isView: title === '查看',
     row: { ...row },
     api: title === '新增' ? addMenuPermission : title === '编辑' ? editMenuPermission : undefined,
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   dialogRef.value?.acceptParams(params)
 }
@@ -117,6 +117,6 @@ const acceptParams = (params: DrawerProps) => {
 }
 
 defineExpose({
-  acceptParams,
+  acceptParams
 })
 </script>

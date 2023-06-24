@@ -17,7 +17,7 @@ const initChart = (data: any = {}): ECharts => {
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'none',
+        type: 'none'
       },
       borderWidth: 0, //边框线宽
       padding: 0,
@@ -42,7 +42,7 @@ const initChart = (data: any = {}): ECharts => {
                     </div>
                   `
         return dom
-      },
+      }
     },
 
     legend: {
@@ -54,14 +54,14 @@ const initChart = (data: any = {}): ECharts => {
       icon: 'rect',
       itemGap: 15,
       textStyle: {
-        color: '#ebebf0',
-      },
+        color: '#ebebf0'
+      }
     },
     grid: {
       top: '20%',
       left: '40',
       right: '4%',
-      bottom: '15%',
+      bottom: '15%'
       // containLabel: true
     },
     xAxis: [
@@ -73,8 +73,8 @@ const initChart = (data: any = {}): ECharts => {
           // 坐标轴轴线相关设置。数学上的x轴
           show: true,
           lineStyle: {
-            color: '#233653',
-          },
+            color: '#233653'
+          }
         },
         axisLabel: {
           // 坐标轴刻度标签的相关设置
@@ -83,26 +83,26 @@ const initChart = (data: any = {}): ECharts => {
           fontSize: 12,
           formatter: function (data) {
             return data
-          },
+          }
         },
         splitLine: {
           show: false,
           lineStyle: {
-            color: '#192a44',
-          },
+            color: '#192a44'
+          }
         },
         axisTick: {
-          show: false,
+          show: false
         },
-        data: data.columns,
-      },
+        data: data.columns
+      }
     ],
     yAxis: {
       name: '(人数)',
       nameTextStyle: {
         color: '#D6DFEA',
         fontSize: 12,
-        padding: [0, 30, 0, 0],
+        padding: [0, 30, 0, 0]
       },
       // nameGap:18,
       minInterval: 1,
@@ -111,14 +111,14 @@ const initChart = (data: any = {}): ECharts => {
       splitLine: {
         show: false,
         lineStyle: {
-          color: '#192a44',
-        },
+          color: '#192a44'
+        }
       },
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#233653',
-        },
+          color: '#233653'
+        }
       },
       axisLabel: {
         show: true,
@@ -129,11 +129,11 @@ const initChart = (data: any = {}): ECharts => {
             value = value / 10000 + 'w'
           }
           return value
-        },
+        }
       },
       axisTick: {
-        show: false,
-      },
+        show: false
+      }
     },
     series: data.data.map((val: ChartProp, index: number) => {
       return {
@@ -145,15 +145,15 @@ const initChart = (data: any = {}): ECharts => {
         lineStyle: {
           width: 1,
           color: data.colors[index], // 线条颜色
-          borderColor: data.colors[index],
+          borderColor: data.colors[index]
         },
         itemStyle: {
           color: data.colors[index],
           borderColor: '#646ace',
-          borderWidth: 2,
+          borderWidth: 2
         },
         tooltip: {
-          show: true,
+          show: true
         },
         areaStyle: {
           // 区域填充样式
@@ -167,27 +167,27 @@ const initChart = (data: any = {}): ECharts => {
             colorStops: [
               {
                 offset: 0,
-                color: data.colors[index], // 0% 处的颜色
+                color: data.colors[index] // 0% 处的颜色
               },
               {
                 offset: 1,
-                color: gradientColors[index], // 100% 处的颜色
-              },
+                color: gradientColors[index] // 100% 处的颜色
+              }
             ],
-            global: false, // 缺省为 false
+            global: false // 缺省为 false
           },
           shadowColor: 'rgba(25,163,223, 0.3)', //阴影颜色
-          shadowBlur: 20, // shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
+          shadowBlur: 20 // shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
         },
-        data: val.value,
+        data: val.value
       }
-    }),
+    })
   }
   charEch.setOption(option)
   return charEch
 }
 defineExpose({
-  initChart,
+  initChart
 })
 </script>
 <style lang="scss" scoped>

@@ -36,14 +36,14 @@ export const useGlobalStore = defineStore({
     // 标签页图标
     tabsIcon: true,
     // 页脚
-    footer: false,
+    footer: false
   }),
   getters: {},
   actions: {
     // Set GlobalState
     setGlobalState(...args: ObjToKeyValArray<GlobalState>) {
       this.$patch({ [args[0]]: args[1] })
-    },
+    }
   },
-  persist: piniaPersistConfig('admin-global'),
+  persist: piniaPersistConfig('admin-global')
 })

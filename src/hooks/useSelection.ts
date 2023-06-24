@@ -29,6 +29,6 @@ export const useSelection = (rowKey = 'id') => {
     isSelected,
     selectedList,
     selectedListIds,
-    selectionChange,
+    selectionChange
   }
 }

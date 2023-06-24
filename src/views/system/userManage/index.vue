@@ -61,7 +61,7 @@ const dataCallback = (data: any) => {
     list: data.data,
     total: data.count,
     pageNum: data.page,
-    pageSize: data.limit,
+    pageSize: data.limit
   }
 }
 // 页面按钮权限（按钮权限既可以使用 hooks，也可以直接使用 v-auth 指令，指令适合直接绑定在按钮上，hooks 适合根据按钮权限显示不同的内容）
@@ -76,7 +76,7 @@ const columns: ColumnProps<User.ResUserList>[] = [
     search: { el: 'input' },
     render: (scope) => {
       return <el-tag>{scope.row.name}</el-tag>
-    },
+    }
   },
   { prop: 'account', label: '账号', search: { el: 'input' } },
   { prop: 'unit', label: '所在单位' },
@@ -86,14 +86,14 @@ const columns: ColumnProps<User.ResUserList>[] = [
     render: (scope) => {
       const roleName = scope.row.roles?.map((item) => item.name).join('、')
       return <el-tag type="success">{roleName}</el-tag>
-    },
+    }
   },
   {
     prop: 'status',
     label: '账号状态',
     enum: [
       { label: '正常', value: 1 },
-      { label: '冻结', value: 0 },
+      { label: '冻结', value: 0 }
     ],
     render: (scope) => {
       return (
@@ -111,7 +111,7 @@ const columns: ColumnProps<User.ResUserList>[] = [
           )}
         </>
       )
-    },
+    }
   },
   {
     prop: 'createTime',
@@ -119,9 +119,9 @@ const columns: ColumnProps<User.ResUserList>[] = [
     width: 180,
     render: (scope) => {
       return dayjs(scope.row.createTime).format('YYYY-MM-DD HH:mm:ss')
-    },
+    }
   },
-  { prop: 'operation', label: '操作', fixed: 'right', width: 330 },
+  { prop: 'operation', label: '操作', fixed: 'right', width: 330 }
 ]
 
 // 切换账号禁用状态
@@ -157,7 +157,7 @@ const openDrawer = (title: string, row: Partial<User.ResUserList> = {}) => {
     isView: title === '查看',
     row: { ...row },
     api: title === '新增' ? addUser : title === '编辑' ? editUser : undefined,
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   drawerRef.value?.acceptParams(params)
 }

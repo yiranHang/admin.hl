@@ -24,7 +24,7 @@ export const initDynamicRouter = async () => {
         title: '无权限访问',
         message: '当前账号无任何菜单权限，请联系系统管理员！',
         type: 'warning',
-        duration: 3000,
+        duration: 3000
       })
       userStore.loginOut()
       router.replace(LOGIN_URL)

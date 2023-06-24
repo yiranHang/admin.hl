@@ -26,30 +26,30 @@ const initChart = (data: any = {}): ECharts => {
       left: '7%',
       right: '4%',
       bottom: '1%',
-      containLabel: true,
+      containLabel: true
     },
     xAxis: {
       type: 'value',
       axisLine: {
         show: false,
         lineStyle: {
-          color: 'white',
-        },
+          color: 'white'
+        }
       },
       nameGap: 1,
       splitLine: {
-        show: false,
+        show: false
       },
       axisTick: {
-        show: false,
+        show: false
       },
       axisLabel: {
         show: false,
-        fontSize: 16,
+        fontSize: 16
       },
       // boundaryGap: ["3%", "2%"],
       // splitNumber: 4,
-      triggerEvent: false,
+      triggerEvent: false
     },
     yAxis: [
       {
@@ -57,13 +57,13 @@ const initChart = (data: any = {}): ECharts => {
         data: data.data.map((val: ChartProp) => val.name),
         inverse: true,
         axisLine: {
-          show: false,
+          show: false
         },
         splitLine: {
-          show: false,
+          show: false
         },
         axisTick: {
-          show: false,
+          show: false
         },
         axisLabel: {
           color: '#fff',
@@ -76,54 +76,54 @@ const initChart = (data: any = {}): ECharts => {
             lg1: {
               width: 60,
               backgroundColor: {
-                image: ranking1,
+                image: ranking1
               },
               color: '#fff',
               align: 'center',
               height: 20,
-              fontSize: 13,
+              fontSize: 13
             },
             lg2: {
               width: 60,
               backgroundColor: {
-                image: ranking2,
+                image: ranking2
               },
               color: '#fff',
               align: 'center',
 
               height: 20,
-              fontSize: 13,
+              fontSize: 13
             },
             lg3: {
               width: 60,
               backgroundColor: {
-                image: ranking3,
+                image: ranking3
               },
               color: '#fff',
               align: 'center',
               height: 20,
-              fontSize: 13,
+              fontSize: 13
             },
             lg: {
               width: 60,
               backgroundColor: {
-                image: ranking4,
+                image: ranking4
               },
               color: '#fff',
               align: 'center',
 
               height: 20,
-              fontSize: 13,
+              fontSize: 13
             },
             title: {
               width: 60,
               fontSize: 13,
               align: 'center',
-              padding: [0, 10, 0, 15],
-            },
-          },
+              padding: [0, 10, 0, 15]
+            }
+          }
         },
-        triggerEvent: false,
+        triggerEvent: false
       },
       {
         show: true,
@@ -136,19 +136,19 @@ const initChart = (data: any = {}): ECharts => {
           margin: 20,
           formatter: (value: any) => {
             return value >= 10000 ? (value / 10000).toFixed(2) + 'w' : value
-          },
+          }
         },
         axisLine: {
-          show: false,
+          show: false
         },
         splitLine: {
-          show: false,
+          show: false
         },
         axisTick: {
-          show: false,
+          show: false
         },
-        triggerEvent: false,
-      },
+        triggerEvent: false
+      }
     ],
     series: [
       {
@@ -162,7 +162,7 @@ const initChart = (data: any = {}): ECharts => {
           color: function (params) {
             let num = data.colors.length
             return data.colors[params.dataIndex % num]
-          },
+          }
         },
         label: {
           show: true,
@@ -171,8 +171,8 @@ const initChart = (data: any = {}): ECharts => {
           color: '#fff',
           formatter: (params: any) => {
             return params.data.percentage
-          },
-        },
+          }
+        }
       },
       {
         name: '框',
@@ -189,17 +189,17 @@ const initChart = (data: any = {}): ECharts => {
           color: 'none',
           borderColor: '#00c1de',
           borderWidth: 1,
-          borderRadius: 15,
+          borderRadius: 15
         },
-        silent: true,
-      },
-    ],
+        silent: true
+      }
+    ]
   }
   charEch.setOption(option)
   return charEch
 }
 defineExpose({
-  initChart,
+  initChart
 })
 </script>
 <style lang="scss" scoped>

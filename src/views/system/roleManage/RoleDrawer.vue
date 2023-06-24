@@ -44,7 +44,7 @@ import { User } from '@/api/interface'
 
 const rules = reactive({
   name: [{ required: true, message: '请填写角色名称' }],
-  code: [{ required: true, message: '请填写角色编码' }],
+  code: [{ required: true, message: '请填写角色编码' }]
 })
 
 interface DrawerProps {
@@ -59,7 +59,7 @@ const drawerVisible = ref(false)
 const drawerProps = ref<DrawerProps>({
   isView: false,
   title: '',
-  row: {},
+  row: {}
 })
 const isAdd = computed(() => drawerProps.value.title === '新增')
 
@@ -86,6 +86,6 @@ const handleSubmit = () => {
 }
 
 defineExpose({
-  acceptParams,
+  acceptParams
 })
 </script>

@@ -30,7 +30,7 @@ const addWaterMarker: Directive = (str: string, parentNode: any, font: any, text
 const waterMarker = {
   mounted(el: DirectiveBinding, binding: DirectiveBinding) {
     addWaterMarker(binding.value.text, el, binding.value.font, binding.value.textColor)
-  },
+  }
 }
 
 export default waterMarker

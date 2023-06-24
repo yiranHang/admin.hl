@@ -33,7 +33,7 @@ interface DrawerProps {
 const drawerVisible = ref(false)
 const drawerProps = ref<DrawerProps>({
   title: '',
-  row: {},
+  row: {}
 })
 
 // 默认 treeFilter 参数
@@ -55,7 +55,7 @@ const handleSubmit = async () => {
   try {
     await drawerProps.value.api!({
       id: drawerProps.value.row.id,
-      permissions: treeFilterValues.map((item: string) => ({ id: item })),
+      permissions: treeFilterValues.map((item: string) => ({ id: item }))
     })
     ElMessage.success({ message: `${drawerProps.value.title}用户成功！` })
     drawerProps.value.getTableList!()
@@ -66,6 +66,6 @@ const handleSubmit = async () => {
 }
 
 defineExpose({
-  acceptParams,
+  acceptParams
 })
 </script>

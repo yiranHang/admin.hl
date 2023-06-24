@@ -47,7 +47,7 @@ export const useTheme = () => {
     if (!value) return body.removeAttribute('style')
     const styles: Record<Theme.GreyOrWeakType, string> = {
       grey: 'filter: grayscale(1)',
-      weak: 'filter: invert(80%)',
+      weak: 'filter: invert(80%)'
     }
     body.setAttribute('style', styles[type])
     const propName = type === 'grey' ? 'isWeak' : 'isGrey'
@@ -82,6 +82,6 @@ export const useTheme = () => {
     switchDark,
     changePrimary,
     changeGreyOrWeak,
-    setAsideTheme,
+    setAsideTheme
   }
 }

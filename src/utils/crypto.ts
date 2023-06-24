@@ -8,7 +8,7 @@ class CryptoTool {
   sm4Encrypt(val: string | number | Object) {
     return SM4.encrypt(JSON.stringify(val), this.key, {
       inputEncoding: 'utf-8',
-      outputEncoding: 'hex',
+      outputEncoding: 'hex'
     })
   }
 
@@ -19,7 +19,7 @@ class CryptoTool {
     if (!val?.trim()) return val
     const data = SM4.decrypt(val, this.key, {
       inputEncoding: 'hex',
-      outputEncoding: 'utf-8',
+      outputEncoding: 'utf-8'
     })
     try {
       return JSON.parse(data)

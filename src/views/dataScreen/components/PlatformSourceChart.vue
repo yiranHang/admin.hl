@@ -18,12 +18,12 @@ const initChart = (data: any = {}): ECharts => {
       top: '0%',
       left: '2%',
       right: '2%',
-      bottom: '0%',
+      bottom: '0%'
       // containLabel: true
     },
     tooltip: {
       trigger: 'item',
-      formatter: '{b} :  {c}人',
+      formatter: '{b} :  {c}人'
     },
     legend: {
       show: true,
@@ -34,7 +34,7 @@ const initChart = (data: any = {}): ECharts => {
       align: 'auto',
       itemWidth: 10,
       textStyle: {
-        color: '#fff',
+        color: '#fff'
       },
       itemGap: 20,
       formatter: function (name: string) {
@@ -46,7 +46,7 @@ const initChart = (data: any = {}): ECharts => {
         })
         return text
       },
-      data: data.data.map((val: ChartProp) => val.name),
+      data: data.data.map((val: ChartProp) => val.name)
     },
     series: [
       {
@@ -56,15 +56,15 @@ const initChart = (data: any = {}): ECharts => {
         color: ['#0E7CE2', '#FF8352', '#E271DE', '#F8456B', '#00FFFF', '#4AEAB0'],
         itemStyle: {
           borderColor: '#031845',
-          borderWidth: 10,
+          borderWidth: 10
         },
         data: data.data,
         labelLine: {
-          show: false,
+          show: false
         },
         label: {
-          show: false,
-        },
+          show: false
+        }
       },
       {
         type: 'pie',
@@ -77,31 +77,31 @@ const initChart = (data: any = {}): ECharts => {
             value: 30,
             name: '',
             itemStyle: {
-              color: 'transparent',
-            },
+              color: 'transparent'
+            }
           },
           {
             value: 5,
             name: '',
             itemStyle: {
-              color: 'transparent',
-            },
+              color: 'transparent'
+            }
           },
           {
             value: 65,
             name: 'ddd',
             itemStyle: {
-              color: '#ffffff',
-            },
-          },
+              color: '#ffffff'
+            }
+          }
         ],
         silent: true,
         labelLine: {
-          show: false,
+          show: false
         },
         label: {
-          show: false,
-        },
+          show: false
+        }
       },
       {
         type: 'pie',
@@ -115,26 +115,26 @@ const initChart = (data: any = {}): ECharts => {
             itemStyle: {
               color: 'transparent',
               borderWidth: 4,
-              borderColor: '#ffffff',
-            },
+              borderColor: '#ffffff'
+            }
           },
 
           {
             value: 75,
             name: '2',
             itemStyle: {
-              color: 'transparent',
-            },
-          },
+              color: 'transparent'
+            }
+          }
         ],
         selectedOffset: 10,
         silent: true,
         labelLine: {
-          show: false,
+          show: false
         },
         label: {
-          show: false,
-        },
+          show: false
+        }
       },
       {
         type: 'pie',
@@ -144,36 +144,36 @@ const initChart = (data: any = {}): ECharts => {
         data: [
           {
             value: 17,
-            name: '11',
+            name: '11'
           },
           {
             value: 17,
-            name: '22',
+            name: '22'
           },
           {
             value: 17,
-            name: '33',
+            name: '33'
           },
           {
             value: 17,
-            name: '44',
+            name: '44'
           },
           {
             value: 17,
-            name: '55',
+            name: '55'
           },
           {
             value: 17,
-            name: '66',
-          },
+            name: '66'
+          }
         ],
         silent: true,
         labelLine: {
-          show: false,
+          show: false
         },
         label: {
-          show: false,
-        },
+          show: false
+        }
       },
       {
         type: 'pie',
@@ -183,10 +183,10 @@ const initChart = (data: any = {}): ECharts => {
         center: ['68%', '45%'],
         z: 10,
         label: {
-          show: false,
+          show: false
         },
         labelLine: {
-          show: false,
+          show: false
         },
         data: new Array(150).fill('').map((val: string, index: number) => {
           if (index % 3 === 0) {
@@ -196,8 +196,8 @@ const initChart = (data: any = {}): ECharts => {
               itemStyle: {
                 color: '#fff',
                 borderWidth: 0,
-                borderColor: 'rgba(0,0,0,0)',
-              },
+                borderColor: 'rgba(0,0,0,0)'
+              }
             }
           } else {
             return {
@@ -206,11 +206,11 @@ const initChart = (data: any = {}): ECharts => {
               itemStyle: {
                 color: 'rgba(0,0,0,0)',
                 borderWidth: 0,
-                borderColor: 'rgba(0,0,0,0)',
-              },
+                borderColor: 'rgba(0,0,0,0)'
+              }
             }
           }
-        }),
+        })
       },
       {
         type: 'pie',
@@ -221,12 +221,12 @@ const initChart = (data: any = {}): ECharts => {
         z: 10,
         startAngle: 90,
         label: {
-          show: false,
+          show: false
         },
         color: ['red', 'blue', 'red', 'blue'],
 
         labelLine: {
-          show: false,
+          show: false
         },
 
         data: [
@@ -243,16 +243,16 @@ const initChart = (data: any = {}): ECharts => {
                 colorStops: [
                   {
                     offset: 0,
-                    color: 'rgba(51,149,191,0.5)', // 0% 处的颜色
+                    color: 'rgba(51,149,191,0.5)' // 0% 处的颜色
                   },
                   {
                     offset: 1,
-                    color: 'rgba(51,149,191,0)', // 100% 处的颜色
-                  },
+                    color: 'rgba(51,149,191,0)' // 100% 处的颜色
+                  }
                 ],
-                global: false, // 缺省为 false
-              },
-            },
+                global: false // 缺省为 false
+              }
+            }
           },
           {
             name: 'r2',
@@ -267,16 +267,16 @@ const initChart = (data: any = {}): ECharts => {
                 colorStops: [
                   {
                     offset: 0,
-                    color: 'rgba(0,0,0,0)', // 0% 处的颜色
+                    color: 'rgba(0,0,0,0)' // 0% 处的颜色
                   },
                   {
                     offset: 1,
-                    color: 'rgba(51,149,191,0.5)', // 100% 处的颜色
-                  },
+                    color: 'rgba(51,149,191,0.5)' // 100% 处的颜色
+                  }
                 ],
-                global: false, // 缺省为 false
-              },
-            },
+                global: false // 缺省为 false
+              }
+            }
           },
           {
             name: 'r3',
@@ -292,16 +292,16 @@ const initChart = (data: any = {}): ECharts => {
                 colorStops: [
                   {
                     offset: 0,
-                    color: 'rgba(51,149,191,0)', // 0% 处的颜色
+                    color: 'rgba(51,149,191,0)' // 0% 处的颜色
                   },
                   {
                     offset: 1,
-                    color: 'rgba(51,149,191,0.5)', // 100% 处的颜色
-                  },
+                    color: 'rgba(51,149,191,0.5)' // 100% 处的颜色
+                  }
                 ],
-                global: false, // 缺省为 false
-              },
-            },
+                global: false // 缺省为 false
+              }
+            }
           },
           {
             name: 'r4',
@@ -317,26 +317,26 @@ const initChart = (data: any = {}): ECharts => {
                 colorStops: [
                   {
                     offset: 0,
-                    color: 'rgba(51,149,191,0.5)', // 0% 处的颜色
+                    color: 'rgba(51,149,191,0.5)' // 0% 处的颜色
                   },
                   {
                     offset: 1,
-                    color: 'rgba(0,0,0,0)', // 100% 处的颜色
-                  },
+                    color: 'rgba(0,0,0,0)' // 100% 处的颜色
+                  }
                 ],
-                global: false, // 缺省为 false
-              },
-            },
-          },
-        ],
-      },
-    ],
+                global: false // 缺省为 false
+              }
+            }
+          }
+        ]
+      }
+    ]
   }
   charEch.setOption(option, true)
   return charEch
 }
 defineExpose({
-  initChart,
+  initChart
 })
 </script>
 <style lang="scss" scoped>

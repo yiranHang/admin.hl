@@ -58,7 +58,7 @@ const dataCallback = (data: any) => {
     list: data.data,
     total: data.count,
     pageNum: data.page,
-    pageSize: data.limit,
+    pageSize: data.limit
   }
 }
 
@@ -74,7 +74,7 @@ const columns: ColumnProps<Dict.ResDictDetailList>[] = [
     label: '标签名',
     render: (scope) => {
       return <el-tag>{scope.row.label}</el-tag>
-    },
+    }
   },
 
   { prop: 'value', label: '标签值' },
@@ -83,10 +83,10 @@ const columns: ColumnProps<Dict.ResDictDetailList>[] = [
     label: '是否禁用',
     render: (scope) => {
       return <el-tag>{scope.row.disabled ? '是' : '否'}</el-tag>
-    },
+    }
   },
   { prop: 'remark', label: '详情描述' },
-  { prop: 'operation', label: '操作', fixed: 'right', width: 150 },
+  { prop: 'operation', label: '操作', fixed: 'right', width: 150 }
 ]
 
 // 删除字典信息
@@ -110,7 +110,7 @@ interface DrawerProps {
 
 const drawerVisible = ref(false)
 const drawerProps = ref<DrawerProps>({
-  row: {},
+  row: {}
 })
 
 // 打开 dialog(新增、查看、编辑)
@@ -121,7 +121,7 @@ const openDialog = (title: string, row: Partial<Dict.ResDictDetailList> = {}) =>
     isView: title === '查看',
     row: { ...row },
     api: title === '新增' ? addDictDetail : title === '编辑' ? editDictDetail : undefined,
-    getTableList: proTable.value?.getTableList,
+    getTableList: proTable.value?.getTableList
   }
   dialogRef.value?.acceptParams(params)
 }
@@ -135,6 +135,6 @@ const acceptParams = (params: DrawerProps) => {
 }
 
 defineExpose({
-  acceptParams,
+  acceptParams
 })
 </script>
