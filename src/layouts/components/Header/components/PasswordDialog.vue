@@ -24,7 +24,7 @@ import { ElMessage } from 'element-plus'
 import { reactive, ref } from 'vue'
 const formData = ref({
   password: '',
-  repassword: '',
+  repassword: ''
 })
 const rules = reactive({
   password: [
@@ -32,10 +32,10 @@ const rules = reactive({
     { min: 8, max: 12, message: '密码长度在8到12个字符之间' },
     {
       pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,20}$/,
-      message: '密码必须包含至少一个小写字母、一个大写字母和一个数字',
-    },
+      message: '密码必须包含至少一个小写字母、一个大写字母和一个数字'
+    }
   ],
-  repassword: [{ required: true, message: '请确认密码' }],
+  repassword: [{ required: true, message: '请确认密码' }]
 })
 const dialogVisible = ref(false)
 
@@ -47,7 +47,8 @@ const submit = async () => {
   }
   const userInfo = useUserStore().getUserInfo
   await changeUserPassWord({ id: userInfo.id, password: formData.value.password })
-  ElMessage.success('修改成功')
+  ElMessage.success('修改成功，请重新登录')
+  dialogVisible.value = false
 }
 const openDialog = () => {
   dialogVisible.value = true

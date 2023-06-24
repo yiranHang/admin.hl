@@ -10,6 +10,14 @@ export const staticRouter: RouteRecordRaw[] = [
     redirect: HOME_URL
   },
   {
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/home/index.vue'),
+    meta: {
+      title: '登录'
+    }
+  },
+  {
     path: LOGIN_URL,
     name: 'login',
     component: () => import('@/views/login/index.vue'),
