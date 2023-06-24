@@ -4,6 +4,21 @@ import http from '@/api'
 /**
  * @name 用户管理模块
  */
+
+// 批量添加用户
+// TODO:api目前没有实现
+export const BatchAddUser = (params: FormData) => {
+  // return http.post( `/user/import`, params)
+  return params
+}
+
+// 导出用户数据
+// TODO:api目前没有实现
+export const exportUserInfo = (params: User.ReqUserParams) => {
+  // return http.download(PORT1 + `/user/export`, params)
+  return params
+}
+
 // 获取用户列表
 export const getUserList = (params: User.ReqUserParams) => {
   return http.get<ResPage<User.ResUserList>>(`/user`, params)
