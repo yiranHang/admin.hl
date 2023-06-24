@@ -25,7 +25,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [...staticRouter, ...errorRouter],
   strict: false,
-  scrollBehavior: () => ({ left: 0, top: 0 }),
+  scrollBehavior: () => ({ left: 0, top: 0 })
 })
 
 /**
@@ -62,7 +62,7 @@ router.beforeEach(async (to, from, next) => {
   }
 
   // 7.存储 routerName 做按钮权限筛选
-  authStore.setRouteName(to.name as string)
+  authStore.setRouteName(to.fullPath as string)
 
   // 8.正常访问页面
   next()

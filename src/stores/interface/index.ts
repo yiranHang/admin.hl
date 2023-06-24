@@ -50,7 +50,7 @@ export interface TabsState {
 export interface AuthState {
   routeName: string
   authButtonList: {
-    [key: string]: string[]
+    [key: string]: { [key: string]: string }
   }
   authMenuList: Menu.MenuOptions[]
   menuPathList: MenuApi.ResMethodPathList[]
