@@ -1,7 +1,7 @@
 <template>
   <el-dropdown trigger="click">
     <div class="avatar">
-      <img :src="userStore.getUserInfo.avatar" alt="avatar" title="头像" />
+      <img :src="avatarSrc" alt="avatar" title="头像" />
     </div>
     <template #dropdown>
       <el-dropdown-menu>
@@ -53,6 +53,7 @@ const logout = () => {
 // 打开修改密码和个人信息弹窗
 const infoRef = ref<InstanceType<typeof InfoDialog> | null>(null)
 const passwordRef = ref<InstanceType<typeof PasswordDialog> | null>(null)
+const avatarSrc = userStore.getUserInfo.avatar || '/src/assets/images/avatar.gif'
 const openDialog = (ref: string) => {
   if (ref == 'infoRef') infoRef.value?.openDialog()
   if (ref == 'passwordRef') passwordRef.value?.openDialog()
