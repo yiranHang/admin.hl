@@ -8,11 +8,14 @@ import { useAuthStore } from '@/stores/modules'
 export const useAuthButtons = () => {
   const route = useRoute()
   const authStore = useAuthStore()
-  const authButtons = authStore.authButtonListGet[route.name as string] || []
-
+  const authButtons = authStore.authButtonListGet[route.fullPath as string] || {}
   const BUTTONS = computed(() => {
     const currentPageAuthButton: { [key: string]: boolean } = {}
-    authButtons.forEach((item) => (currentPageAuthButton[item] = true))
+    for (const key in authButtons) {
+      if (Object.prototype.hasOwnProperty.call(authButtons, key)) {
+        currentPageAuthButton[key] = true
+      }
+    }
     return currentPageAuthButton
   })
 

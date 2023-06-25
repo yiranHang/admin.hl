@@ -107,7 +107,7 @@ const columns: ColumnProps<User.ResUserList>[] = [
               onClick={() => changeStatus(scope.row)}
             />
           ) : (
-            <el-tag type={scope.row.status ? 'danger' : 'success'}>{scope.row.status ? '正常' : '冻结'}</el-tag>
+            <el-tag type={scope.row.status ? 'success' : 'danger'}>{scope.row.status ? '正常' : '冻结'}</el-tag>
           )}
         </>
       )
