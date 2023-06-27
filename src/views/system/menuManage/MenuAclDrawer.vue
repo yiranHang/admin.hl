@@ -50,7 +50,7 @@ import ProTable from '@/components/ProTable/index.vue'
 import MenuAclDialog from './MenuAclDialog.vue'
 import { ProTableInstance, ColumnProps } from '@/components/ProTable/interface'
 import { CirclePlus, Delete, EditPen } from '@element-plus/icons-vue'
-import { addMenuPermission, deleteMenuPermission, editMenuPermission, getPermissionList } from '@/api/modules/Menu'
+import { addMenuPermission, deleteMenuPermission, editMenuPermission, getPermissionList } from '@/api/modules/menu'
 // 获取 ProTable 元素，调用其获取刷新数据方法（还能获取到当前查询参数，方便导出携带参数）
 const proTable = ref<ProTableInstance>()
 // dataCallback 是对于返回的表格数据做处理，如果你后台返回的数据不是 list && total && pageNum && pageSize 这些字段，那么你可以在这里进行处理成这些字段
