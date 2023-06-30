@@ -81,10 +81,10 @@ export const deleteRole = (params: { ids: string[] }) => {
 
 // 获取角色权限列表
 export const getAclList = () => {
-  return http.get<User.ResAclList[]>(`menu/permission/tree`)
+  return http.get<User.ResAclList[]>(`/menu/permission/tree`)
 }
 
-// 获取角色权限列表
+// 设置角色权限
 export const setRolePermission = (params: { id: string; permissions: { id: string }[] }) => {
-  return http.patch<User.ResRoleList>(`role/${params.id}`, { permissions: params.permissions })
+  return http.patch<User.ResRoleList>(`/role/${params.id}`, { permissions: params.permissions })
 }
