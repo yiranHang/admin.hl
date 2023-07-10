@@ -61,7 +61,7 @@ export const getRoleList = (params?: User.ResRoleParams) => {
 
 // 获取角色的select列表
 export const getRoleSelect = () => {
-  return http.get<Array<User.ResRoleSelect>>(`/role/list/valid`)
+  return http.get<ResPage<User.ResRoleList>>(`/role`)
 }
 
 // 新增角色

@@ -24,7 +24,7 @@ export const useUserStore = defineStore({
       this.userInfo = CryptoTool.sm4Encrypt(userInfo)
     },
     async getRoleSelect() {
-      const roles = await getRoleSelect()
+      const roles = (await getRoleSelect())?.data || []
       return roles
     },
     // Login Out

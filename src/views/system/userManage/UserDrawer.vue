@@ -36,8 +36,14 @@
         ></el-input>
       </el-form-item>
       <el-form-item label="角色" prop="roles">
-        <el-select v-model="drawerProps.row!.roles" multiple :placeholder="!isAdd ? '' : '请选择用户角色'" clearable>
-          <el-option v-for="item in roles" :key="item.value" :label="item.label" :value="item.value" />
+        <el-select
+          v-model="drawerProps.row!.roles"
+          multiple
+          :placeholder="!isAdd ? '' : '请选择用户角色'"
+          value-key="id"
+          clearable
+        >
+          <el-option v-for="item in roles" :key="item.id" :label="item.name" :value="item" />
         </el-select>
       </el-form-item>
 
@@ -85,7 +91,7 @@ const rules = reactive({
 })
 
 const userStore = useUserStore()
-let roles!: Array<User.ResRoleSelect>
+let roles!: Array<User.ResRoleList>
 onMounted(async () => {
   roles = await userStore.getRoleSelect()
 })
@@ -108,6 +114,7 @@ const isAdd = computed(() => drawerProps.value.title === '新增')
 // 接收父组件传过来的参数
 const acceptParams = (params: DrawerProps) => {
   drawerProps.value = params
+  if (!drawerProps.value.row!.avatar) drawerProps.value.row!.avatar = ''
   drawerVisible.value = true
 }
 
