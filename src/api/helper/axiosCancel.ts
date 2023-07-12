@@ -39,7 +39,7 @@ export class AxiosCanceler {
    * @description: 清空所有pending
    */
   removeAllPending() {
-    pendingMap.forEach((controller) => {
+    pendingMap.forEach(controller => {
       controller && controller.abort()
     })
     pendingMap.clear()

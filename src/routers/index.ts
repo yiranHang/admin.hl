@@ -73,7 +73,7 @@ router.beforeEach(async (to, from, next) => {
  * */
 export const resetRouter = () => {
   const authStore = useAuthStore()
-  authStore.flatMenuListGet.forEach((route) => {
+  authStore.flatMenuListGet.forEach(route => {
     const { name } = route
     if (name && router.hasRoute(name)) router.removeRoute(name)
   })
@@ -82,7 +82,7 @@ export const resetRouter = () => {
 /**
  * @description 路由跳转错误
  * */
-router.onError((error) => {
+router.onError(error => {
   NProgress.done()
   console.warn('路由错误', error.message)
 })

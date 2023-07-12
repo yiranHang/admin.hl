@@ -98,7 +98,7 @@ watch(
 )
 
 const filterText = ref('')
-watch(filterText, (val) => {
+watch(filterText, val => {
   treeRef.value!.filter(val)
 })
 
@@ -113,7 +113,7 @@ const filterNode = (value: string, data: { [key: string]: any }, node: any) => {
     parentNode = parentNode.parent
     level++
   }
-  return labels.some((label) => label.indexOf(value) !== -1)
+  return labels.some(label => label.indexOf(value) !== -1)
 }
 
 interface FilterEmits {

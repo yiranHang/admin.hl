@@ -11,7 +11,7 @@ export const useSelection = (rowKey = 'id') => {
   // 当前选中的所有 ids 数组
   const selectedListIds = computed((): string[] => {
     const ids: string[] = []
-    selectedList.value.forEach((item) => ids.push(item[rowKey]))
+    selectedList.value.forEach(item => ids.push(item[rowKey]))
     return ids
   })
 

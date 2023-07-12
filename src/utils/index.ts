@@ -139,7 +139,7 @@ export function getBrowserLang() {
  */
 export function getFlatMenuList(menuList: Menu.MenuOptions[]): Menu.MenuOptions[] {
   const newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList))
-  return newMenuList.flatMap((item) => [item, ...(item.children ? getFlatMenuList(item.children) : [])])
+  return newMenuList.flatMap(item => [item, ...(item.children ? getFlatMenuList(item.children) : [])])
 }
 
 /**
@@ -149,7 +149,7 @@ export function getFlatMenuList(menuList: Menu.MenuOptions[]): Menu.MenuOptions[
  * */
 export function getShowMenuList(menuList: Menu.MenuOptions[]) {
   const newMenuList: Menu.MenuOptions[] = JSON.parse(JSON.stringify(menuList))
-  return newMenuList.filter((item) => {
+  return newMenuList.filter(item => {
     item.children?.length && (item.children = getShowMenuList(item.children))
     return !item.meta?.isHide
   })
@@ -212,7 +212,7 @@ export function findMenuByPath(menuList: Menu.MenuOptions[], path: string): Menu
  * @returns {Array}
  * */
 export function getKeepAliveRouterName(menuList: Menu.MenuOptions[], keepAliveNameArr: string[] = []) {
-  menuList.forEach((item) => {
+  menuList.forEach(item => {
     item.meta.isKeepAlive && item.name && keepAliveNameArr.push(item.name)
     item.children?.length && getKeepAliveRouterName(item.children, keepAliveNameArr)
   })
@@ -251,7 +251,7 @@ export function formatValue(callValue: any) {
  * */
 export function handleRowAccordingToProp(row: { [key: string]: any }, prop: string) {
   if (!prop.includes('.')) return row[prop] ?? '--'
-  prop.split('.').forEach((item) => (row = row[item] ?? '--'))
+  prop.split('.').forEach(item => (row = row[item] ?? '--'))
   return row
 }
 

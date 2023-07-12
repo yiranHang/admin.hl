@@ -181,7 +181,7 @@ const acceptParams = (params: DialogProps) => {
 // 提交数据（新增/编辑）
 const ruleFormRef = ref<FormInstance>()
 const handleSubmit = () => {
-  ruleFormRef.value!.validate(async (valid) => {
+  ruleFormRef.value!.validate(async valid => {
     if (!valid) return
     if (dialogProps.value.row.isLeaf && !dialogProps.value.row.component) {
       ElMessage.warning({ message: '请填写组件地址' })

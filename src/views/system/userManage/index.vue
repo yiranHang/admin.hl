@@ -74,7 +74,7 @@ const columns: ColumnProps<User.ResUserList>[] = [
     prop: 'name',
     label: '用户姓名',
     search: { el: 'input' },
-    render: (scope) => {
+    render: scope => {
       return <el-tag>{scope.row.name}</el-tag>
     }
   },
@@ -83,8 +83,8 @@ const columns: ColumnProps<User.ResUserList>[] = [
   {
     prop: 'role',
     label: '角色',
-    render: (scope) => {
-      const roleName = scope.row.roles?.map((item) => item.name).join('、')
+    render: scope => {
+      const roleName = scope.row.roles?.map(item => item.name).join('、')
       return <el-tag type="success">{roleName}</el-tag>
     }
   },
@@ -95,7 +95,7 @@ const columns: ColumnProps<User.ResUserList>[] = [
       { label: '正常', value: 1 },
       { label: '冻结', value: 0 }
     ],
-    render: (scope) => {
+    render: scope => {
       return (
         <>
           {BUTTONS.value.patch ? (
@@ -117,7 +117,7 @@ const columns: ColumnProps<User.ResUserList>[] = [
     prop: 'createTime',
     label: '创建时间',
     width: 180,
-    render: (scope) => {
+    render: scope => {
       return dayjs(scope.row.createTime).format('YYYY-MM-DD HH:mm:ss')
     }
   },

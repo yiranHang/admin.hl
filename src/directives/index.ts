@@ -19,7 +19,7 @@ const directivesList: { [key: string]: Directive } = {
 
 const directives = {
   install: function (app: App<Element>) {
-    Object.keys(directivesList).forEach((key) => {
+    Object.keys(directivesList).forEach(key => {
       app.directive(key, directivesList[key])
     })
   }

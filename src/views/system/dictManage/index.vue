@@ -70,7 +70,7 @@ const columns: ColumnProps<Dict.ResDictList>[] = [
     prop: 'name',
     label: '字典名称',
     search: { el: 'input' },
-    render: (scope) => {
+    render: scope => {
       return <el-tag>{scope.row.name}</el-tag>
     }
   },
@@ -79,7 +79,7 @@ const columns: ColumnProps<Dict.ResDictList>[] = [
   {
     prop: 'forbidden',
     label: '是否禁用',
-    render: (scope) => {
+    render: scope => {
       return <el-tag>{scope.row.forbidden ? '是' : '否'}</el-tag>
     }
   },
@@ -88,7 +88,7 @@ const columns: ColumnProps<Dict.ResDictList>[] = [
     prop: 'createTime',
     label: '创建时间',
     width: 180,
-    render: (scope) => {
+    render: scope => {
       return dayjs(scope.row.createTime).format('YYYY-MM-DD HH:mm:ss')
     }
   },

@@ -11,7 +11,7 @@ export const useTabsStore = defineStore({
   actions: {
     // Add Tabs
     async addTabs(tabItem: TabsMenuProps) {
-      if (this.tabsMenuList.every((item) => item.path !== tabItem.path)) {
+      if (this.tabsMenuList.every(item => item.path !== tabItem.path)) {
         this.tabsMenuList.push(tabItem)
       }
     },
@@ -26,11 +26,11 @@ export const useTabsStore = defineStore({
           router.push(nextTab.path)
         })
       }
-      this.tabsMenuList = tabsMenuList.filter((item) => item.path !== tabPath)
+      this.tabsMenuList = tabsMenuList.filter(item => item.path !== tabPath)
     },
     // Close MultipleTab
     async closeMultipleTab(tabsMenuValue?: string) {
-      this.tabsMenuList = this.tabsMenuList.filter((item) => {
+      this.tabsMenuList = this.tabsMenuList.filter(item => {
         return item.path === tabsMenuValue || !item.close
       })
     },
@@ -41,7 +41,7 @@ export const useTabsStore = defineStore({
     // Set Tabs Title
     async setTabsTitle(title: string) {
       const nowFullPath = location.hash.substring(1)
-      this.tabsMenuList.forEach((item) => {
+      this.tabsMenuList.forEach(item => {
         if (item.path == nowFullPath) item.title = title
       })
     }

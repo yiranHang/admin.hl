@@ -41,7 +41,7 @@ import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/modules'
 const router = useRouter()
 const authStore = useAuthStore()
-const menuList = computed(() => authStore.flatMenuListGet.filter((item) => !item.meta.isHide))
+const menuList = computed(() => authStore.flatMenuListGet.filter(item => !item.meta.isHide))
 
 const searchMenuList = (queryString: string, cb: Function) => {
   const results = queryString ? menuList.value.filter(filterNodeMethod(queryString)) : menuList.value

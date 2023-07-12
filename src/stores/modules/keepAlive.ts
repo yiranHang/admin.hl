@@ -13,7 +13,7 @@ export const useKeepAliveStore = defineStore({
     },
     // Remove KeepAliveName
     async removeKeepAliveName(name: string) {
-      this.keepAliveName = this.keepAliveName.filter((item) => item !== name)
+      this.keepAliveName = this.keepAliveName.filter(item => item !== name)
     },
     // Set KeepAliveName
     async setKeepAliveName(keepAliveName: string[] = []) {

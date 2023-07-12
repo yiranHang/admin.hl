@@ -72,7 +72,7 @@ const columns: ColumnProps<Dict.ResDictDetailList>[] = [
   {
     prop: 'label',
     label: '标签名',
-    render: (scope) => {
+    render: scope => {
       return <el-tag>{scope.row.label}</el-tag>
     }
   },
@@ -81,7 +81,7 @@ const columns: ColumnProps<Dict.ResDictDetailList>[] = [
   {
     prop: 'disabled',
     label: '是否禁用',
-    render: (scope) => {
+    render: scope => {
       return <el-tag>{scope.row.disabled ? '是' : '否'}</el-tag>
     }
   },

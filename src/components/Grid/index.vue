@@ -142,7 +142,7 @@ watch(
 // 监听 collapsed
 watch(
   () => props.collapsed,
-  (value) => {
+  value => {
     if (value) return findIndex()
     hiddenIndex.value = -1
   }

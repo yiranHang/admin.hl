@@ -45,7 +45,7 @@ const changeTreeFilter = (val: string[]) => {
 // 接收父组件传过来的参数
 const acceptParams = (params: DrawerProps) => {
   drawerProps.value = params
-  const defaultTreeData = params.row.permissions?.map((item) => item.id) || []
+  const defaultTreeData = params.row.permissions?.map(item => item.id) || []
   treeFilterValues = defaultTreeData
   drawerVisible.value = true
 }

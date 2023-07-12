@@ -67,7 +67,7 @@ const loginForm = reactive<Login.ReqLoginForm>({
 // login
 const login = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.validate(async (valid) => {
+  formEl.validate(async valid => {
     if (!valid) return
     loading.value = true
     try {

@@ -134,7 +134,7 @@ const editImg = () => {
  * @description 文件上传之前判断
  * @param rawFile 选择的文件
  * */
-const beforeUpload: UploadProps['beforeUpload'] = (rawFile) => {
+const beforeUpload: UploadProps['beforeUpload'] = rawFile => {
   const imgSize = rawFile.size / 1024 / 1024 < props.fileSize
   const imgType = props.fileType.includes(rawFile.type as File.ImageMimeType)
   if (!imgType)

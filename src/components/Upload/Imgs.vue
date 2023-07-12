@@ -98,7 +98,7 @@ watch(
  * @description 文件上传之前判断
  * @param rawFile 选择的文件
  * */
-const beforeUpload: UploadProps['beforeUpload'] = (rawFile) => {
+const beforeUpload: UploadProps['beforeUpload'] = rawFile => {
   const imgSize = rawFile.size / 1024 / 1024 < props.fileSize
   const imgType = props.fileType.includes(rawFile.type as File.ImageMimeType)
   if (!imgType)
@@ -161,7 +161,7 @@ const uploadSuccess = (response: { path: string } | undefined, uploadFile: Uploa
  * @param file 删除的文件
  * */
 const handleRemove = (file: UploadFile) => {
-  _fileList.value = _fileList.value.filter((item) => item.url !== file.url || item.name !== file.name)
+  _fileList.value = _fileList.value.filter(item => item.url !== file.url || item.name !== file.name)
   emit('update:fileList', _fileList.value)
 }
 
@@ -193,7 +193,7 @@ const handleExceed = () => {
  * */
 const viewImageUrl = ref('')
 const imgViewVisible = ref(false)
-const handlePictureCardPreview: UploadProps['onPreview'] = (file) => {
+const handlePictureCardPreview: UploadProps['onPreview'] = file => {
   viewImageUrl.value = file.url!
   imgViewVisible.value = true
 }

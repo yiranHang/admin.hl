@@ -161,7 +161,7 @@ const resize = () => {
     dataScreenRef.value.style.transform = `scale(${getScale()}) translate(-50%, -50%)`
   }
   // 使用了 scale 的echarts其实不需要需要重新计算缩放比例
-  Object.values(dataScreen).forEach((chart) => {
+  Object.values(dataScreen).forEach(chart => {
     chart && chart.resize()
   })
 }
@@ -368,7 +368,7 @@ const initCharts = (): void => {
   dataScreen.chart2 = AgeRatioRef.value?.initChart(ageData) as ECharts
   dataScreen.chart3 = AnnualUseRef.value?.initChart({
     data: annualData,
-    unit: annualData.map((val) => val.label),
+    unit: annualData.map(val => val.label),
     columns: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
     colors: ['#FFA600', '#007AFE', '#FF4B7A']
   }) as ECharts
@@ -382,7 +382,7 @@ const initCharts = (): void => {
   }) as ECharts
   dataScreen.chart6 = OverNext30Ref.value?.initChart({
     unit: ['访问量'],
-    data: new Array(30).fill('').map((val) => {
+    data: new Array(30).fill('').map(val => {
       val = randomNum(1, 20000)
       return val
     })
@@ -406,7 +406,7 @@ timer = setInterval(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', resize)
   clearInterval(timer!)
-  Object.values(dataScreen).forEach((val) => val?.dispose())
+  Object.values(dataScreen).forEach(val => val?.dispose())
 })
 </script>
 <style lang="scss" scoped>

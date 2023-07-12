@@ -12,7 +12,7 @@ const auth: Directive = {
     const currentPageRoles = authStore.authButtonListGet[authStore.routeName] ?? {}
     const buttonAcls = Object.keys(currentPageRoles)
     if (value instanceof Array && value.length) {
-      const hasPermission = value.every((item) => buttonAcls.includes(item))
+      const hasPermission = value.every(item => buttonAcls.includes(item))
       if (!hasPermission) el.remove()
     } else {
       if (!buttonAcls.includes(value)) el.remove()

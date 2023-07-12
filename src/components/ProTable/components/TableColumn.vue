@@ -41,7 +41,7 @@ const RenderTableColumn = (item: ColumnProps) => {
         >
           {{
             default: (scope: RenderScope<any>) => {
-              if (item._children) return item._children.map((child) => RenderTableColumn(child))
+              if (item._children) return item._children.map(child => RenderTableColumn(child))
               if (item.render) return item.render(scope)
               if (slots[handleProp(item.prop!)]) return slots[handleProp(item.prop!)]!(scope)
               if (item.tag) return <el-tag type={getTagType(item, scope)}>{renderCellData(item, scope)}</el-tag>

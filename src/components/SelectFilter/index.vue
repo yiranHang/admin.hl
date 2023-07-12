@@ -61,7 +61,7 @@ const selected = ref<{ [key: string]: any }>({})
 watch(
   () => props.defaultValues,
   () => {
-    props.data.forEach((item) => {
+    props.data.forEach(item => {
       if (item.multiple) selected.value[item.key] = props.defaultValues[item.key] ?? ['']
       else selected.value[item.key] = props.defaultValues[item.key] ?? ''
     })

@@ -38,7 +38,7 @@ const app = createApp(App)
 app.config.errorHandler = errorHandler
 
 // register the element Icons component
-Object.keys(Icons).forEach((key) => {
+Object.keys(Icons).forEach(key => {
   app.component(key, Icons[key as keyof typeof Icons])
 })
 

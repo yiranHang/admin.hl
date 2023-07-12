@@ -70,7 +70,7 @@ const columns: ColumnProps<User.ResRoleList>[] = [
     prop: 'name',
     label: '角色名称',
     search: { el: 'input' },
-    render: (scope) => {
+    render: scope => {
       return <el-tag>{scope.row.name}</el-tag>
     }
   },
@@ -81,7 +81,7 @@ const columns: ColumnProps<User.ResRoleList>[] = [
     prop: 'createTime',
     label: '创建时间',
     width: 180,
-    render: (scope) => {
+    render: scope => {
       return dayjs(scope.row.createTime).format('YYYY-MM-DD HH:mm:ss')
     }
   },

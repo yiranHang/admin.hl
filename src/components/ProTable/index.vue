@@ -181,7 +181,7 @@ const setEnumMap = async (col: ColumnProps) => {
 
 // 扁平化 columns
 const flatColumnsFunc = (columns: ColumnProps[], flatArr: ColumnProps[] = []) => {
-  columns.forEach(async (col) => {
+  columns.forEach(async col => {
     if (col._children?.length) flatArr.push(...flatColumnsFunc(col._children))
     flatArr.push(col)
 
@@ -192,7 +192,7 @@ const flatColumnsFunc = (columns: ColumnProps[], flatArr: ColumnProps[] = []) =>
     // 设置 enumMap
     setEnumMap(col)
   })
-  return flatArr.filter((item) => !item._children?.length)
+  return flatArr.filter(item => !item._children?.length)
 }
 
 // flatColumns
@@ -200,7 +200,7 @@ const flatColumns = ref<ColumnProps[]>()
 flatColumns.value = flatColumnsFunc(tableColumns.value)
 
 // 过滤需要搜索的配置项
-const searchColumns = flatColumns.value.filter((item) => item.search?.el || item.search?.render)
+const searchColumns = flatColumns.value.filter(item => item.search?.el || item.search?.render)
 
 // 设置搜索表单排序默认值 && 设置搜索表单项的默认值
 searchColumns.forEach((column, index) => {
@@ -217,7 +217,7 @@ searchColumns.sort((a, b) => a.search!.order! - b.search!.order!)
 // 列设置 ==> 过滤掉不需要设置的列
 const colRef = ref()
 const colSetting = tableColumns.value!.filter(
-  (item) => !['selection', 'index', 'expand'].includes(item.type!) && item.prop !== 'operation' && item.isShow
+  item => !['selection', 'index', 'expand'].includes(item.type!) && item.prop !== 'operation' && item.isShow
 )
 const openColSetting = () => colRef.value.openColSetting()
 
@@ -228,9 +228,9 @@ const printData = computed(() => {
   const printDataList = JSON.parse(JSON.stringify(selectedList.value.length ? selectedList.value : handleData))
   // 找出需要转换数据的列（有 enum || 多级 prop && 需要根据 enum 格式化）
   const needTransformCol = flatColumns.value!.filter(
-    (item) => (item.enum || (item.prop && item.prop.split('.').length > 1)) && item.isFilterEnum
+    item => (item.enum || (item.prop && item.prop.split('.').length > 1)) && item.isFilterEnum
   )
-  needTransformCol.forEach((colItem) => {
+  needTransformCol.forEach(colItem => {
     printDataList.forEach((tableItem: { [key: string]: any }) => {
       tableItem[handleProp(colItem.prop!)] =
         colItem.prop!.split('.').length > 1 && !colItem.enum
@@ -259,7 +259,7 @@ const print = () => {
     header: props.title && header,
     properties: flatColumns
       .value!.filter(
-        (item) => !['selection', 'index', 'expand'].includes(item.type!) && item.isShow && item.prop !== 'operation'
+        item => !['selection', 'index', 'expand'].includes(item.type!) && item.isShow && item.prop !== 'operation'
       )
       .map((item: ColumnProps) => ({ field: handleProp(item.prop!), displayName: item.label })),
     type: 'json',
