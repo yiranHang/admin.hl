@@ -12,8 +12,8 @@ export const useDownload = async (
   api: (param: any) => Promise<any>,
   tempName: string,
   params: any = {},
-  isNotify = true,
-  fileType = '.xlsx'
+  isNotify: boolean = true,
+  fileType: string = '.xlsx'
 ) => {
   if (isNotify) {
     ElNotification({
