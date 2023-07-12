@@ -4,7 +4,7 @@
       ref="proTable"
       title="菜单列表"
       row-key="path"
-      :indent="30"
+      :indent="20"
       :columns="columns"
       :request-api="getMenuList"
       :data-callback="dataCallback"

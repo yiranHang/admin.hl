@@ -2,10 +2,10 @@
 <template>
   <el-container class="layout">
     <el-header>
-      <div class="header-lf">
+      <div class="header-lf mask-image">
         <div class="logo flx-center">
           <img class="logo-img" src="@/assets/images/logo.svg" alt="logo" />
-          <span class="logo-text">后台管理系统</span>
+          <span class="logo-text">{{ title }}</span>
         </div>
         <ToolBarLeft />
       </div>
@@ -39,11 +39,14 @@
 <script setup lang="ts" name="layoutClassic">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useAuthStore, useGlobalStore } from '@/stores/modules'
+import { useAuthStore } from '@/stores/modules/auth'
+import { useGlobalStore } from '@/stores/modules/global'
 import Main from '@/layouts/components/Main/index.vue'
 import SubMenu from '@/layouts/components/Menu/SubMenu.vue'
 import ToolBarLeft from '@/layouts/components/Header/ToolBarLeft.vue'
 import ToolBarRight from '@/layouts/components/Header/ToolBarRight.vue'
+
+const title = import.meta.env.VITE_GLOB_APP_TITLE
 
 const route = useRoute()
 const authStore = useAuthStore()

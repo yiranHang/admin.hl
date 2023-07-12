@@ -7,7 +7,7 @@
 <script setup lang="ts" name="layout">
 import { computed, type Component } from 'vue'
 import { LayoutType } from '@/stores/interface'
-import { useGlobalStore } from '@/stores/modules'
+import { useGlobalStore } from '@/stores/modules/global'
 import ThemeDrawer from './components/ThemeDrawer/index.vue'
 import LayoutVertical from './LayoutVertical/index.vue'
 import LayoutClassic from './LayoutClassic/index.vue'
@@ -27,6 +27,6 @@ const layout = computed(() => globalStore.layout)
 
 <style scoped lang="scss">
 .layout {
-  min-width: 730px;
+  min-width: 600px;
 }
 </style>
