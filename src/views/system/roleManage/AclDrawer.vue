@@ -57,7 +57,7 @@ const handleSubmit = async () => {
       id: drawerProps.value.row.id,
       permissions: treeFilterValues.map((item: string) => ({ id: item }))
     })
-    ElMessage.success({ message: `${drawerProps.value.title}用户成功！` })
+    ElMessage.success({ message: `${drawerProps.value.title}成功！` })
     drawerProps.value.getTableList!()
     drawerVisible.value = false
   } catch (error) {
