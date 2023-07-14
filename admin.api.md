@@ -24,7 +24,7 @@ generator: '@tarslib/widdershins v4.0.17'
 
 Base URLs:
 
-- <a href="https://124.221.73.199/api">正式环境: https://124.221.73.199/api</a>
+- <a href="https://hanglin.site/api">正式环境: https://hanglin.site/api</a>
 
 # 登录
 
