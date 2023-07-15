@@ -7,6 +7,9 @@
 ```text
 # GitHub
 git clone https://github.com/yiranHang/admin.hl.git
+
+# api文档地址
+https://apifox.com/apidoc/shared-a56e660b-ae4a-4f4b-855c-68e535a84455
 ```
 
 - **Install：**
