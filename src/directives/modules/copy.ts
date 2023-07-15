@@ -22,17 +22,37 @@ const copy: Directive = {
   }
 }
 
+// function handleClick(this: any) {
+//   const input = document.createElement('input')
+//   input.value = this.copyData.toLocaleString()
+//   document.body.appendChild(input)
+//   input.select()
+//   document.execCommand('Copy')
+//   document.body.removeChild(input)
+//   ElMessage({
+//     type: 'success',
+//     message: '复制成功'
+//   })
+// }
+
 function handleClick(this: any) {
-  const input = document.createElement('input')
-  input.value = this.copyData.toLocaleString()
-  document.body.appendChild(input)
-  input.select()
-  document.execCommand('Copy')
-  document.body.removeChild(input)
-  ElMessage({
-    type: 'success',
-    message: '复制成功'
-  })
+  const textToCopy = this.copyData.toLocaleString()
+
+  navigator.clipboard
+    .writeText(textToCopy)
+    .then(() => {
+      ElMessage({
+        type: 'success',
+        message: '复制成功'
+      })
+    })
+    .catch(error => {
+      ElMessage({
+        type: 'error',
+        message: '复制失败'
+      })
+      console.error('复制失败:', error)
+    })
 }
 
 export default copy
