@@ -95,7 +95,7 @@ const deleteAccount = async (params: Dict.ResDictDetailList) => {
   proTable.value?.getTableList()
 }
 
-// 批量删除角色信息
+// 批量删除字典信息
 const batchDelete = async (id: string[]) => {
   await useHandleData(deleteDictDetail, { ids: id }, '删除所选角色信息')
   proTable.value?.clearSelection()

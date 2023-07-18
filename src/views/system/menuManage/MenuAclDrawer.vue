@@ -78,9 +78,9 @@ const columns: ColumnProps<User.Permission>[] = [
   { prop: 'operation', label: '操作', fixed: 'right', width: 150 }
 ]
 
-// 批量删除角色信息
+// 批量删除菜单权限信息
 const batchDelete = async (id: string[]) => {
-  await useHandleData(deleteMenuPermission, { ids: id }, '删除所选角色信息')
+  await useHandleData(deleteMenuPermission, { ids: id }, '删除所选菜单权限信息')
   proTable.value?.clearSelection()
   proTable.value?.getTableList()
 }

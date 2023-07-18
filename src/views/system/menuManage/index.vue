@@ -83,7 +83,7 @@ const columns: ColumnProps[] = [
   { prop: 'operation', label: '操作', fixed: 'right' }
 ]
 
-// 删除角色信息
+// 删除菜单信息
 const deleteMenuInfo = async (params: MenuApi.ResMenuList) => {
   let message = `删除【${params.title}】菜单`
   if (!params.isLeaf) {
