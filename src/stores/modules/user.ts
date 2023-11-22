@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { UserState } from '@/stores/interface'
 import CryptoTool from '@/utils/crypto'
 import { localClear } from '@/utils'
-import piniaPersistConfig from '@/config/piniaPersist'
+import piniaPersistConfig from '@/stores/helper/persist'
 import { getRoleSelect } from '@/api/modules/user'
 import { User } from '@/api/interface'
 export const useUserStore = defineStore({

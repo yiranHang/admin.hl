@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { GlobalState } from '@/stores/interface'
 import { DEFAULT_PRIMARY } from '@/config'
-import piniaPersistConfig from '@/config/piniaPersist'
+import piniaPersistConfig from '@/stores/helper/persist'
 
 export const useGlobalStore = defineStore({
   id: 'admin-global',
@@ -29,6 +29,8 @@ export const useGlobalStore = defineStore({
     headerInverted: false,
     // 折叠菜单
     isCollapse: false,
+    // 菜单手风琴
+    accordion: true,
     // 面包屑导航
     breadcrumb: true,
     // 面包屑导航图标
@@ -38,7 +40,7 @@ export const useGlobalStore = defineStore({
     // 标签页图标
     tabsIcon: true,
     // 页脚
-    footer: false
+    footer: true
   }),
   getters: {},
   actions: {

@@ -19,6 +19,7 @@ export interface GlobalState {
   asideInverted: boolean
   headerInverted: boolean
   isCollapse: boolean
+  accordion: boolean
   breadcrumb: boolean
   breadcrumbIcon: boolean
   tabs: boolean
@@ -40,6 +41,7 @@ export interface TabsMenuProps {
   path: string
   name: string
   close: boolean
+  isKeepAlive: boolean
 }
 
 /* TabsState */

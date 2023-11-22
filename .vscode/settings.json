@@ -47,6 +47,7 @@
     "commitlint",
     "contentleft",
     "contentright",
+    "CSDN",
     "daterange",
     "datetimerange",
     "screenfull",
@@ -68,6 +69,7 @@
     "pinia",
     "pjpeg",
     "Prefixs",
+    "repassword",
     "sortablejs",
     "sousuo",
     "spreadsheetml",
@@ -77,15 +79,19 @@
     "stylelintrc",
     "suoxiao",
     "truetype",
+    "tuichu",
     "unplugin",
+    "unref",
     "VITE",
     "vuedraggable",
     "vueuse",
     "Vuex",
     "wangeditor",
+    "xiala",
     "xiaoxi",
+    "Yahei",
+    "yiwen",
     "zhongyingwen",
-    "zhuti",
-    "repassword"
+    "zhuti"
   ]
 }

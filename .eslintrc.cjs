@@ -40,6 +40,7 @@ module.exports = {
 
     // typeScript (https://typescript-eslint.io/rules)
     '@typescript-eslint/no-unused-vars': 'error', // 禁止定义未使用的变量
+    '@typescript-eslint/no-empty-function': 'error', // 禁止空函数
     '@typescript-eslint/prefer-ts-expect-error': 'error', // 禁止使用 @ts-ignore
     '@typescript-eslint/ban-ts-comment': 'error', // 禁止 @ts-<directive> 使用注释或要求在指令后进行描述
     '@typescript-eslint/no-inferrable-types': 'off', // 可以轻松推断的显式类型可能会增加不必要的冗长
@@ -47,7 +48,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off', // 禁止使用 any 类型
     '@typescript-eslint/ban-types': 'off', // 禁止使用特定类型
     '@typescript-eslint/no-var-requires': 'off', // 允许使用 require() 函数导入模块
-    '@typescript-eslint/no-empty-function': 'off', // 禁止空函数
     '@typescript-eslint/no-non-null-assertion': 'off', // 不允许使用后缀运算符的非空断言(!)
 
     // vue (https://eslint.vuejs.org/rules)
@@ -60,6 +60,7 @@ module.exports = {
     'vue/attributes-order': 'off', // vue api使用顺序，强制执行属性顺序
     'vue/no-v-html': 'off', // 禁止使用 v-html
     'vue/require-default-prop': 'off', // 此规则要求为每个 prop 为必填时，必须提供默认值
-    'vue/multi-word-component-names': 'off' // 要求组件名称始终为 “-” 链接的单词
+    'vue/multi-word-component-names': 'off', // 要求组件名称始终为 “-” 链接的单词
+    'vue/no-setup-props-destructure': 'off' // 禁止解构 props 传递给 setup
   }
 }

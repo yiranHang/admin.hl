@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from 'axios'
-import { showFullScreenLoading, tryHideFullScreenLoading } from '@/config/serviceLoading'
+import { showFullScreenLoading, tryHideFullScreenLoading } from '@/components/Loading/fullScreen'
 import { localClear } from '@/utils'
 import { LOGIN_URL } from '@/config'
 import { ElMessage } from 'element-plus'
@@ -9,7 +9,7 @@ import { useUserStore } from '@/stores/modules'
 import router from '@/routers'
 
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
-  noLoading?: boolean
+  loading?: boolean
 }
 
 const config = {
@@ -34,8 +34,9 @@ class RequestHttp {
      */
     this.service.interceptors.request.use(
       (config: CustomAxiosRequestConfig) => {
-        // 当前请求不需要显示 loading，在 api 服务中通过指定的第三个参数: { noLoading: true } 来控制
-        config.noLoading || showFullScreenLoading()
+        // 当前请求不需要显示 loading，在 api 服务中通过指定的第三个参数: { loading: false } 来控制
+        config.loading ?? (config.loading = true)
+        config.loading && showFullScreenLoading()
         if (config.headers && typeof config.headers.set === 'function') {
           const userStore = useUserStore()
           const token = userStore.token
