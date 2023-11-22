@@ -150,7 +150,7 @@ const getScale = (width = 1920, height = 1080) => {
 }
 
 // 获取当前时间
-let timer: NodeJS.Timer | null = null
+let timer: string | number | NodeJS.Timeout | undefined
 let time = ref<string>(dayjs().format('YYYY年MM月DD HH:mm:ss'))
 timer = setInterval(() => {
   time.value = dayjs().format('YYYY年MM月DD HH:mm:ss')
@@ -158,7 +158,7 @@ timer = setInterval(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', resize)
-  clearInterval(timer!)
+  clearInterval(timer)
 })
 </script>
 <style lang="scss" scoped>
