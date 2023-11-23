@@ -5,6 +5,7 @@
   },
   "stylelint.enable": true,
   "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass", "html"],
+  "stylelint.customSyntax": "postcss-html",
   "files.eol": "\n",
   "typescript.tsdk": "node_modules/typescript/lib",
   "[vue]": {
