@@ -63,7 +63,7 @@
 								</div>
 							</div>
 						</vue3-seamless-scroll> -->
-            <ChinaMapChart />
+            <!-- <ChinaMapChart /> -->
           </div>
           <div class="dataScreen-cb">
             <div class="dataScreen-main-title">
@@ -115,7 +115,7 @@ import { HOME_URL } from '@/config'
 import { useRouter } from 'vue-router'
 import AgeRatioChart from './components/AgeRatioChart.vue'
 import AnnualUseChart from './components/AnnualUseChart.vue'
-import ChinaMapChart from './components/ChinaMapChart.vue'
+// import ChinaMapChart from './components/ChinaMapChart.vue'
 import HotPlateChart from './components/HotPlateChart.vue'
 import MaleFemaleRatioChart from './components/MaleFemaleRatioChart.vue'
 import OverNext30Chart from './components/OverNext30Chart.vue'
