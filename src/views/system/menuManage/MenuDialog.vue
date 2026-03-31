@@ -38,7 +38,7 @@
         </el-col>
         <el-col :span="24">
           <el-form-item label="路由图标" prop="icon">
-            <SelectIcon v-model:icon-value="dialogProps.row!.icon" />
+            <SelectIcon v-model:icon-value="dialogProps.row!.icon!" />
           </el-form-item>
         </el-col>
         <el-col :span="24">

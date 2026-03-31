@@ -11,7 +11,7 @@
     >
       <el-form-item label="用户头像" prop="avatar">
         <UploadImg
-          v-model:image-url="drawerProps.row!.avatar"
+          v-model:image-url="drawerProps.row!.avatar!"
           width="135px"
           height="135px"
           :file-size="3"
