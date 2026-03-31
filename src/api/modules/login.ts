@@ -6,7 +6,7 @@ import CryptoTool from '@/utils/crypto'
  */
 // 用户登录
 export const loginApi = (params: Login.ReqLoginForm) => {
-  return http.post<Login.ResLogin>(`/passport/login`, { data: CryptoTool.sm4Encrypt(params) }, { loading: false }) // 正常 post json 请求  ==>  application/json
+  return http.post<any>(`/passport/login`, { data: CryptoTool.sm4Encrypt(params) }, { loading: false }) // 正常 post json 请求  ==>  application/json
 }
 
 // 获取菜单权限列表

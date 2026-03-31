@@ -72,7 +72,9 @@ const login = (formEl: FormInstance | undefined) => {
     loading.value = true
     try {
       // 1.执行登录接口
-      const { access_token, user } = await loginApi(loginForm)
+      const {
+        data: { access_token, user }
+      } = await loginApi(loginForm)
       userStore.setToken(access_token)
       userStore.setUserInfo(user)
       await authStore.setMenuPathList()

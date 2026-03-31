@@ -240,6 +240,7 @@ provide('enumMap', enumMap)
 
 // 扁平化 columns 的方法
 const flatColumnsFunc = (columns: ColumnProps[], flatArr: ColumnProps[] = []) => {
+  console.log('🚀 ~ columns:', columns)
   columns.forEach(async col => {
     if (col._children?.length) flatArr.push(...flatColumnsFunc(col._children))
     flatArr.push(col)
@@ -311,6 +312,9 @@ const dragSort = () => {
   })
 }
 
+onMounted(() => {
+  console.log('🚀 ~ tableColumns:', tableColumns)
+})
 // 暴露给父组件的参数和方法 (外部需要什么，都可以从这里暴露出去)
 defineExpose({
   element: tableRef,

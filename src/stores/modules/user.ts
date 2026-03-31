@@ -21,6 +21,7 @@ export const useUserStore = defineStore({
     },
     // Set setUserInfo
     setUserInfo(userInfo: User.ResUserList) {
+      console.log('🚀 ~ userInfo:', userInfo)
       this.userInfo = CryptoTool.sm4Encrypt(userInfo)
     },
     async getRoleSelect() {
