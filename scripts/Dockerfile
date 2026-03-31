@@ -11,7 +11,7 @@ RUN npm install -g pnpm && \
 
 # 先复制依赖文件，充分利用 Docker 层缓存
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # 再复制源码并构建
 COPY . .
