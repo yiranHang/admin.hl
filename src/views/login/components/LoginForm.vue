@@ -75,6 +75,15 @@ const login = (formEl: FormInstance | undefined) => {
       const {
         data: { access_token, user }
       } = await loginApi(loginForm)
+      if (!user || !access_token) {
+        ElNotification({
+          title: '登录失败',
+          message: '服务器返回数据异常，请联系管理员',
+          type: 'error',
+          duration: 3000
+        })
+        return
+      }
       userStore.setToken(access_token)
       userStore.setUserInfo(user)
       await authStore.setMenuPathList()
@@ -117,6 +126,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
-@import '../index.scss';
-</style>
+<style scoped lang="scss" src="../index.scss"></style>

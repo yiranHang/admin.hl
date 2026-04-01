@@ -6,6 +6,9 @@ class CryptoTool {
    * SM4 加密
    */
   sm4Encrypt(val: string | number | Object) {
+    if (val === undefined || val === null) {
+      throw new TypeError(`sm4Encrypt: 期望非空值，收到 ${val}`)
+    }
     return SM4.encrypt(JSON.stringify(val), this.key, {
       inputEncoding: 'utf-8',
       outputEncoding: 'hex'

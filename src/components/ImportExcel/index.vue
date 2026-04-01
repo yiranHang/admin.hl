@@ -150,6 +150,4 @@ defineExpose({
   acceptParams
 })
 </script>
-<style lang="scss" scoped>
-@import './index.scss';
-</style>
+<style lang="scss" scoped src="./index.scss"></style>
