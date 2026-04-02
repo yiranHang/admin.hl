@@ -97,8 +97,9 @@ router.onError(error => {
 /**
  * @description 路由跳转结束
  * */
-router.afterEach(() => {
+router.afterEach(to => {
   NProgress.done()
+  window._hmt && window._hmt.push(['_trackPageview', to.fullPath])
 })
 
 export default router
