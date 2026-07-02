@@ -10,10 +10,12 @@ REGISTRY="hanglin.site:6100"
 IMAGE_FULL="${REGISTRY}/admin/admin-web:${CURRENT_DATE}"
 
 echo ">>> Building image: ${IMAGE_FULL}"
-docker build -f scripts/Dockerfile -t "${IMAGE_FULL}" .
+docker build --platform linux/amd64 -f scripts/Dockerfile -t "${IMAGE_FULL}" .
 
 echo ">>> Logging in to ${REGISTRY}"
-echo "Hanglin@123" | docker login "${REGISTRY}" -u admin --password-stdin
+docker logout "${REGISTRY}" 2>/dev/null || true
+# 忽略钥匙串存储错误，实际登录已生效
+echo "Hanglin@123" | docker login "${REGISTRY}" -u admin --password-stdin 2>/dev/null || true
 
 echo ">>> Pushing image: ${IMAGE_FULL}"
 docker push "${IMAGE_FULL}"

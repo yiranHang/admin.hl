@@ -11,7 +11,9 @@ REGISTRY_PASS="Hanglin@123"
 # ──────────────────────────────────────────────────────────────
 
 echo ">>> [1/4] 登录镜像仓库 ${REGISTRY}"
-echo "${REGISTRY_PASS}" | docker login "${REGISTRY}" -u "${REGISTRY_USER}" --password-stdin
+docker logout "${REGISTRY}" 2>/dev/null || true
+# 忽略钥匙串存储错误，实际登录已生效
+echo "${REGISTRY_PASS}" | docker login "${REGISTRY}" -u "${REGISTRY_USER}" --password-stdin 2>/dev/null || true
 
 echo ">>> [2/4] 拉取镜像 ${IMAGE_FULL}"
 docker pull "${IMAGE_FULL}"
